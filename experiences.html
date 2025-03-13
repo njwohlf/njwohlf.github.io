@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Personal Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1">
+    <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+    <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
+    <link rel="stylesheet" href="css/skins/color-6.css" class="alternate-style" title="color-6" disabled>
+ 
+</head>
+<body>
+    <header>
+        <div id="navbar-container"></div>
+        <script>
+            fetch('partials/navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        </script>
+    </header>
+
+    <section id="resume">
+        <h1>Professional Experience</h1>
+        <div class="timeline">
+            <div class="timeline-item current">
+                <h2><i class="fas fa-chalkboard-teacher" style="margin-right: 10px;"></i> Course Assistant</h2>
+                <p class="experience-date"><i class="far fa-calendar-alt"></i> January 2020 - Present</p>
+                <p>Developed and maintained web applications using React and Node.js. Collaborated with cross-functional teams to define, design, and ship new features.</p>
+            </div>
+            <div class="timeline-item current">
+                <h2><i class="fas fa-satellite" style="margin-right: 10px;"></i> Proximity Operations</h2>
+                <p class="experience-date"><i class="far fa-calendar-alt"></i> January 2020 - Present</p>
+                <p>Developed and maintained web applications using React and Node.js. Collaborated with cross-functional teams to define, design, and ship new features.</p>
+            </div>
+            <div class="timeline-item current">
+                <h2><i class="fas fa-check-circle" style="margin-right: 10px;"></i> Verified Systems</h2>
+                <p class="experience-date"><i class="far fa-calendar-alt"></i> January 2020 - Present</p>
+                <p>Developed and maintained web applications using React and Node.js. Collaborated with cross-functional teams to define, design, and ship new features.</p>
+            </div>
+            <div class="timeline-item current">
+                <h2><i class="fas fa-rocket" style="margin-right: 10px;"></i> Aerospace IA</h2>
+                <p class="experience-date"><i class="far fa-calendar-alt"></i> January 2020 - Present</p>
+                <p>Developed and maintained web applications using React and Node.js. Collaborated with cross-functional teams to define, design, and ship new features.</p>
+            </div>
+            <div class="timeline-item">
+                <h2><i class="fas fa-users" style="margin-right: 10px;"></i> MRADS Program Assistant</h2>
+                <p class="experience-date"><i class="far fa-calendar-alt"></i> June 2018 - December 2019</p>
+                <p>Worked on various freelance projects, creating responsive websites for clients using HTML, CSS, and JavaScript.</p>
+            </div>
+            <div class="timeline-item">
+                <h2><i class="fas fa-bridge" style="margin-right: 10px;"></i> Summer Bridge</h2>
+                <p class="experience-date"><i class="far fa-calendar-alt"></i> January 2017 - May 2018</p>
+                <p>Assisted in the development of an internal tool for project management using Python and Django. Participated in code reviews and learned best practices in software development.</p>
+            </div>
+            <div class="timeline-item">
+                <h2><i class="fas fa-laptop-code" style="margin-right: 10px;"></i> A2Sys</h2>
+                <p class="experience-date"><i class="far fa-calendar-alt"></i> September 2015 - December 2016</p>
+                <p>Conducted research on machine learning algorithms and contributed to academic papers. Developed scripts in Python for data analysis and visualization.</p>
+            </div>
+            <div class="timeline-item">
+                <h2><i class="fas fa-book" style="margin-right: 10px;"></i> Tutoring</h2>
+                <p class="experience-date"><i class="far fa-calendar-alt"></i> June 2018 - December 2019</p>
+                <p>Worked on enhancing the company's internal tools using JavaScript and Python, focusing on improving efficiency and usability.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+    <script>
+        fetch('partials/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+    <script src="js/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Personal Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+    <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+    <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
+    <link rel="stylesheet" href="css/skins/color-6.css" class="alternate-style" title="color-6" disabled>
+</head>
+<body>
+    <header>
+        <div id="navbar-container"></div>
+        <script>
+            fetch('partials/navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        </script>
+    </header>
+
+    <section id="about">
+        <h2><i class="fas fa-user"></i> About Me</h2>
+        <div style="border: 2px solid var(--skin-color); padding: 1.5em; border-radius: 8px; margin-top: 1em; background-color: #2C2C2C; text-align: left;">
+            <h3 style="color: var(--skin-color); margin-top: 0;">Hello! I'm Nick Wohlfeil</h3>
+            <p>I'm an engineer based in Ann Arbor, MI. I have a passion for intricately complex tech projects with an equally as compelling life of hobbies. With a background in Computer Science and Administrative work from the University of Michigan, I have developed a niche but well complimented interest of human-centered software design.</p>
+            <p>When I'm not at a computer, you'll either find me hanging out with one of my bunnies or going out with friends.</p>
+        </div>
+    </section>
+
+    <section id="education" style="padding: 2em;">
+        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+        <div style="border: 2px solid #FFCB05; padding: 1em; border-radius: 8px; margin-top: 1em; background-color: #00274D; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h3 style="color: #FFCB05;">Bachelor of Science in Computer Science Engineering</h3>
+                <p>University of Michigan, Ann Arbor — Class of 2024</p>
+                <p style="font-style: italic; color: #FFCB05;">Go Blue!</p>
+            </div>
+            <img src="assets/images/M.png" alt="University of Michigan Logo" style="max-width: 150px;">
+        </div>
+    </section>
+
+    <section id="hobbies">
+        <h2><i class="fas fa-heart"></i> Hobbies</h2>
+        <div class="hobbies">
+            <div>
+                <i class="fas fa-hiking"></i>
+                <h3>Hiking</h3>
+                <p>Exploring the great outdoors and conquering new trails.</p>
+            </div>
+            <div>
+                <i class="fas fa-gamepad"></i>
+                <h3>Gaming</h3>
+                <p>Diving into story-driven experiences or honing online matchmaking skills.</p>
+            </div>
+            <div>
+                <i class="fas fa-robot"></i>
+                <h3>Robotics</h3>
+                <p>Making things move with varying levels of success through mostly trial and error.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="travel">
+        <h2><i class="fas fa-plane"></i> Travel</h2>
+        <div class="travel">
+            <div>
+                <i class="fas fa-globe"></i>
+                <h3>Europe</h3>
+                <p>Visited France, Germany, and Italy. Loved the historical sites and cuisine.</p>
+            </div>
+            <div>
+                <i class="fas fa-globe"></i>
+                <h3>Asia</h3>
+                <p>Traveled through Japan and South Korea. Amazing culture and technology.</p>
+            </div>
+            <div>
+                <i class="fas fa-globe"></i>
+                <h3>South America</h3>
+                <p>Explored Brazil and Argentina. Beautiful landscapes and vibrant cities.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="fun-facts">
+        <h2><i class="fas fa-lightbulb"></i> Fun Facts</h2>
+        <div class="fun-facts">
+            <div>
+                <i class="fas fa-music"></i>
+                <h3>Music</h3>
+                <p>Plays the guitar and enjoys jamming with friends.</p>
+            </div>
+            <div>
+                <i class="fas fa-ghost"></i>
+                <h3>Horror</h3>
+                <p>I love anything horror-related, am always looking for the next scare!</p>
+            </div>
+            <div>
+                <i class="fas fa-gamepad"></i>
+                <h3>Media</h3>
+                <p>Loves playing strategy and role-playing games.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+    <script>
+        fetch('partials/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+    <script src="js/script.js" defer=""></script>
+</body>
+</html>
