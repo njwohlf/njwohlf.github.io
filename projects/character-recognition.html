@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Recognition - Personal Portfolio</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1E1E1E;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-detail {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .project-image {
+            flex: 1;
+            min-width: 300px;
+            margin-right: 20px;
+        }
+
+        .project-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .project-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .project-content h1 {
+            margin-top: 0;
+            color: #FFC107;
+        }
+
+        .project-content p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .project-content ul {
+            padding-left: 20px;
+            color: #aaa;
+        }
+
+        .project-content ul li {
+            margin-bottom: 10px;
+        }
+
+        .project-content a {
+            display: inline-block;
+            margin-top: 10px;
+            background: #FFC107;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .project-content a:hover {
+            background: #e0a806;
+        }
+
+        footer {
+            background-color: #2C2C2C;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        footer p {
+            margin: 0;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="navbar-container"></div>
+        <script>
+            fetch('/partials/navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        </script>
+    </header>
+
+    <section class="project-detail">
+        <div class="project-image">
+            <img src="/assets/images/ml.png" alt="Handwritten Character Recognition">
+        </div>
+        <div class="project-content">
+            <h1>English Handwritten Character Recognition</h1>
+            <p>This project explores the multi-class supervised classification problem of recognizing handwritten characters "A" - "Z" in the English alphabet. Using the dataset from Cohen, Afshar, Tapson and van Schaik, I trained and compared two different neural network architectures to classify uppercase and lowercase English letters.</p>
+            <ul>
+                <li><strong>Deep Feedforward Network:</strong> Implemented a fully connected neural network to establish a baseline for character recognition performance. This model uses multiple dense layers to classify the handwritten characters.</li>
+                <li><strong>Deep Convolutional Network:</strong> Developed a CNN architecture that leverages spatial patterns in the image data, resulting in improved recognition accuracy compared to the feedforward approach.</li>
+                <li><strong>Comparative Analysis:</strong> Conducted detailed performance analysis between both models, examining accuracy, confusion matrices, and learning curves to identify strengths and weaknesses of each approach.</li>
+                <li><strong>Data Processing:</strong> Utilized UTF-8 encoding for character representation and the StringEncodings package for data preprocessing, with visualization of training and test label distributions.</li>
+            </ul>
+        </div>
+    </section>
+    <div id="footer-container"></div>
+    <script>
+        fetch('/partials/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+</body>
+</html>

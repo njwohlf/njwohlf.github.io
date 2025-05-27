@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setActiveStyle(savedColor);
     } else {
         // set default to color-5 if no saved preference
-        setActiveStyle('color-5');
+        setActiveStyle('color-3');
     }
     
     // init theme (if dark class should be added)

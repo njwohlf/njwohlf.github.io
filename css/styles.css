@@ -870,6 +870,10 @@ header nav ul li a {
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
+  
+  width: 400px; /* Set your desired fixed width */
+  margin: 1rem; /* Optional: spacing between cards */
+ 
 }
 
 .project-card:hover {
@@ -891,6 +895,7 @@ header nav ul li a {
   align-items: center;
   height: 100%;
   text-align: center;
+  color: var(--skin-color);
 }
 
 .project-card h2 {
@@ -900,6 +905,7 @@ header nav ul li a {
 
 .project-card p {
   color: #aaa;
+  color: var(--skin-color);
 }
 
 .project-link {
@@ -1549,3 +1555,14 @@ body.dark .resume-link {
 .timeline-item h2 i {
   color: var(--skin-color, var(--skin-color)) !important;
 }
+
+.timeline-item h4 {
+  text-align: right;
+  color: var(--skin-color, var(--skin-color)) !important;
+  margin: 0; /* Reset margin */
+  padding: 0; /* Reset padding */
+  display: block;
+  width: 100%; /* Make the h4 take up the full width of its container */
+  box-sizing: border-box; /* Ensure padding/margins are included in the width */
+}
+

@@ -1,3 +1,75 @@
-<html>Coming soon!
-  <p> Back to <a href="/index.html">Home</a></p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Projects - Personal Portfolio</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+        <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+        <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+        <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+        <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5">
+        <link rel="stylesheet" href="css/skins/color-6.css" class="alternate-style" title="color-6" disabled>
+    </head>
+<body>
+    <header>
+        <div id="navbar-container"></div>
+        <script>
+            fetch('partials/navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        </script>
+    </header>
+
+    <section id="projects">
+        <h1>Projects</h1>
+        <div class="filter-container">
+            <button class="filter-button" onclick="filterProjects('Research')">Research</button>
+            <button class="filter-button" onclick="filterProjects('Personal')">Personal</button>
+            <button class="filter-button" onclick="filterProjects('Academic')">Academic</button>
+            <button class="filter-button" onclick="filterProjects('All')">Show All</button>
+        </div>
+        <div class="projects-grid" id="projects-grid">
+            <div class="project-card" data-category="Academic">
+                <div class="project-label">Academic</div>
+                <div class="project-card-content">
+                    <h2>Handwritten Character Recognition</h2>
+                    <p>A Machine Learning Model trained on the XYZ database</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Machine Learning</span>
+                        <span class="project-tag">Julia</span>
+                    </div>
+                    <a href="projects/character-recognition.html" class="project-link">View Project</a>
+                </div>
+            </div>
+        </div>
+        <script>
+            function filterProjects(category) {
+                const projects = document.querySelectorAll('.project-card');
+                projects.forEach(project => {
+                    if (category === 'All' || project.getAttribute('data-category') === category) {
+                        project.style.display = 'block';
+                    } else {
+                        project.style.display = 'none';
+                    }
+                });
+            }
+        </script>
+    </section>
+    <div id="footer-container"></div>
+    <script>
+        fetch('partials/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+    <script src="js/script.js"></script>
+</body>
 </html>
