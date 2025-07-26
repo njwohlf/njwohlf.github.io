@@ -582,7 +582,7 @@ header nav ul li a {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 5px solid var(--skin-color);
+  border: 3px solid var(--skin-color);
   background-image: url('/assets/images/wohlfeil_pic.jpeg');
   background-size: cover;
   background-position: center;
@@ -1086,7 +1086,7 @@ header nav ul li a:hover {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 5px solid var(--skin-color);
+  border: 2px solid var(--skin-color);
   background-image: url('/assets/images/wohlfeil_pic.jpeg');
   background-size: cover;
   background-position: center;
@@ -1273,12 +1273,12 @@ header nav ul li a {
 
 /* Point for right items */
 .timeline-item:nth-child(even)::before {
-  left: -42px;
+  left: -24px; /* originally -42 */
 }
 
 /* Point for left items */
 .timeline-item:nth-child(odd)::before {
-  right: -42px;
+  right: -24px;
 }
 
 /* Arrow for right items */
@@ -1442,6 +1442,14 @@ footer p {
   display: inline-block;
 }
 
+#theme-toggle {
+  border: 1px solid #ccc;  /* light gray border */
+  padding: 4px 6px;        /* space inside the border */
+  border-radius: 4px;      /* rounded corners */
+  display: inline-block;   /* keep it fitting the content */
+  color: inherit;          /* keep icon color consistent */
+}
+
 .theme-dropdown-content {
   display: none;
   position: absolute;
@@ -1449,7 +1457,8 @@ footer p {
   min-width: 180px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
   z-index: 102;
-  right: 0;
+  /* Changed this: */
+  left: 0%;
   border-radius: 5px;
   padding: 15px;
   border: 1px solid #444;
