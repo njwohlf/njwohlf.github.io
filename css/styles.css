@@ -558,6 +558,8 @@ header {
   padding: 10px 0;
   text-align: center;
   position: relative;
+  border-bottom: 1px solid #444;
+
 }
 
 header nav ul {
@@ -1784,4 +1786,20 @@ body.light-mode #home {
 body.dark-mode #home {
     background-color: #1E1E1E;
     color: #fff;
+}
+
+/* #navbar ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+body.light #navbar ul li a {
+  color: black;
+} */
+
+#navbar {
+  /* background-color: #f2f2f2; or your scheme */
+  padding: 10px 0; /* adds vertical space */
+  /* min-height: 50px; guarantees it won’t collapse */
 }

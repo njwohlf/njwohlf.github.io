@@ -242,6 +242,46 @@ document.addEventListener("DOMContentLoaded", function() {
             homeSection.style.backgroundColor = "#ffffff";
             homeSection.style.color = "#000000";
         }
+
+        // Change header
+        const header = document.querySelector("header");
+        const nav = document.getElementById("navbar");
+        const navUl = nav ? nav.querySelector("ul") : null;
+        const navbarContainer = document.getElementById("navbar-container");
+        const footer = document.querySelector("footer");
+        
+        header.style.backgroundColor = "#f0f0f0"; // slightly darker white
+        header.style.color = "#000000"; // dark text
+        nav.style.backgroundColor = "#f0f0f0"; // match header
+        navUl.style.backgroundColor = "#f0f0f0"; // match header
+        navbarContainer.style.backgroundColor = "#f0f0f0";
+        footer.style.backgroundColor = "#f0f0f0";
+        footer.style.color = "#000000";
+        const navLinks = document.querySelectorAll("#navbar a");
+        navLinks.forEach(link => {
+            link.style.color = "#000000"; // for light mode
+        });
+
+
+
+        // if (header) {
+        //     header.style.backgroundColor = "#f0f0f0"; // slightly darker white
+        //     header.style.color = "#000000"; // dark text
+        // }
+        // if (nav) {
+        //     nav.style.backgroundColor = "#f0f0f0"; // match header
+        // }
+        // if (navUl) {
+        //     navUl.style.backgroundColor = "#f0f0f0"; // match header
+        // }
+        // if (navbarContainer) {
+        //     navbarContainer.style.backgroundColor = "#f0f0f0";
+        // }
+        // if (footer) {
+        //     footer.style.backgroundColor = "#f0f0f0";
+        //     footer.style.color = "#000000";
+        // }
+
     });
 
     darkBtn.addEventListener("click", () => {
@@ -251,10 +291,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Change #home section
         const homeSection = document.getElementById("home");
-        if (homeSection) {
-            homeSection.style.backgroundColor = "#1E1E1E";
-            homeSection.style.color = "#ffffff";
-        }
+        const header = document.querySelector("header");
+        const nav = document.getElementById("navbar");
+        const navUl = nav ? nav.querySelector("ul") : null;
+        const navbarContainer = document.getElementById("navbar-container");
+        const footer = document.querySelector("footer");
+        
+        homeSection.style.backgroundColor = "#1E1E1E";
+        homeSection.style.color = "#ffffff";
+        header.style.backgroundColor = "#2C2C2C"; // slightly darker white
+        header.style.color = "#ffffff"; // dark text
+        nav.style.backgroundColor = "#2C2C2C"; // match header
+        navUl.style.backgroundColor = "#2C2C2C"; // match header
+        navbarContainer.style.backgroundColor = "#2C2C2C";
+        footer.style.backgroundColor = "#2C2C2C";
+        footer.style.color = "#ffffff";
     });
 
     // Stop observing once buttons are found
