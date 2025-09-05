@@ -97,6 +97,14 @@
  * @param {string} color - the color theme name (matches the CSS file title attribute)
  */
 function setActiveStyle(color) {
+    
+    const isLightMode = localStorage.getItem("selectedTheme") === "light"; // true if light mode
+
+    // If light mode, override color 3/6 to 7/8
+    if (isLightMode) {
+        if (color === "color-3") color = "color-7";
+        if (color === "color-6") color = "color-8";
+    }
     const alternateStyles = document.querySelectorAll(".alternate-style");
     if (!alternateStyles.length) return; // Guard clause if no styles exist
     
@@ -116,6 +124,8 @@ function setActiveStyle(color) {
     // save preference
     localStorage.setItem('selectedColor', color);
 }
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
     // modal functions
@@ -201,26 +211,6 @@ function setTheme(theme) {
     localStorage.setItem("selectedTheme", theme);
 }
 
-// document.addEventListener("DOMContentLoaded", function() {
-//     const lightBtn = document.getElementById("light-mode-toggle");
-//     const darkBtn = document.getElementById("dark-mode-toggle");
-//     // Light mode click
-//     if (lightBtn) {
-//         lightBtn.addEventListener("click", function() {
-//             document.body.style.backgroundColor = "#ffffff"; // white
-//             document.body.style.color = "#000000"; // black text
-//         });
-//     }
-
-//     // Dark mode click
-//     if (darkBtn) {
-//         darkBtn.addEventListener("click", function() {
-//             document.body.style.backgroundColor = "#1E1E1E"; // dark background
-//             document.body.style.color = "#ffffff"; // white text
-//         });
-//     }
-// });
-
 document.addEventListener("DOMContentLoaded", function() {
     // Observe the navbar container for changes
     const navbarContainer = document.getElementById("navbar-container");
@@ -230,83 +220,88 @@ document.addEventListener("DOMContentLoaded", function() {
         const lightBtn = document.getElementById("light-mode-toggle");
         const darkBtn = document.getElementById("dark-mode-toggle");
 
+
         if (lightBtn && darkBtn) {
-    lightBtn.addEventListener("click", () => {
-        // Change body
-        document.body.style.backgroundColor = "#ffffff";
-        document.body.style.color = "#000000";
 
-        // Change #home section
-        const homeSection = document.getElementById("home");
-        if (homeSection) {
-            homeSection.style.backgroundColor = "#ffffff";
-            homeSection.style.color = "#000000";
-        }
+            const savedTheme = localStorage.getItem("selectedTheme");
+            if (savedTheme === "light") {
+                lightBtn.click();
+            } else {
+                darkBtn.click();
+            }
 
-        // Change header
-        const header = document.querySelector("header");
-        const nav = document.getElementById("navbar");
-        const navUl = nav ? nav.querySelector("ul") : null;
-        const navbarContainer = document.getElementById("navbar-container");
-        const footer = document.querySelector("footer");
-        
-        header.style.backgroundColor = "#f0f0f0"; // slightly darker white
-        header.style.color = "#000000"; // dark text
-        nav.style.backgroundColor = "#f0f0f0"; // match header
-        navUl.style.backgroundColor = "#f0f0f0"; // match header
-        navbarContainer.style.backgroundColor = "#f0f0f0";
-        footer.style.backgroundColor = "#f0f0f0";
-        footer.style.color = "#000000";
-        const navLinks = document.querySelectorAll("#navbar a");
-        navLinks.forEach(link => {
-            link.style.color = "#000000"; // for light mode
-        });
+            lightBtn.addEventListener("click", () => {
+                // Change body
+                document.body.style.backgroundColor = "#F5F5F5";
+                document.body.style.color = "#000000";
 
+                const homeSection = document.getElementById("home");
+                const header = document.querySelector("header");
+                const nav = document.getElementById("navbar");
+                const navUl = nav ? nav.querySelector("ul") : null;
+                const navbarContainer = document.getElementById("navbar-container");
+                const footer = document.querySelector("footer");
+                const navLinks = document.querySelectorAll("#navbar a");
 
+                homeSection.style.backgroundColor = "#F5F5F5";
+                homeSection.style.color = "#000000";
+                header.style.backgroundColor = "#DCDCDC"; // slightly darker white
+                header.style.color = "#000000"; // dark text
+                nav.style.backgroundColor = "#DCDCDC"; // match header
+                navUl.style.backgroundColor = "#DCDCDC"; // match header
+                navbarContainer.style.backgroundColor = "#DCDCDC";
+                footer.style.backgroundColor = "#DCDCDC";
+                footer.style.color = "#000000";
+                navLinks.forEach(link => {
+                    link.style.color = "#000000"; // for light mode
+                });
 
-        // if (header) {
-        //     header.style.backgroundColor = "#f0f0f0"; // slightly darker white
-        //     header.style.color = "#000000"; // dark text
-        // }
-        // if (nav) {
-        //     nav.style.backgroundColor = "#f0f0f0"; // match header
-        // }
-        // if (navUl) {
-        //     navUl.style.backgroundColor = "#f0f0f0"; // match header
-        // }
-        // if (navbarContainer) {
-        //     navbarContainer.style.backgroundColor = "#f0f0f0";
-        // }
-        // if (footer) {
-        //     footer.style.backgroundColor = "#f0f0f0";
-        //     footer.style.color = "#000000";
-        // }
+                document.querySelector(".color-3").style.color = "#800080"; // purple
+                document.querySelector(".color-6").style.color = "#008080"; // teal
+                document.documentElement.style.setProperty("--skin-color-3", "#800080"); // purple
+                document.documentElement.style.setProperty("--skin-color-6", "#008080"); // teal
+                localStorage.setItem("selectedTheme", "light");
+                // let currentColor = localStorage.getItem("selectedColor");
+                // setActiveStyle(currentColor);
 
-    });
+            });
 
-    darkBtn.addEventListener("click", () => {
-        // Change body
-        document.body.style.backgroundColor = "#1E1E1E";
-        document.body.style.color = "#ffffff";
+            darkBtn.addEventListener("click", () => {
+                // Change body
+                document.body.style.backgroundColor = "#1E1E1E";
+                document.body.style.color = "#ffffff";
 
-        // Change #home section
-        const homeSection = document.getElementById("home");
-        const header = document.querySelector("header");
-        const nav = document.getElementById("navbar");
-        const navUl = nav ? nav.querySelector("ul") : null;
-        const navbarContainer = document.getElementById("navbar-container");
-        const footer = document.querySelector("footer");
-        
-        homeSection.style.backgroundColor = "#1E1E1E";
-        homeSection.style.color = "#ffffff";
-        header.style.backgroundColor = "#2C2C2C"; // slightly darker white
-        header.style.color = "#ffffff"; // dark text
-        nav.style.backgroundColor = "#2C2C2C"; // match header
-        navUl.style.backgroundColor = "#2C2C2C"; // match header
-        navbarContainer.style.backgroundColor = "#2C2C2C";
-        footer.style.backgroundColor = "#2C2C2C";
-        footer.style.color = "#ffffff";
-    });
+                // Change #home section
+                const homeSection = document.getElementById("home");
+                const header = document.querySelector("header");
+                const nav = document.getElementById("navbar");
+                const navUl = nav ? nav.querySelector("ul") : null;
+                const navbarContainer = document.getElementById("navbar-container");
+                const footer = document.querySelector("footer");
+                
+                homeSection.style.backgroundColor = "#1E1E1E";
+                homeSection.style.color = "#ffffff";
+                header.style.backgroundColor = "#2C2C2C"; // slightly darker white
+                header.style.color = "#ffffff"; // dark text
+                nav.style.backgroundColor = "#2C2C2C"; // match header
+                navUl.style.backgroundColor = "#2C2C2C"; // match header
+                navbarContainer.style.backgroundColor = "#2C2C2C";
+                footer.style.backgroundColor = "#2C2C2C";
+                footer.style.color = "#ffffff";
+                const navLinks = document.querySelectorAll("#navbar a");
+                navLinks.forEach(link => {
+                    link.style.color = "#ffffff"; // for light mode
+                });
+
+                document.querySelector(".color-3").style.color = "#FFC107"; // yellow
+                document.querySelector(".color-6").style.color = "#00ff33"; // green
+                document.documentElement.style.setProperty("--skin-color-3", "#FFC107"); // yellow
+                document.documentElement.style.setProperty("--skin-color-6", "#00ff33"); // green
+                localStorage.setItem("selectedTheme", "dark");
+
+                // let currentColor = localStorage.getItem("selectedColor");
+                // setActiveStyle(currentColor);
+            });
 
     // Stop observing once buttons are found
     observer.disconnect();
@@ -318,3 +313,15 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     const savedTheme = localStorage.getItem("selectedTheme");
+    
+//     if (savedTheme === "light") {
+//         // simulate light mode button click
+//         document.getElementById("light-mode-toggle").click();
+//     } else {
+//         // default to dark
+//         document.getElementById("dark-mode-toggle").click();
+//     }
+// });

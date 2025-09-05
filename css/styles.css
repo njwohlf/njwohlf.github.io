@@ -1669,13 +1669,29 @@ footer p {
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
 }
 
-/* Assign colors */
+/* Assign colors
 .color-1 { color: #ec1839; }
 .color-2 { color: #fa5b0f; }
 .color-3 { color: #FFC107; }
 .color-4 { color: #1854b4; }
 .color-5 { color: #f021b2; }
-.color-6 { color: #00ff33; }
+.color-6 { color: #00ff33; } */
+
+:root {
+  --skin-color-1: #ec1839;
+  --skin-color-2: #fa5b0f;
+  --skin-color-3: #FFC107;
+  --skin-color-4: #1854b4;
+  --skin-color-5: #f021b2;
+  --skin-color-6: #00ff33;
+}
+
+.color-1 { color: var(--skin-color-1); }
+.color-2 { color: var(--skin-color-2); }
+.color-3 { color: var(--skin-color-3); }
+.color-4 { color: var(--skin-color-4); }
+.color-5 { color: var(--skin-color-5); }
+.color-6 { color: var(--skin-color-6); }
 
 #dark-mode-toggle {
   background-color: transparent;
