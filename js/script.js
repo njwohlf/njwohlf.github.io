@@ -178,49 +178,92 @@ document.addEventListener('DOMContentLoaded', function () {
 }); 
 
 function setTheme(theme) {
-  const themes = document.querySelectorAll(".alternate-theme");
-  if (!themes.length) return;
+    const themes = document.querySelectorAll(".alternate-theme");
+    themes.forEach(link => {
+        if (link.getAttribute("title") === theme) {
+            link.removeAttribute("disabled");
+        } else {
+            link.setAttribute("disabled", "true");
+        }
+    });
 
-  themes.forEach((link) => {
-    if (theme === link.getAttribute("title")) {
-      link.removeAttribute("disabled");
-    } else {
-      link.setAttribute("disabled", "true");
-    }
-  });
-
-  // Highlight the active button
-  const lightBtn = document.getElementById("light-mode-toggle");
-  const darkBtn = document.getElementById("dark-mode-toggle");
-
-  if (lightBtn && darkBtn) {
+    // Highlight active button
+    const lightBtn = document.getElementById("light-mode-toggle");
+    const darkBtn = document.getElementById("dark-mode-toggle");
     if (theme === "light") {
-      lightBtn.classList.add("active");
-      darkBtn.classList.remove("active");
+        lightBtn.classList.add("active");
+        darkBtn.classList.remove("active");
     } else {
-      darkBtn.classList.add("active");
-      lightBtn.classList.remove("active");
+        darkBtn.classList.add("active");
+        lightBtn.classList.remove("active");
     }
-  }
 
-  // Save preference
-  localStorage.setItem("selectedTheme", theme);
+    localStorage.setItem("selectedTheme", theme);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const lightBtn = document.getElementById("light-mode-toggle");
-  const darkBtn = document.getElementById("dark-mode-toggle");
+// document.addEventListener("DOMContentLoaded", function() {
+//     const lightBtn = document.getElementById("light-mode-toggle");
+//     const darkBtn = document.getElementById("dark-mode-toggle");
+//     // Light mode click
+//     if (lightBtn) {
+//         lightBtn.addEventListener("click", function() {
+//             document.body.style.backgroundColor = "#ffffff"; // white
+//             document.body.style.color = "#000000"; // black text
+//         });
+//     }
 
-  if (lightBtn && darkBtn) {
-    lightBtn.addEventListener("click", () => setTheme("light"));
-    darkBtn.addEventListener("click", () => setTheme("dark"));
-  }
+//     // Dark mode click
+//     if (darkBtn) {
+//         darkBtn.addEventListener("click", function() {
+//             document.body.style.backgroundColor = "#1E1E1E"; // dark background
+//             document.body.style.color = "#ffffff"; // white text
+//         });
+//     }
+// });
 
-  // Load saved theme or default
-  const savedTheme = localStorage.getItem("selectedTheme");
-  if (savedTheme) {
-    setTheme(savedTheme);
-  } else {
-    setTheme("dark"); // default
-  }
+document.addEventListener("DOMContentLoaded", function() {
+    // Observe the navbar container for changes
+    const navbarContainer = document.getElementById("navbar-container");
+    if (!navbarContainer) return;
+
+    const observer = new MutationObserver(() => {
+        const lightBtn = document.getElementById("light-mode-toggle");
+        const darkBtn = document.getElementById("dark-mode-toggle");
+
+        if (lightBtn && darkBtn) {
+    lightBtn.addEventListener("click", () => {
+        // Change body
+        document.body.style.backgroundColor = "#ffffff";
+        document.body.style.color = "#000000";
+
+        // Change #home section
+        const homeSection = document.getElementById("home");
+        if (homeSection) {
+            homeSection.style.backgroundColor = "#ffffff";
+            homeSection.style.color = "#000000";
+        }
+    });
+
+    darkBtn.addEventListener("click", () => {
+        // Change body
+        document.body.style.backgroundColor = "#1E1E1E";
+        document.body.style.color = "#ffffff";
+
+        // Change #home section
+        const homeSection = document.getElementById("home");
+        if (homeSection) {
+            homeSection.style.backgroundColor = "#1E1E1E";
+            homeSection.style.color = "#ffffff";
+        }
+    });
+
+    // Stop observing once buttons are found
+    observer.disconnect();
+}
+
+    });
+
+    observer.observe(navbarContainer, { childList: true, subtree: true });
 });
+
+
