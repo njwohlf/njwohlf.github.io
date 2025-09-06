@@ -111,7 +111,8 @@ h1 {
 }
 
 h2 {
-  color: #aaa;
+  /* color: #aaa; */
+  color: var(--heading-color);
   font-size: 1.5em;
   margin-bottom: 20px;
 }

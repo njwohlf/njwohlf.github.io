@@ -219,7 +219,19 @@ function applyTheme(theme) {
             if (aboutDiv) aboutDiv.style.backgroundColor = "var(--background-secondary)";
                 hobbiesDivs.forEach(div => div.style.backgroundColor = "var(--background-secondary)");
                 funFactsDivs.forEach(div => div.style.backgroundColor = "var(--background-secondary)");
+            
+            const headers = document.querySelectorAll("h2");
+
+            if (theme === "light") {
+                headers.forEach(h => {
+                    h.style.color = "#555"; // light mode color
+                });
+            } else if (theme === "dark") {
+                headers.forEach(h => {
+                    h.style.color = "#aaa"; // dark mode color
+                });
             }
+        }
         
 
 }
