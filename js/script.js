@@ -123,71 +123,105 @@ function setTheme(theme) {
 
 // Helper function to apply theme
 function applyTheme(theme) {
-    const homeSection = document.getElementById("home");
-    const header = document.querySelector("header");
-    const nav = document.getElementById("navbar");
-    const navUl = nav ? nav.querySelector("ul") : null;
-    const navbarContainer = document.getElementById("navbar-container");
-    const footer = document.querySelector("footer");
-    const navLinks = document.querySelectorAll("#navbar a");
+    localStorage.setItem("selectedTheme", theme);
+    const fullPath = window.location.pathname;
+    const fileName = fullPath.substring(fullPath.lastIndexOf('/') + 1);
 
-    if (theme === "light") {
-        document.body.style.backgroundColor = "#F5F5F5";
-        document.body.style.color = "#000000";
+    // if (fileName === "index.html" || fileName === "") {
+        // const homeSection = document.getElementById("home");
+        const header = document.querySelector("header");
+        const nav = document.getElementById("navbar");
+        const navUl = nav ? nav.querySelector("ul") : null;
+        const navbarContainer = document.getElementById("navbar-container");
+        const footer = document.querySelector("footer");
+        const navLinks = document.querySelectorAll("#navbar a");
 
-        if (homeSection) {
-            homeSection.style.backgroundColor = "#F5F5F5";
-            homeSection.style.color = "#000000";
+        let primaryColor = null;
+        let secondaryColor = null;
+        let textColor = null;
+        if (theme === "light") {
+            primaryColor = "#F5F5F5";
+            secondaryColor = "#DCDCDC";
+            textColor = "#000000";
+
+            document.querySelector(".color-3").style.color = "#c902c9ff"; // purple
+            document.querySelector(".color-6").style.color = "#008080"; // teal
+            document.documentElement.style.setProperty("--skin-color-3", "#c902c9ff");
+            document.documentElement.style.setProperty("--skin-color-6", "#008080");
+            localStorage.setItem("selectedTheme", theme);
+            setActiveStyle(localStorage.getItem('selectedColor'))
+
+        } else {
+            primaryColor = "#1E1E1E";
+            secondaryColor = "#2C2C2C";
+            textColor = "#ffffff";
+            
+            document.querySelector(".color-3").style.color = "#FFC107"; // yellow
+            document.querySelector(".color-6").style.color = "#00ff33"; // green
+            document.documentElement.style.setProperty("--skin-color-3", "#FFC107");
+            document.documentElement.style.setProperty("--skin-color-6", "#00ff33");
+            localStorage.setItem("selectedTheme", theme);
+            setActiveStyle(localStorage.getItem('selectedColor'))
         }
-        if (header) header.style.backgroundColor = "#DCDCDC";
-        if (header) header.style.color = "#000000";
-        if (nav) nav.style.backgroundColor = "#DCDCDC";
-        if (navUl) navUl.style.backgroundColor = "#DCDCDC";
-        if (navbarContainer) navbarContainer.style.backgroundColor = "#DCDCDC";
-        if (footer) {
-            footer.style.backgroundColor = "#DCDCDC";
-            footer.style.color = "#000000";
+        if (fileName === "index.html" || fileName === "") {
+            const homeSection = document.getElementById("home");
+            document.body.style.backgroundColor = primaryColor;
+            document.body.style.color = textColor;
+            homeSection.style.backgroundColor = primaryColor;
+            homeSection.style.color = textColor;
         }
-        navLinks.forEach(link => link.style.color = "#000000");
+        // document.body.style.backgroundColor = primaryColor;
+        // document.body.style.color = textColor;
+        // homeSection.style.backgroundColor = primaryColor;
+        // homeSection.style.color = textColor;
+        header.style.backgroundColor = secondaryColor;
+        header.style.color = textColor;
+        nav.style.backgroundColor = secondaryColor;
+        navUl.style.backgroundColor = secondaryColor;
+        navbarContainer.style.backgroundColor = secondaryColor;
+        footer.style.backgroundColor = secondaryColor;
+        footer.style.color = textColor;
+        navLinks.forEach(link => link.style.color = textColor);
+    // }
+        if (fileName === "about.html") {
+                    // About section
+            const aboutDiv = document.querySelector("#about div");
+            const hobbiesDivs = document.querySelectorAll(".hobbies div");
+            const funFactsDivs = document.querySelectorAll(".fun-facts div");
+            // const educationDivs = document.querySelectorAll("#education div");
 
-        document.querySelector(".color-3").style.color = "#c902c9ff"; // purple
-        document.querySelector(".color-6").style.color = "#008080"; // teal
-        document.documentElement.style.setProperty("--skin-color-3", "#c902c9ff");
-        document.documentElement.style.setProperty("--skin-color-6", "#008080");
-        localStorage.setItem("selectedTheme", theme);
-        setActiveStyle(localStorage.getItem('selectedColor'))
+            if (theme === "light") {
+                document.documentElement.style.setProperty("--background-primary", "#F5F5F5");
+                document.documentElement.style.setProperty("--background-secondary", "#DCDCDC");
+                document.documentElement.style.setProperty("--text-color", "#000000");
+                document.documentElement.style.setProperty("--highlight-color-3", "#c902c9ff");
+                document.documentElement.style.setProperty("--highlight-color-6", "#008080");
+                
+                document.querySelector(".color-3").style.color = "#c902c9ff"; // purple
+                document.querySelector(".color-6").style.color = "#008080"; // teal
+                document.documentElement.style.setProperty("--skin-color-3", "#c902c9ff");
+                document.documentElement.style.setProperty("--skin-color-6", "#008080");
+            } else {
+                document.documentElement.style.setProperty("--background-primary", "#1E1E1E");
+                document.documentElement.style.setProperty("--background-secondary", "#2C2C2C");
+                document.documentElement.style.setProperty("--text-color", "#ffffff");
+                document.documentElement.style.setProperty("--highlight-color-3", "#FFC107");
+                document.documentElement.style.setProperty("--highlight-color-6", "#00ff33");
 
-
-    } else { // dark
-        document.body.style.backgroundColor = "#1E1E1E";
-        document.body.style.color = "#ffffff";
-
-        if (homeSection) {
-            homeSection.style.backgroundColor = "#1E1E1E";
-            homeSection.style.color = "#ffffff";
-        }
-        if (header) header.style.backgroundColor = "#2C2C2C";
-        if (header) header.style.color = "#ffffff";
-        if (nav) nav.style.backgroundColor = "#2C2C2C";
-        if (navUl) navUl.style.backgroundColor = "#2C2C2C";
-        if (navbarContainer) navbarContainer.style.backgroundColor = "#2C2C2C";
-        if (footer) {
-            footer.style.backgroundColor = "#2C2C2C";
-            footer.style.color = "#ffffff";
-        }
-        navLinks.forEach(link => link.style.color = "#ffffff");
-
-        document.querySelector(".color-3").style.color = "#FFC107"; // yellow
-        document.querySelector(".color-6").style.color = "#00ff33"; // green
-        document.documentElement.style.setProperty("--skin-color-3", "#FFC107");
-        document.documentElement.style.setProperty("--skin-color-6", "#00ff33");
-        localStorage.setItem("selectedTheme", theme);
-        setActiveStyle(localStorage.getItem('selectedColor'))
+                document.querySelector(".color-3").style.color = "#FFC107"; // yellow
+                document.querySelector(".color-6").style.color = "#00ff33"; // green
+                document.documentElement.style.setProperty("--skin-color-3", "#FFC107");
+                document.documentElement.style.setProperty("--skin-color-6", "#00ff33");
+            }
+            localStorage.setItem("selectedTheme", theme);
+            setActiveStyle(localStorage.getItem('selectedColor'))
+            // Apply the colors to each section dynamically
+            if (aboutDiv) aboutDiv.style.backgroundColor = "var(--background-secondary)";
+                hobbiesDivs.forEach(div => div.style.backgroundColor = "var(--background-secondary)");
+                funFactsDivs.forEach(div => div.style.backgroundColor = "var(--background-secondary)");
+            }
         
-    }
-    
-    // Save last selected theme
-    // localStorage.setItem("selectedTheme", theme);
+
 }
 
 // --- Phase 1: initial page load ---
