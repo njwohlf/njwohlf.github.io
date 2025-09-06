@@ -307,8 +307,37 @@ function applyTheme(theme) {
                 }
             }
         }
-        
+        if(fileName === "contact.html") {
+            const bodySection = document.querySelector("body");
+            const contactSection = document.getElementById("contact");
+            const pageContainer = document.querySelector(".page-container");
+            const inputFields = document.querySelectorAll("input, textarea"); // button
+            const labels = document.querySelectorAll("label");
+            
+            const paragraphs = document.querySelectorAll("#contact p");
 
+            paragraphs.forEach(p => {
+                p.style.color = textColor;
+            });
+
+
+            // Example: inside your theme switcher function
+            if (bodySection) bodySection.style.backgroundColor = primaryColor;
+            if (pageContainer) pageContainer.style.backgroundColor = primaryColor;
+            if (contactSection) contactSection.style.backgroundColor = primaryColor;
+
+            // Inputs, textarea, button background + text color
+            inputFields.forEach(field => {
+                field.style.backgroundColor = secondaryColor;
+                field.style.color = textColor;
+                // field.style.border = `1px solid ${textColor}`;
+            });
+
+            // Labels text color
+            labels.forEach(label => {
+                label.style.color = textColor;
+            });
+        }
         
 
 }
