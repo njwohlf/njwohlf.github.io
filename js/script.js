@@ -286,6 +286,7 @@ function applyTheme(theme) {
                     item.style.backgroundColor = secondaryColor;
                     item.style.color = textColor;
                 });
+                currentTimelineItem.style.backgroundColor = secondaryColor; // darker highlight
 
                 if (currentTimelineItem) {
                     if (theme === "light") {
@@ -298,7 +299,7 @@ function applyTheme(theme) {
 
         
                     } else {
-                        currentTimelineItem.style.backgroundColor = "#444"; // darker highlight
+                        // currentTimelineItem.style.backgroundColor = "#444"; // darker highlight
                         currentTimelineItem.style.color = "#FFFFFF";
                         expDates.forEach(p => {
                             p.style.backgroundColor = "#333"; // pick colors for light/dark
