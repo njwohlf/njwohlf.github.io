@@ -232,6 +232,37 @@ function applyTheme(theme) {
                 });
             }
         }
+        if (fileName === "projects.html") {
+            
+            const projectsSection = document.getElementById("projects");
+            const projectCards = document.querySelectorAll(".project-card");
+            const pageContainer = document.getElementById("page-container");
+            const contentWrap = document.getElementById("content-wrap");
+            const projectTags = document.querySelectorAll(".project-tag"); //background: #333;
+
+
+            if (projectsSection) {
+                    pageContainer.style.backgroundColor = primaryColor; // white
+                    contentWrap.style.backgroundColor = primaryColor;
+                    projectsSection.style.backgroundColor = primaryColor; // white background
+                    if(theme === "light") {
+                        projectTags.forEach(card => {
+                        card.style.backgroundColor = "#e9e9e9ff"; // slightly darker than white
+                    });
+                    }
+                    else {
+                        projectTags.forEach(card => {
+                            card.style.backgroundColor = "#333"; // slightly darker than white
+                        });
+                    }
+                    projectCards.forEach(card => {
+                        card.style.backgroundColor = secondaryColor; // slightly darker than white
+                        card.style.color = textColor; // dark text
+                    });
+            }
+        }   
+        
+
         
 
 }
