@@ -150,9 +150,9 @@ function applyTheme(theme) {
         }
         navLinks.forEach(link => link.style.color = "#000000");
 
-        document.querySelector(".color-3").style.color = "#800080"; // purple
+        document.querySelector(".color-3").style.color = "#c902c9ff"; // purple
         document.querySelector(".color-6").style.color = "#008080"; // teal
-        document.documentElement.style.setProperty("--skin-color-3", "#800080");
+        document.documentElement.style.setProperty("--skin-color-3", "#c902c9ff");
         document.documentElement.style.setProperty("--skin-color-6", "#008080");
         localStorage.setItem("selectedTheme", theme);
         setActiveStyle(localStorage.getItem('selectedColor'))
