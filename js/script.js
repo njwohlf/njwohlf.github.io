@@ -261,6 +261,52 @@ function applyTheme(theme) {
                     });
             }
         }   
+
+        if (fileName === "experiences.html") {
+            // --- Resume page specific theme adjustments ---
+            const bodySection = document.body;
+            const resumeSection = document.getElementById("resume");
+            const timeline = document.querySelector(".timeline");
+            const timelineItems = document.querySelectorAll(".timeline-item");
+            const currentTimelineItem = document.querySelector(".timeline-item.current");
+            const timelineParagraphs = document.querySelectorAll(".timeline-item p");
+            const expDates = document.querySelectorAll("p.experience-date");
+
+            // Example: apply theme colors
+            timelineParagraphs.forEach(p => {
+                p.style.color = textColor; // use your theme's text color
+            });
+            
+
+            if (resumeSection && timeline) {
+                resumeSection.style.backgroundColor = primaryColor;
+                timeline.style.backgroundColor = primaryColor;
+                bodySection.style.backgroundColor = primaryColor;
+                timelineItems.forEach(item => {
+                    item.style.backgroundColor = secondaryColor;
+                    item.style.color = textColor;
+                });
+
+                if (currentTimelineItem) {
+                    if (theme === "light") {
+                        
+                        currentTimelineItem.style.backgroundColor = "#e9e9e9"; // lighter highlight
+                        currentTimelineItem.style.color = "#000000";
+                        expDates.forEach(p => {
+                            p.style.backgroundColor= "#aaa"; // pick colors for light/dark
+                        });
+
+        
+                    } else {
+                        currentTimelineItem.style.backgroundColor = "#444"; // darker highlight
+                        currentTimelineItem.style.color = "#FFFFFF";
+                        expDates.forEach(p => {
+                            p.style.backgroundColor = "#333"; // pick colors for light/dark
+                        });
+                    }
+                }
+            }
+        }
         
 
         
