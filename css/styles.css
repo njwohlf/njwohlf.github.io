@@ -942,11 +942,30 @@ header nav ul li a {
   color: var(--skin-color);
 }
 
+/* .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+} */
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  justify-content: center; /* ✅ centers the grid items */
 }
+
+/* .project-card {
+  position: relative;
+  background: #2C2C2C;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  
+  width: 400px; 
+  margin: 1rem; 
+ 
+} */
 
 .project-card {
   position: relative;
@@ -954,10 +973,10 @@ header nav ul li a {
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
-  
-  width: 400px; /* Set your desired fixed width */
-  margin: 1rem; /* Optional: spacing between cards */
- 
+
+  max-width: 400px; /* ✅ limits card size without forcing alignment issues */
+  width: 100%;      /* ✅ fills the grid column */
+  margin: 0 auto;   /* ✅ ensures card centers if column wider than card */
 }
 
 .project-card:hover {
@@ -990,6 +1009,12 @@ header nav ul li a {
 .project-card p {
   color: #aaa;
   color: var(--skin-color);
+}
+
+.title-icon {
+  width: 20px;   /* make it small */
+  height: 20px;  /* keep aspect ratio */
+  object-fit: contain;
 }
 
 .project-link {

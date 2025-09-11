@@ -136,6 +136,7 @@ function applyTheme(theme) {
         const footer = document.querySelector("footer");
         const navLinks = document.querySelectorAll("#navbar a");
 
+
         let primaryColor = null;
         let secondaryColor = null;
         let textColor = null;
@@ -148,6 +149,7 @@ function applyTheme(theme) {
             document.querySelector(".color-6").style.color = "#008080"; // teal
             document.documentElement.style.setProperty("--skin-color-3", "#c902c9ff");
             document.documentElement.style.setProperty("--skin-color-6", "#008080");
+
             localStorage.setItem("selectedTheme", theme);
             setActiveStyle(localStorage.getItem('selectedColor'))
 
@@ -239,7 +241,10 @@ function applyTheme(theme) {
             const pageContainer = document.getElementById("page-container");
             const contentWrap = document.getElementById("content-wrap");
             const projectTags = document.querySelectorAll(".project-tag"); //background: #333;
-
+            const filterButtons   = document.querySelectorAll(".filter-button");
+            const projectLabels   = document.querySelectorAll(".project-label");
+            const projectLinks   = document.querySelectorAll(".project-link");
+            const projectTexts    = document.querySelectorAll(".project-card-content p");
 
             if (projectsSection) {
                     pageContainer.style.backgroundColor = primaryColor; // white
@@ -255,9 +260,19 @@ function applyTheme(theme) {
                             card.style.backgroundColor = "#333"; // slightly darker than white
                         });
                     }
+                    filterButtons.forEach(btn => btn.style.color = textColor);
+                    projectTags.forEach(tag => tag.style.color = textColor);
+                    projectLabels.forEach(label => label.style.color = textColor);
+                    // projectTitles.forEach(h2 => h2.style.color = textColor);
+                    projectTexts.forEach(p => p.style.color = textColor);
                     projectCards.forEach(card => {
                         card.style.backgroundColor = secondaryColor; // slightly darker than white
                         card.style.color = textColor; // dark text
+                    });
+                    // THIS SECTION NEEDS TO BE FIXED TO BE COLOR DEPENDENT
+                    projectLinks.forEach(link => {
+                        link.style.color = textColor; 
+                        // link.style.backgroundColor = secondaryColor; 
                     });
             }
         }   
