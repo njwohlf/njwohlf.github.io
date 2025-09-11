@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Personal Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/light.css" title="light" class="alternate-theme" disabled>
+    <link rel="stylesheet" href="css/dark.css" title="dark" class="alternate-theme">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
     <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
@@ -12,52 +14,52 @@
     <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
     <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
     <link rel="stylesheet" href="css/skins/color-6.css" class="alternate-style" title="color-6" disabled>
+    <link rel="stylesheet" href="css/skins/color-7.css" class="alternate-style" title="color-7" disabled>
+    <link rel="stylesheet" href="css/skins/color-8.css" class="alternate-style" title="color-8" disabled>
+
 </head>
 <body>
-    <header>
-        <div id="navbar-container"></div>
+    <div id="page-container">
+        <div id="content-wrap">
+            <header>
+                <div id="navbar-container"></div>
+                <script>
+                    fetch('partials/navbar.html')
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById('navbar-container').innerHTML = data;
+                        })
+                        .catch(error => console.error('Error loading navbar:', error));
+                </script>
+            </header>
+
+            <section id="home">
+                <div class="profile-pic"></div>
+                <h1 data-translate="name">Nicholas Wohlfeil</h1>
+                <!-- Typing effect for title -->
+                <div class="typing-wrapper">
+                    <div class="typing-demo" data-translate="title">
+                        Software Engineer
+                    </div>
+                </div>
+                <!-- <h2 data-translate="title">Software Engineer</h2> -->
+                <a href="about.html" class="btn" data-translate="learnMore">Learn More About Me</a>
+
+                <!-- panels and highlights can go here for when/if decided -->
+            </section>
+        </div> 
+
+        <div id="footer-container"></div>
         <script>
-            fetch('partials/navbar.html')
+            fetch('partials/footer.html')
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById('navbar-container').innerHTML = data;
+                    document.getElementById('footer-container').innerHTML = data;
                 })
-                .catch(error => console.error('Error loading navbar:', error));
+                .catch(error => console.error('Error loading footer:', error));
         </script>
-    </header>
+    </div> 
 
-    <section id="home">
-        <div class="profile-pic"></div>
-        <h1 data-translate="name">Nicholas Wohlfeil</h1>
-        <h2 data-translate="title">Software Engineer</h2>
-        <a href="about.html" class="btn" data-translate="learnMore">Learn More About Me</a>
-
-        <!-- <div class="panel">
-            <h3 data-translate="recentProjects">Recent Projects</h3>
-            <p data-translate="projectsDescription">Check out some of my latest work in the fields of web development, software engineering, and more.</p>
-        </div> -->
-        <!-- <div class="panel highlights">
-            <h3>What I Do</h3>
-            <ul class="highlight-list">
-                <li><i class="fas fa-robot"></i> Robotics & Embedded Systems</li>
-                <li><i class="fas fa-code"></i> Full-Stack Development (Vue, Node, SQL)</li>
-                <li><i class="fas fa-database"></i> Data Parsing & Automation</li>
-                <li><i class="fas fa-brain"></i> Machine Learning & AI Applications</li>
-                <li><i class="fas fa-gamepad"></i> Game & Simulation Prototyping</li>
-                <li><i class="fas fa-chalkboard-teacher"></i> Peer Mentorship & Teaching</li>
-            </ul>
-        </div> -->
-    </section>
-
-    <div id="footer-container"></div>
-    <script>
-        fetch('partials/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading footer:', error));
-    </script>
-    <script src="js/script.js" defer=""></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>

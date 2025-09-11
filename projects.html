@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -70,6 +70,223 @@
             })
             .catch(error => console.error('Error loading footer:', error));
     </script>
+    <script src="js/script.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Personal Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+    <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+    <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5">
+    <link rel="stylesheet" href="css/skins/color-6.css" class="alternate-style" title="color-6" disabled>
+    <link rel="stylesheet" href="css/skins/color-7.css" class="alternate-style" title="color-7" disabled>
+    <link rel="stylesheet" href="css/skins/color-8.css" class="alternate-style" title="color-8" disabled>
+
+    <!-- <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        #content-wrap {
+            flex: 1;
+        }
+
+        #footer-container {
+            background-color: #333; /* optional */
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style> -->
+</head>
+<body>
+    <div id="page-container">
+        <div id="content-wrap">
+            <header>
+                <div id="navbar-container"></div>
+                <script>
+                    fetch('partials/navbar.html')
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById('navbar-container').innerHTML = data;
+                        })
+                        .catch(error => console.error('Error loading navbar:', error));
+                </script>
+            </header>
+
+            <section id="projects">
+                <h1>Projects</h1>
+                <div class="filter-container">
+                    <button class="filter-button" onclick="filterProjects('Research')">Research</button>
+                    <button class="filter-button" onclick="filterProjects('Personal')">Personal</button>
+                    <button class="filter-button" onclick="filterProjects('Academic')">Academic</button>
+                    <button class="filter-button" onclick="filterProjects('All')">Show All</button>
+                </div>
+                <div class="projects-grid" id="projects-grid">
+                    <div class="project-card" data-category="Academic">
+                        <div class="project-label">Academic</div>
+                        <div class="project-card-content">
+                            <h2>Handwritten Character Recognition</h2>
+                            <p>A Machine Learning Model trained on the MNIST database</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Machine Learning</span>
+                                <span class="project-tag">Julia</span>
+                            </div>
+                            <a href="projects/character-recognition.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="Academic">
+                        <div class="project-label">Academic</div>
+                        <div class="project-card-content">
+                            <h2>LC2K Cache Simulator</h2>
+                            <p>A configurable LC2K CPU cache simulator implemented in C</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C</span>
+                                <span class="project-tag">Architecture</span>
+                            </div>
+                            <a href="projects/cache.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="Academic">
+                        <div class="project-label">Academic</div>
+                        <div class="project-card-content">
+                            <h2>3D Map Building from LiDAR Data</h2>
+                            <p>LiDAR point cloud mapping and transformations in Julia</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C</span>
+                                <span class="project-tag">Architecture</span>
+                            </div>
+                            <a href="projects/coming-soon.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="Personal">
+                        <div class="project-label">Personal</div>
+                        <div class="project-card-content">
+                            <h2>Indie Game Development</h2>
+                            <p>Game Development in Unity</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C#</span>
+                                <span class="project-tag">Blender</span>
+                                <span class="project-tag">Unity</span>
+                            </div>
+                            <a href="projects/coming-soon.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="Personal">
+                        <div class="project-label">Personal</div>
+                        <div class="project-card-content">
+                            <h2>Personal Website</h2>
+                            <p>The website you are currently viewing!</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Javascript</span>
+                                <span class="project-tag">HTML/CSS</span>
+                            </div>
+                            <a href="projects/coming-soon.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="Personal">
+                        <div class="project-label">Personal</div>
+                        <div class="project-card-content">
+                            <h2>Auction Notification System</h2>
+                            <p>A system dedicated to notifying users of online auctions</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Javascript</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Web Scraping</span>
+                                <span class="project-tag">API</span>
+                            </div>
+                            <a href="projects/coming-soon.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="Research">
+                        <div class="project-label">Research</div>
+                        <div class="project-card-content">
+                            <h2>Autonomous MBots!</h2>
+                            <!-- <h2><img src="/assets/images/mbot-icon.png" alt="mbot icon" class="title-icon"> mbot</h2> -->
+                            <p>Implemening autonomous safety protocols within the MBot Ecosystem</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Javascript</span>
+                                <span class="project-tag">Python</span>
+                            </div>
+                            <a href="projects/coming-soon.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="Research">
+                        <div class="project-label">Research</div>
+                        <div class="project-card-content">
+                            <h2>Orbital Satellite Simulation</h2>
+                            <p>Simulated spacecraft proximity operations with omni-directional robots</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Javascript</span>
+                                <span class="project-tag">Python</span>
+                            </div>
+                            <a href="projects/coming-soon.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="Research">
+                            <div class="project-label">Research</div>
+                            <div class="project-card-content">
+                                <h2>Quadplane Development</h2>
+                                <p>Developing a hybrid quadcopter-aircraft system</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">Javascript</span>
+                                    <span class="project-tag">Python</span>
+                                </div>
+                                <a href="projects/coming-soon.html" class="project-link">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function filterProjects(category) {
+                        const projects = document.querySelectorAll('.project-card');
+                        projects.forEach(project => {
+                            if (category === 'All' || project.getAttribute('data-category') === category) {
+                                project.style.display = 'block';
+                            } else {
+                                project.style.display = 'none';
+                            }
+                        });
+                    }
+                </script>
+            </section>
+        </div> <!-- end content-wrap -->
+
+        <div id="footer-container"></div>
+        <script>
+            fetch('partials/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        </script>
+    </div> <!-- end page-container -->
+
     <script src="js/script.js"></script>
 </body>
 </html>

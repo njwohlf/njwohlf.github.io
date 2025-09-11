@@ -6,8 +6,38 @@ body {
   margin: 0;
   padding: 0;
   background-color: #1E1E1E;
+  transition: background-color 0.3s, color 0.3s;
   color: #fff;
 }
+
+/* Light mode */
+body.light-mode {
+    background-color: #f5f5f5; /* light background */
+    color: #222; /* darker text for contrast */
+}
+
+/* Dark mode */
+body.dark-mode {
+    background-color: #1E1E1E;
+    color: #fff;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* full viewport height */
+}
+
+#content-wrap {
+    flex: 1; /* take up remaining space */
+}
+
+/*
 
 /* ----- Header & Navigation ----- */
 header {
@@ -81,7 +111,8 @@ h1 {
 }
 
 h2 {
-  color: #aaa;
+  /* color: #aaa; */
+  color: var(--heading-color);
   font-size: 1.5em;
   margin-bottom: 20px;
 }
@@ -313,8 +344,46 @@ footer p {
   top: 0;
 }
 
-.style-switcher .day-night {
-  top: 70px;
+/* Light/Dark theme styles */
+body.light-mode {
+  background: #ffffff;
+  color: #000000;
+}
+
+body.dark-mode {
+  background: #121212;
+  color: #ffffff;
+}
+
+/* Day/Night switch */
+.day-night {
+  display: flex;
+  border: 1px solid #444;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.day-night button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s, color 0.3s;
+  background: #f0f0f0;
+  color: #333;
+}
+
+.day-night button.dark {
+  background: #222;
+  color: #f9f9f9;
+}
+
+.day-night button.active {
+  background: #4caf50; /* highlight color */
+  color: white;
+  font-weight: bold;
 }
 
 .style-switcher h4 {
@@ -490,6 +559,8 @@ header {
   padding: 10px 0;
   text-align: center;
   position: relative;
+  border-bottom: 1px solid #444;
+
 }
 
 header nav ul {
@@ -575,7 +646,20 @@ header nav ul li a {
 #home {
   text-align: center;
   padding: 100px 20px;
+  background-color: #1E1E1E; /* dark default */
+  color: #ffffff; /* text color default */
+}
+
+/* Light mode applied to #home */
+#home.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark mode applied to #home */
+#home.dark-mode {
   background-color: #1E1E1E;
+  color: #ffffff;
 }
 
 .profile-pic {
@@ -858,11 +942,30 @@ header nav ul li a {
   color: var(--skin-color);
 }
 
+/* .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+} */
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  justify-content: center; /* ✅ centers the grid items */
 }
+
+/* .project-card {
+  position: relative;
+  background: #2C2C2C;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  
+  width: 400px; 
+  margin: 1rem; 
+ 
+} */
 
 .project-card {
   position: relative;
@@ -870,10 +973,10 @@ header nav ul li a {
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
-  
-  width: 400px; /* Set your desired fixed width */
-  margin: 1rem; /* Optional: spacing between cards */
- 
+
+  max-width: 400px; /* ✅ limits card size without forcing alignment issues */
+  width: 100%;      /* ✅ fills the grid column */
+  margin: 0 auto;   /* ✅ ensures card centers if column wider than card */
 }
 
 .project-card:hover {
@@ -906,6 +1009,12 @@ header nav ul li a {
 .project-card p {
   color: #aaa;
   color: var(--skin-color);
+}
+
+.title-icon {
+  width: 20px;   /* make it small */
+  height: 20px;  /* keep aspect ratio */
+  object-fit: contain;
 }
 
 .project-link {
@@ -1436,18 +1545,18 @@ footer p {
   color: #aaa;
 }
 
-/* Theme dropdown styles */
+/* Theme dropdown styles
 .theme-dropdown {
   position: relative;
   display: inline-block;
 }
 
 #theme-toggle {
-  border: 1px solid #ccc;  /* light gray border */
-  padding: 4px 6px;        /* space inside the border */
-  border-radius: 4px;      /* rounded corners */
-  display: inline-block;   /* keep it fitting the content */
-  color: inherit;          /* keep icon color consistent */
+  border: 1px solid #ccc; 
+  padding: 4px 6px;       
+  border-radius: 4px;     
+  display: inline-block;  
+  color: inherit;          
 }
 
 .theme-dropdown-content {
@@ -1457,7 +1566,6 @@ footer p {
   min-width: 180px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
   z-index: 102;
-  /* Changed this: */
   left: 0%;
   border-radius: 5px;
   padding: 15px;
@@ -1495,16 +1603,131 @@ footer p {
 .color-3 { background: #FFC107; }
 .color-4 { background: #1854b4; }
 .color-5 { background: #f021b2; }
-.color-6 { background: #00ff33; }
+.color-6 { background: #00ff33; } */
 
-.day-night {
-  text-align: center;
-  padding-top: 10px;
-  border-top: 1px solid #444;
+/* Theme dropdown styles */
+.theme-dropdown {
+  position: relative;
+  display: inline-block;
 }
 
+#theme-toggle {
+  border: 1px solid #ccc;
+  padding: 4px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  color: inherit;
+}
+
+.theme-dropdown-content {
+  display: none;
+  position: absolute;
+  /* background-color: #333; */
+  background-color: var(--dropdown-bg, #333); /* default #333 */
+  min-width: 220px; /* a bit wider for rhombus row */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  z-index: 102;
+  left: 0%;
+  border-radius: 5px;
+  padding: 12px;
+  border: 1px solid #444;
+}
+
+.theme-dropdown:hover .theme-dropdown-content {
+  display: block;
+}
+
+.color-picker-title {
+    color: var(--color-picker-text, #000); /* default black */
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* New rhombus swatch row */
+/* .color-picker-grid {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.color-picker-grid span {
+  width: 40px;
+  height: 20px;
+  background: #666;
+  cursor: pointer;
+  transform: skewX(-20deg);   
+  border: 2px solid #222;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.color-picker-grid span:hover {
+  transform: skewX(-20deg) scale(1.1);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.color-1 { background: #ec1839; }
+.color-2 { background: #fa5b0f; }
+.color-3 { background: #FFC107; }
+.color-4 { background: #1854b4; }
+.color-5 { background: #f021b2; }
+.color-6 { background: #00ff33; } */
+
+
+/* Rhombus swatch row */
+.color-picker-grid {
+  display: flex;
+  justify-content: center;
+  gap: 0; /* no gaps between */
+}
+
+.color-picker-grid span {
+  width: 50px;
+  height: 30px;
+  display: inline-block;
+  cursor: pointer;
+
+  /* Rhombus effect */
+  transform: skewX(-20deg);
+  margin: 0;
+
+  /* Keep color visible */
+  background: currentColor;
+  border: 1px solid #222;
+
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.color-picker-grid span:hover {
+  transform: skewX(-20deg) scale(1.1);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+/* Assign colors
+.color-1 { color: #ec1839; }
+.color-2 { color: #fa5b0f; }
+.color-3 { color: #FFC107; }
+.color-4 { color: #1854b4; }
+.color-5 { color: #f021b2; }
+.color-6 { color: #00ff33; } */
+
+:root {
+  --skin-color-1: #ec1839;
+  --skin-color-2: #fa5b0f;
+  --skin-color-3: #FFC107;
+  --skin-color-4: #1854b4;
+  --skin-color-5: #f021b2;
+  --skin-color-6: #00ff33;
+}
+
+.color-1 { color: var(--skin-color-1); }
+.color-2 { color: var(--skin-color-2); }
+.color-3 { color: var(--skin-color-3); }
+.color-4 { color: var(--skin-color-4); }
+.color-5 { color: var(--skin-color-5); }
+.color-6 { color: var(--skin-color-6); }
+
 #dark-mode-toggle {
-  background-color: transparent;
+  background-color: #333;
   color: #fff;
   border: 1px solid #555;
   padding: 8px 12px;
@@ -1575,3 +1798,57 @@ body.dark .resume-link {
   box-sizing: border-box; /* Ensure padding/margins are included in the width */
 }
 
+.typing-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 30px 0; /* adds space above and below */
+  min-height: 1em;     /* ensures it reserves space while typing */
+}
+
+.typing-demo {
+  width: 18ch; /* length of "Software Engineer" */
+  animation: typing 2s steps(18), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 1.5em;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+body.light-mode #home {
+    background-color: #f5f5f5;
+    color: #222;
+}
+
+body.dark-mode #home {
+    background-color: #1E1E1E;
+    color: #fff;
+}
+
+/* #navbar ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+body.light #navbar ul li a {
+  color: black;
+} */
+
+#navbar {
+  /* background-color: #f2f2f2; or your scheme */
+  padding: 10px 0; /* adds vertical space */
+  /* min-height: 50px; guarantees it won’t collapse */
+}
