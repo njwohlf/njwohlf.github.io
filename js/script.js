@@ -33,6 +33,27 @@ function setActiveStyle(color) {
     
     // save preference
     localStorage.setItem('selectedColor', color);
+    const projectLinks = document.querySelectorAll(".project-link");
+    // const projectLabels = document.querySelectorAll(".project-label");
+    const filterButtons = document.querySelectorAll(".filter-button");
+
+    
+    if(localStorage.getItem('selectedColor') === "color-1" || localStorage.getItem('selectedColor') === "color-4" || localStorage.getItem('selectedColor') === "color-7") {
+        filterButtons.forEach(btn => btn.style.color = "#ffffff");
+        // projectLabels.forEach(label => label.style.color = "#ffffff");
+        projectLinks.forEach(link => {
+                link.style.color = "#ffffff"; 
+                // link.style.backgroundColor = secondaryColor; 
+            });
+    }
+    else {
+        filterButtons.forEach(btn => btn.style.color = "#000000");
+        // projectLabels.forEach(label => label.style.color = "#000000");
+        projectLinks.forEach(link => {
+                link.style.color = "#000000"; 
+                // link.style.backgroundColor = secondaryColor; 
+            });
+    }
 }
 
 
@@ -241,9 +262,6 @@ function applyTheme(theme) {
             const pageContainer = document.getElementById("page-container");
             const contentWrap = document.getElementById("content-wrap");
             const projectTags = document.querySelectorAll(".project-tag"); //background: #333;
-            const filterButtons   = document.querySelectorAll(".filter-button");
-            const projectLabels   = document.querySelectorAll(".project-label");
-            const projectLinks   = document.querySelectorAll(".project-link");
             const projectTexts    = document.querySelectorAll(".project-card-content p");
 
             if (projectsSection) {
@@ -260,9 +278,7 @@ function applyTheme(theme) {
                             card.style.backgroundColor = "#333"; // slightly darker than white
                         });
                     }
-                    filterButtons.forEach(btn => btn.style.color = textColor);
                     projectTags.forEach(tag => tag.style.color = textColor);
-                    projectLabels.forEach(label => label.style.color = textColor);
                     // projectTitles.forEach(h2 => h2.style.color = textColor);
                     projectTexts.forEach(p => p.style.color = textColor);
                     projectCards.forEach(card => {
@@ -270,10 +286,7 @@ function applyTheme(theme) {
                         card.style.color = textColor; // dark text
                     });
                     // THIS SECTION NEEDS TO BE FIXED TO BE COLOR DEPENDENT
-                    projectLinks.forEach(link => {
-                        link.style.color = textColor; 
-                        // link.style.backgroundColor = secondaryColor; 
-                    });
+                  
             }
         }   
 
