@@ -158,6 +158,7 @@ function applyTheme(theme) {
         const navLinks = document.querySelectorAll("#navbar a");
 
 
+
         let primaryColor = null;
         let secondaryColor = null;
         let textColor = null;
@@ -165,12 +166,13 @@ function applyTheme(theme) {
             primaryColor = "#F5F5F5";
             secondaryColor = "#DCDCDC";
             textColor = "#000000";
+            document.documentElement.style.setProperty('--dropdown-bg', '#F5F5F5');
 
             document.querySelector(".color-3").style.color = "#c902c9ff"; // purple
             document.querySelector(".color-6").style.color = "#008080"; // teal
             document.documentElement.style.setProperty("--skin-color-3", "#c902c9ff");
             document.documentElement.style.setProperty("--skin-color-6", "#008080");
-
+            
             localStorage.setItem("selectedTheme", theme);
             setActiveStyle(localStorage.getItem('selectedColor'))
 
@@ -178,7 +180,8 @@ function applyTheme(theme) {
             primaryColor = "#1E1E1E";
             secondaryColor = "#2C2C2C";
             textColor = "#ffffff";
-            
+            document.documentElement.style.setProperty('--dropdown-bg', '#333');
+
             document.querySelector(".color-3").style.color = "#FFC107"; // yellow
             document.querySelector(".color-6").style.color = "#00ff33"; // green
             document.documentElement.style.setProperty("--skin-color-3", "#FFC107");
@@ -205,6 +208,9 @@ function applyTheme(theme) {
         footer.style.backgroundColor = secondaryColor;
         footer.style.color = textColor;
         navLinks.forEach(link => link.style.color = textColor);
+
+        document.documentElement.style.setProperty('--color-picker-text', textColor);
+
     // }
         if (fileName === "about.html") {
                     // About section

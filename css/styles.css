@@ -1622,7 +1622,8 @@ footer p {
 .theme-dropdown-content {
   display: none;
   position: absolute;
-  background-color: #333;
+  /* background-color: #333; */
+  background-color: var(--dropdown-bg, #333); /* default #333 */
   min-width: 220px; /* a bit wider for rhombus row */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
   z-index: 102;
@@ -1634,6 +1635,12 @@ footer p {
 
 .theme-dropdown:hover .theme-dropdown-content {
   display: block;
+}
+
+.color-picker-title {
+    color: var(--color-picker-text, #000); /* default black */
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 /* New rhombus swatch row */
@@ -1720,7 +1727,7 @@ footer p {
 .color-6 { color: var(--skin-color-6); }
 
 #dark-mode-toggle {
-  background-color: transparent;
+  background-color: #333;
   color: #fff;
   border: 1px solid #555;
   padding: 8px 12px;
