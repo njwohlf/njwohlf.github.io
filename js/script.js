@@ -305,7 +305,10 @@ function applyTheme(theme) {
             const currentTimelineItem = document.querySelector(".timeline-item.current");
             const timelineParagraphs = document.querySelectorAll(".timeline-item p");
             const expDates = document.querySelectorAll("p.experience-date");
+            const resumeButton = document.querySelector(".resume-button");
 
+            resumeButton.style.backgroundColor = secondaryColor;
+            resumeButton.style.color = textColor;
             // Example: apply theme colors
             timelineParagraphs.forEach(p => {
                 p.style.color = textColor; // use your theme's text color
@@ -322,9 +325,10 @@ function applyTheme(theme) {
                 });
                 currentTimelineItem.style.backgroundColor = secondaryColor; // darker highlight
 
+
                 if (currentTimelineItem) {
                     if (theme === "light") {
-                        
+                        document.documentElement.style.setProperty('--timeline-border-color', "#e9e9e9");
                         currentTimelineItem.style.backgroundColor = "#e9e9e9"; // lighter highlight
                         currentTimelineItem.style.color = "#000000";
                         expDates.forEach(p => {
@@ -333,6 +337,7 @@ function applyTheme(theme) {
 
         
                     } else {
+                        document.documentElement.style.setProperty('--timeline-border-color', primaryColor);
                         // currentTimelineItem.style.backgroundColor = "#444"; // darker highlight
                         currentTimelineItem.style.color = "#FFFFFF";
                         expDates.forEach(p => {
@@ -373,6 +378,21 @@ function applyTheme(theme) {
                 label.style.color = textColor;
             });
         }
+
+        if (fileName === "resume.html") {
+            const body = document.body;
+            body.style.backgroundColor = primaryColor;
+            const resumeContainer = document.querySelector('.resume-container');
+            const resumeSection = document.getElementById('resume');
+
+            resumeSection.style.backgroundColor = primaryColor;
+
+            resumeContainer.style.backgroundColor = primaryColor; // or use var(--background-primary)
+            resumeContainer.querySelector('iframe').style.backgroundColor = primaryColor;
+
+
+        }
+
         
 
 }
