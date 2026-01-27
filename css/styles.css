@@ -213,6 +213,40 @@ button,
   text-align: center;
 }
 
+.hobbies {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  justify-items: center;
+  gap: 20px;
+}
+
+.hobbies div {
+  width: 100%;
+  max-width: 320px;
+}
+
+.hobbies div:nth-child(1) {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
+.fun-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  justify-items: center;
+  gap: 20px;
+}
+
+.fun-facts div {
+  width: 100%;
+  max-width: 320px;
+}
+
+.fun-facts div:nth-child(1) {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
 .hobbies div i,
 .fun-facts div i {
   font-size: 2em;
@@ -308,7 +342,7 @@ button,
 
 .project-label {
   position: absolute;
-  top: 16px;
+  bottom: 16px;
   right: 16px;
   border: 1px solid var(--border-color);
   color: var(--skin-color);
@@ -907,6 +941,14 @@ footer p {
   .hobbies div,
   .fun-facts div {
     width: 100%;
+  }
+
+  .hobbies {
+    grid-template-columns: 1fr;
+  }
+
+  .fun-facts {
+    grid-template-columns: 1fr;
   }
 
   .timeline::before {
