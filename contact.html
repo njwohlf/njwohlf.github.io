@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Personal Portfolio</title>
+    <title>Contact | Nicholas Wohlfeil</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/light.css" title="light" class="alternate-theme" disabled>
+    <link rel="stylesheet" href="css/dark.css" title="dark" class="alternate-theme">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Color Theme Style Sheets -->
     <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
     <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
     <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
@@ -15,58 +16,106 @@
     <link rel="stylesheet" href="css/skins/color-6.css" class="alternate-style" title="color-6" disabled>
     <link rel="stylesheet" href="css/skins/color-7.css" class="alternate-style" title="color-7" disabled>
     <link rel="stylesheet" href="css/skins/color-8.css" class="alternate-style" title="color-8" disabled>
+
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
+            const savedColorRaw = localStorage.getItem('selectedColor');
+            let appliedColor = savedColorRaw;
+            if (savedTheme === 'light') {
+                if (appliedColor === 'color-3') appliedColor = 'color-7';
+                if (appliedColor === 'color-6') appliedColor = 'color-8';
+            } else {
+                if (appliedColor === 'color-7') appliedColor = 'color-3';
+                if (appliedColor === 'color-8') appliedColor = 'color-6';
+            }
+            document.documentElement.dataset.theme = savedTheme;
+            document.querySelectorAll('.alternate-theme').forEach(link => {
+                if (link.getAttribute('title') === savedTheme) {
+                    link.removeAttribute('disabled');
+                } else {
+                    link.setAttribute('disabled', 'true');
+                }
+            });
+            const colorMap = {
+                'color-1': '#ec1839',
+                'color-2': '#fa5b0f',
+                'color-3': '#FFC107',
+                'color-4': '#1854b4',
+                'color-5': '#f021b2',
+                'color-6': '#00ff33',
+                'color-7': '#c902c9ff',
+                'color-8': '#008080'
+            };
+            if (appliedColor && colorMap[appliedColor]) {
+                document.documentElement.style.setProperty('--skin-color', colorMap[appliedColor]);
+            }
+            if (appliedColor) {
+                document.querySelectorAll('.alternate-style').forEach(link => {
+                    if (link.getAttribute('title') === appliedColor) {
+                        link.removeAttribute('disabled');
+                    } else {
+                        link.setAttribute('disabled', 'true');
+                    }
+                });
+            }
+        })();
+    </script>
 </head>
 <body>
-    <header>
-        <div id="navbar-container"></div>
+    <div id="page-container">
+        <div id="content-wrap">
+            <header>
+                <div id="navbar-container"></div>
+                <script>
+                    fetch('partials/navbar.html')
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById('navbar-container').innerHTML = data;
+                        })
+                        .catch(error => console.error('Error loading navbar:', error));
+                </script>
+            </header>
+
+            <div class="page-container">
+                <section id="contact">
+                    <h1><i class="fas fa-envelope"></i> Contact</h1>
+                    <p>Feel free to get in touch! I'm receptive to any feedback on the website or additional inquiries.</p>
+
+                    <form action="https://formspree.io/f/xvgkoplg" method="POST">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea>
+
+                        <button type="submit">Send Message</button>
+                    </form>
+
+                    <div class="direct-contact">
+                        <p>Or reach me directly at:</p>
+                        <div class="contact-icons">
+                            <a href="https://linkedin.com/in/nicholas-wohlfeil" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:njwohlf@umich.edu" title="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div id="footer-container"></div>
         <script>
-            fetch('partials/navbar.html')
+            fetch('partials/footer.html')
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById('navbar-container').innerHTML = data;
+                    document.getElementById('footer-container').innerHTML = data;
                 })
-                .catch(error => console.error('Error loading navbar:', error));
+                .catch(error => console.error('Error loading footer:', error));
         </script>
-    </header>
-
-    <div class="page-container">
-        <section id="contact">
-            <h1><i class="fas fa-envelope"></i> Contact</h1>
-            <p>Feel free to get in touch! I'm receptive to any feedback on the website or additional inquiries.</p>
-            
-            <form action="https://formspree.io/f/xvgkoplg" method="POST">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-                
-                <button type="submit">Send Message</button>
-            </form>
-            
-            <div class="direct-contact">
-                <p>Or reach me directly at:</p>
-                <div class="contact-icons">
-                    <a href="https://linkedin.com/in/nicholas-wohlfeil" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:njwohlf@umich.edu" title="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-        </section>
     </div>
-
-    <div id="footer-container"></div>
-    <script>
-        fetch('partials/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading footer:', error));
-    </script>
     <script src="js/script.js" defer></script>
-
 </body>
 </html>

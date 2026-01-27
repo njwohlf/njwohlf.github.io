@@ -3,105 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cache Simulator - Personal Portfolio</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <title>Cache Simulator | Nicholas Wohlfeil</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/light.css" title="light" class="alternate-theme" disabled>
+    <link rel="stylesheet" href="../css/dark.css" title="dark" class="alternate-theme">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
-    <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-    <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-    <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-    <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5">
-    <link rel="stylesheet" href="css/skins/color-6.css" class="alternate-style" title="color-6" disabled>
+    <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+    <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+    <link rel="stylesheet" href="../css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
+    <link rel="stylesheet" href="../css/skins/color-6.css" class="alternate-style" title="color-6" disabled>
+    <link rel="stylesheet" href="../css/skins/color-7.css" class="alternate-style" title="color-7" disabled>
+    <link rel="stylesheet" href="../css/skins/color-8.css" class="alternate-style" title="color-8" disabled>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1E1E1E;
-            color: #fff;
-        }
-
-        header {
-            background-color: #333;
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        header nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        header nav ul li {
-            margin: 0 15px;
-        }
-
-        header nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .project-detail {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-
-        .project-image {
-            flex: 1;
-            min-width: 300px;
-            margin-right: 20px;
-        }
-
-        .project-image img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .project-content {
-            flex: 2;
-            min-width: 300px;
-        }
-
-        .project-content h1 {
-            margin-top: 0;
-            color: #FFC107;
-        }
-
-        .project-content p {
-            color: #aaa;
-            line-height: 1.6;
-        }
-
-        .project-content ul {
-            padding-left: 20px;
-            color: #aaa;
-        }
-
-        .project-content ul li {
-            margin-bottom: 10px;
-        }
-
-        .project-content a {
-            display: inline-block;
-            margin-top: 10px;
-            background: #FFC107;
-            color: #333;
-            padding: 10px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-
-        .project-content a:hover {
-            background: #e0a806;
-        }
-    </style>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
+            const savedColorRaw = localStorage.getItem('selectedColor');
+            let appliedColor = savedColorRaw;
+            if (savedTheme === 'light') {
+                if (appliedColor === 'color-3') appliedColor = 'color-7';
+                if (appliedColor === 'color-6') appliedColor = 'color-8';
+            } else {
+                if (appliedColor === 'color-7') appliedColor = 'color-3';
+                if (appliedColor === 'color-8') appliedColor = 'color-6';
+            }
+            document.documentElement.dataset.theme = savedTheme;
+            document.querySelectorAll('.alternate-theme').forEach(link => {
+                if (link.getAttribute('title') === savedTheme) {
+                    link.removeAttribute('disabled');
+                } else {
+                    link.setAttribute('disabled', 'true');
+                }
+            });
+            const colorMap = {
+                'color-1': '#ec1839',
+                'color-2': '#fa5b0f',
+                'color-3': '#FFC107',
+                'color-4': '#1854b4',
+                'color-5': '#f021b2',
+                'color-6': '#00ff33',
+                'color-7': '#c902c9ff',
+                'color-8': '#008080'
+            };
+            if (appliedColor && colorMap[appliedColor]) {
+                document.documentElement.style.setProperty('--skin-color', colorMap[appliedColor]);
+            }
+            if (appliedColor) {
+                document.querySelectorAll('.alternate-style').forEach(link => {
+                    if (link.getAttribute('title') === appliedColor) {
+                        link.removeAttribute('disabled');
+                    } else {
+                        link.setAttribute('disabled', 'true');
+                    }
+                });
+            }
+        })();
+    </script>
 </head>
 <body>
     <div id="page-container">
@@ -109,7 +68,7 @@
             <header>
                 <div id="navbar-container"></div>
                 <script>
-                    fetch('/partials/navbar.html')
+                    fetch('../partials/navbar.html')
                         .then(response => response.text())
                         .then(data => {
                             document.getElementById('navbar-container').innerHTML = data;
@@ -120,36 +79,38 @@
 
             <section class="project-detail">
                 <div class="project-image">
-                    <img src="/assets/images/cache.png" alt="Cache Simulator">
+                    <img src="../assets/images/cache.png" alt="Cache Simulator">
                 </div>
                 <div class="project-content">
                     <h1>Cache Simulator</h1>
                     <p>
-                        This project involved building a <strong>configurable CPU cache simulator</strong> and integrating it 
-                        into the LC-2K processor simulator used in courses teaching Computer Architecture. The simulator models real cache behavior 
+                        This project involved building a <strong>configurable CPU cache simulator</strong> and integrating it
+                        into the LC-2K processor simulator used in courses teaching Computer Architecture. The simulator models real cache behavior
                         and supports adjustable parameters such as block size, number of sets, and associativity.
                     </p>
                     <ul>
                         <li><strong>Cache Design:</strong> Implemented direct-mapped, set-associative, and fully associative caches with <em>LRU replacement</em> and valid/dirty bit tracking.</li>
                         <li><strong>Data Transfer:</strong> Simulated block-based transfers between memory and cache using write-back and allocate-on-write policies.</li>
                         <li><strong>Integration:</strong> Extended the LC-2K processor simulator to call cache operations on every memory access, ensuring realistic execution behavior.</li>
-                        <li><strong>Debugging & Testing:</strong> Developed comprehensive test cases to validate correctness across cache configurations, including hits, misses, evictions, and write-backs.</li>
+                        <li><strong>Debugging &amp; Testing:</strong> Developed comprehensive test cases to validate correctness across cache configurations, including hits, misses, evictions, and write-backs.</li>
                         <li><strong>Learning Outcome:</strong> Gained practical insight into the <em>memory hierarchy</em> and how cache organization impacts performance.</li>
                     </ul>
-                    <a href="/projects.html">← Return to Projects</a>
+                    <a href="../projects.html">← Return to Projects</a>
                 </div>
             </section>
-        </div> <!-- end content-wrap -->
+        </div>
 
         <div id="footer-container"></div>
         <script>
-            fetch('/partials/footer.html')
+            fetch('../partials/footer.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('footer-container').innerHTML = data;
                 })
                 .catch(error => console.error('Error loading footer:', error));
         </script>
-    </div> <!-- end page-container -->
+    </div>
+
+    <script src="../js/script.js" defer></script>
 </body>
 </html>

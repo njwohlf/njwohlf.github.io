@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Personal Portfolio</title>
+    <title>Home | Nicholas Wohlfeil</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/light.css" title="light" class="alternate-theme" disabled>
     <link rel="stylesheet" href="css/dark.css" title="dark" class="alternate-theme">
@@ -17,6 +17,50 @@
     <link rel="stylesheet" href="css/skins/color-7.css" class="alternate-style" title="color-7" disabled>
     <link rel="stylesheet" href="css/skins/color-8.css" class="alternate-style" title="color-8" disabled>
 
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
+            const savedColorRaw = localStorage.getItem('selectedColor');
+            let appliedColor = savedColorRaw;
+            if (savedTheme === 'light') {
+                if (appliedColor === 'color-3') appliedColor = 'color-7';
+                if (appliedColor === 'color-6') appliedColor = 'color-8';
+            } else {
+                if (appliedColor === 'color-7') appliedColor = 'color-3';
+                if (appliedColor === 'color-8') appliedColor = 'color-6';
+            }
+            document.documentElement.dataset.theme = savedTheme;
+            document.querySelectorAll('.alternate-theme').forEach(link => {
+                if (link.getAttribute('title') === savedTheme) {
+                    link.removeAttribute('disabled');
+                } else {
+                    link.setAttribute('disabled', 'true');
+                }
+            });
+            const colorMap = {
+                'color-1': '#ec1839',
+                'color-2': '#fa5b0f',
+                'color-3': '#FFC107',
+                'color-4': '#1854b4',
+                'color-5': '#f021b2',
+                'color-6': '#00ff33',
+                'color-7': '#c902c9ff',
+                'color-8': '#008080'
+            };
+            if (appliedColor && colorMap[appliedColor]) {
+                document.documentElement.style.setProperty('--skin-color', colorMap[appliedColor]);
+            }
+            if (appliedColor) {
+                document.querySelectorAll('.alternate-style').forEach(link => {
+                    if (link.getAttribute('title') === appliedColor) {
+                        link.removeAttribute('disabled');
+                    } else {
+                        link.setAttribute('disabled', 'true');
+                    }
+                });
+            }
+        })();
+    </script>
 </head>
 <body>
     <div id="page-container">

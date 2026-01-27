@@ -1,5 +1,17 @@
-/* dark.css */
-body, #home {
-    background-color: #1E1E1E;
-    color: #fff;
+:root {
+    --page-bg: #1E1E1E;
+    --panel-bg: #2C2C2C;
+    --panel-bg-alt: #333;
+    --text-color: #ffffff;
+    --muted-text: #aaa;
+    --border-color: #444;
+    --heading-color: #aaa;
+    --dropdown-bg: #333;
+    --color-picker-text: #fff;
+    --tag-bg: #333;
+    --input-bg: #1E1E1E;
+    --input-text: #ffffff;
+    --timeline-border-color: #1E1E1E;
+    --skin-color-3: #FFC107;
+    --skin-color-6: #00ff33;
 }

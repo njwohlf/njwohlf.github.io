@@ -3,35 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coming Soon</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #1e1e1e;
-      color: #f5f5f5;
-      font-family: Arial, sans-serif;
-    }
-    .coming-soon {
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 1.2rem;
-      color: #aaa;
-    }
-  </style>
+  <title>Coming Soon | Nicholas Wohlfeil</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/light.css" title="light" class="alternate-theme" disabled>
+  <link rel="stylesheet" href="../css/dark.css" title="dark" class="alternate-theme">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+  <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+  <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+  <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+  <link rel="stylesheet" href="../css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
+  <link rel="stylesheet" href="../css/skins/color-6.css" class="alternate-style" title="color-6" disabled>
+  <link rel="stylesheet" href="../css/skins/color-7.css" class="alternate-style" title="color-7" disabled>
+  <link rel="stylesheet" href="../css/skins/color-8.css" class="alternate-style" title="color-8" disabled>
+
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
+      const savedColorRaw = localStorage.getItem('selectedColor');
+      let appliedColor = savedColorRaw;
+      if (savedTheme === 'light') {
+        if (appliedColor === 'color-3') appliedColor = 'color-7';
+        if (appliedColor === 'color-6') appliedColor = 'color-8';
+      } else {
+        if (appliedColor === 'color-7') appliedColor = 'color-3';
+        if (appliedColor === 'color-8') appliedColor = 'color-6';
+      }
+      document.documentElement.dataset.theme = savedTheme;
+      document.querySelectorAll('.alternate-theme').forEach(link => {
+        if (link.getAttribute('title') === savedTheme) {
+          link.removeAttribute('disabled');
+        } else {
+          link.setAttribute('disabled', 'true');
+        }
+      });
+      const colorMap = {
+        'color-1': '#ec1839',
+        'color-2': '#fa5b0f',
+        'color-3': '#FFC107',
+        'color-4': '#1854b4',
+        'color-5': '#f021b2',
+        'color-6': '#00ff33',
+        'color-7': '#c902c9ff',
+        'color-8': '#008080'
+      };
+      if (appliedColor && colorMap[appliedColor]) {
+        document.documentElement.style.setProperty('--skin-color', colorMap[appliedColor]);
+      }
+      if (appliedColor) {
+        document.querySelectorAll('.alternate-style').forEach(link => {
+          if (link.getAttribute('title') === appliedColor) {
+            link.removeAttribute('disabled');
+          } else {
+            link.setAttribute('disabled', 'true');
+          }
+        });
+      }
+    })();
+  </script>
 </head>
 <body>
-  <div class="coming-soon">
-    <h1>Coming Soon</h1>
-    <p>This project is under construction.</p>
+  <div id="page-container">
+    <div id="content-wrap">
+      <header>
+        <div id="navbar-container"></div>
+        <script>
+          fetch('../partials/navbar.html')
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById('navbar-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+        </script>
+      </header>
+
+      <section>
+        <div class="coming-soon">
+          <h1>Coming Soon</h1>
+          <p>This project is under construction. Check back soon for updates.</p>
+          <a class="project-link" href="../projects.html">← Back to Projects</a>
+        </div>
+      </section>
+    </div>
+
+    <div id="footer-container"></div>
+    <script>
+      fetch('../partials/footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-container').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
+    </script>
   </div>
+
+  <script src="../js/script.js" defer></script>
 </body>
 </html>

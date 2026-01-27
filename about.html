@@ -1,126 +1,12 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Personal Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
-    <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-    <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-    <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-    <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
-    <link rel="stylesheet" href="css/skins/color-6.css" class="alternate-style" title="color-6" disabled>
-    <link rel="stylesheet" href="css/skins/color-7.css" class="alternate-style" title="color-7" disabled>
-    <link rel="stylesheet" href="css/skins/color-8.css" class="alternate-style" title="color-8" disabled>
-</head>
-<body>
-    <header>
-        <div id="navbar-container"></div>
-        <script>
-            fetch('partials/navbar.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('navbar-container').innerHTML = data;
-                })
-                .catch(error => console.error('Error loading navbar:', error));
-        </script>
-    </header>
-
-    <section id="about">
-        <h2><i class="fas fa-user"></i> About Me</h2>
-        <div style="border: 2px solid var(--skin-color); padding: 1.5em; border-radius: 8px; margin-top: 1em; background-color: #2C2C2C; text-align: left;">
-            <h3 style="color: var(--skin-color); margin-top: 0;">Hello! I'm Nick Wohlfeil</h3>
-            <p>I'm an engineer based in Ann Arbor, MI. I have a passion for intricately complex tech projects with an equally as compelling life of hobbies. With a background in Computer Science and Administrative work from the University of Michigan, I have developed a niche but well complimented interest of human-centered software design.</p>
-            <p>When I'm not at a computer, you'll either find me hanging out with one of my bunnies or going out with friends.</p>
-        </div>
-    </section>
-
-    <section id="education" style="padding: 2em;">
-        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-        <div style="border: 2px solid #FFCB05; padding: 1em; border-radius: 8px; margin-top: 1em; background-color: #00274D; display: flex; justify-content: space-between; align-items: center;">
-            <div style="text-align: left;">
-                <h3 style="color: #FFCB05;">Bachelor of Science in Computer Science Engineering</h3>
-                <p style="color: #FFCB05;">University of Michigan, Ann Arbor — Class of 2024</p>
-                <p style="font-style: italic; color: #FFCB05;">Go Blue!</p>
-            </div>
-            <img src="assets/images/M.png" alt="University of Michigan Logo" style="max-width: 150px;">
-        </div>
-        <div style="border: 2px solid #ED1B26; padding: 1em; border-radius: 8px; margin-top: 1em; background-color: #FFFFFF; display: flex; justify-content: space-between; align-items: center;">
-            <div style="text-align: left;">
-                <h3 style="color: #ED1B26;">High School Diploma</h3>
-                <p style="color: #ED1B26;">Monroe High School, Monroe — Class of 2020</p>
-                <p style="font-style: italic; color: #ED1B26;">Go Trojans!</p>
-            </div>
-            <img src="assets/images/trojan_crop.png" alt="University of Michigan Logo" style="max-width: 150px;">
-        </div>
-    </section>
-    
-
-
-    <section id="hobbies">
-        <h2><i class="fas fa-heart"></i> Hobbies</h2>
-        <div class="hobbies">
-            <div>
-                <i class="fas fa-hiking"></i>
-                <h3>Hiking</h3>
-                <p>Exploring the great outdoors and conquering new trails.</p>
-            </div>
-            <div>
-                <i class="fas fa-gamepad"></i>
-                <h3>Gaming</h3>
-                <p>Diving into story-driven experiences or honing online matchmaking skills.</p>
-            </div>
-            <div>
-                <i class="fas fa-robot"></i>
-                <h3>Robotics</h3>
-                <p>Making things move with varying levels of success through mostly trial and error.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="fun-facts">
-        <h2><i class="fas fa-lightbulb"></i> Fun Facts</h2>
-        <div class="fun-facts">
-            <div>
-                <i class="fas fa-helicopter"></i>
-                <h3>Drones</h3>
-                <p>Loves to fly recreational drones as a hobbyist. </p>
-            </div>
-            <div>
-                <i class="fas fa-ghost"></i>
-                <h3>Horror</h3>
-                <p>Loves anything horror-related, is always looking for the next scare!</p>
-            </div>
-            <div>
-                <i class="fas fa-gamepad"></i>
-                <h3>Media</h3>
-                <p>Loves playing strategy and role-playing games.</p>
-            </div>
-        </div>
-    </section>
-
-    <div id="footer-container"></div>
-    <script>
-        fetch('partials/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading footer:', error));
-    </script>
-    <script src="js/script.js" defer=""></script>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Personal Portfolio</title>
+    <title>About | Nicholas Wohlfeil</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/light.css" title="light" class="alternate-theme" disabled>
+    <link rel="stylesheet" href="css/dark.css" title="dark" class="alternate-theme">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
     <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
@@ -131,143 +17,148 @@
     <link rel="stylesheet" href="css/skins/color-7.css" class="alternate-style" title="color-7" disabled>
     <link rel="stylesheet" href="css/skins/color-8.css" class="alternate-style" title="color-8" disabled>
 
-    <style>
-        :root {
-            --background-primary: #1E1E1E; /* dark default */
-            --background-secondary: #2C2C2C;
-            --text-color: #ffffff;
-            --highlight-color-3: #FFC107;
-            --highlight-color-6: #00ff33;
-            --heading-color: #aaa; /* default dark mode heading color */
-
-        }
-        :root.light {
-            --background-primary: #ffffff;
-            --background-secondary: #f0f0f0;
-            --text-color: #1E1E1E;
-            --heading-color: #333; /* lighter mode heading color */
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
+            const savedColorRaw = localStorage.getItem('selectedColor');
+            let appliedColor = savedColorRaw;
+            if (savedTheme === 'light') {
+                if (appliedColor === 'color-3') appliedColor = 'color-7';
+                if (appliedColor === 'color-6') appliedColor = 'color-8';
+            } else {
+                if (appliedColor === 'color-7') appliedColor = 'color-3';
+                if (appliedColor === 'color-8') appliedColor = 'color-6';
             }
-
-        body {
-            background-color: var(--background-primary);
-            color: var(--text-color);
-        }
-
-        /* Only About, Hobbies, Fun Facts */
-        #about div, .hobbies div, .fun-facts div {
-            border: 2px solid; /* will inherit the element's text color */
-            background-color: var(--background-secondary);
-            color: var(--text-color);
-            border-color: var(--skin-color);
-            /* border: 2px solid var(--background-secondary); */
-            padding: 1.5em;
-            border-radius: 8px;
-            margin-top: 1em;
-        }
-
-        #about h3, .hobbies h3, .fun-facts h3 {
-            /* color: var(--highlight-color-3); */
-            margin-top: 0;
-        }
-
-        #about h3 {
-            color: var(--text-color); /* Match text color */
-        }
-    </style>
+            document.documentElement.dataset.theme = savedTheme;
+            document.querySelectorAll('.alternate-theme').forEach(link => {
+                if (link.getAttribute('title') === savedTheme) {
+                    link.removeAttribute('disabled');
+                } else {
+                    link.setAttribute('disabled', 'true');
+                }
+            });
+            const colorMap = {
+                'color-1': '#ec1839',
+                'color-2': '#fa5b0f',
+                'color-3': '#FFC107',
+                'color-4': '#1854b4',
+                'color-5': '#f021b2',
+                'color-6': '#00ff33',
+                'color-7': '#c902c9ff',
+                'color-8': '#008080'
+            };
+            if (appliedColor && colorMap[appliedColor]) {
+                document.documentElement.style.setProperty('--skin-color', colorMap[appliedColor]);
+            }
+            if (appliedColor) {
+                document.querySelectorAll('.alternate-style').forEach(link => {
+                    if (link.getAttribute('title') === appliedColor) {
+                        link.removeAttribute('disabled');
+                    } else {
+                        link.setAttribute('disabled', 'true');
+                    }
+                });
+            }
+        })();
+    </script>
 </head>
 <body>
-    <header>
-        <div id="navbar-container"></div>
+    <div id="page-container">
+        <div id="content-wrap">
+            <header>
+                <div id="navbar-container"></div>
+                <script>
+                    fetch('partials/navbar.html')
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById('navbar-container').innerHTML = data;
+                        })
+                        .catch(error => console.error('Error loading navbar:', error));
+                </script>
+            </header>
+
+            <section id="about">
+                <h2><i class="fas fa-user"></i> About Me</h2>
+                <div>
+                    <h3>Hello! I'm Nick Wohlfeil</h3>
+                    <p>I'm an engineer based in Ann Arbor, MI. I have a passion for intricately complex tech projects with an equally as compelling life of hobbies. With a background in Computer Science and administrative work from the University of Michigan, I have developed a niche but well-complemented interest in human-centered software design.</p>
+                    <p>When I'm not at a computer, you'll either find me hanging out with one of my bunnies or going out with friends.</p>
+                </div>
+            </section>
+
+            <section id="education" style="padding: 2em;">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div style="border: 2px solid #FFCB05; padding: 1em; border-radius: 8px; margin-top: 1em; background-color: #00274D; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="text-align: left;">
+                        <h3 style="color: #FFCB05;">Bachelor of Science in Computer Science Engineering</h3>
+                        <p style="color: #FFCB05;">University of Michigan, Ann Arbor — Class of 2024</p>
+                        <p style="font-style: italic; color: #FFCB05;">Go Blue!</p>
+                    </div>
+                    <img src="assets/images/M.png" alt="University of Michigan Logo" style="max-width: 150px;">
+                </div>
+                <div style="border: 2px solid #ED1B26; padding: 1em; border-radius: 8px; margin-top: 1em; background-color: #FFFFFF; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="text-align: left;">
+                        <h3 style="color: #ED1B26;">High School Diploma</h3>
+                        <p style="color: #ED1B26;">Monroe High School, Monroe — Class of 2020</p>
+                        <p style="font-style: italic; color: #ED1B26;">Go Trojans!</p>
+                    </div>
+                    <img src="assets/images/trojan_crop.png" alt="Monroe High School Logo" style="max-width: 150px;">
+                </div>
+            </section>
+
+            <section id="hobbies">
+                <h2><i class="fas fa-heart"></i> Hobbies</h2>
+                <div class="hobbies">
+                    <div>
+                        <i class="fas fa-hiking"></i>
+                        <h3>Hiking</h3>
+                        <p>Exploring the great outdoors and conquering new trails.</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-gamepad"></i>
+                        <h3>Gaming</h3>
+                        <p>Diving into story-driven experiences or honing online matchmaking skills.</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-robot"></i>
+                        <h3>Robotics</h3>
+                        <p>Making things move with varying levels of success through mostly trial and error.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="fun-facts">
+                <h2><i class="fas fa-lightbulb"></i> Fun Facts</h2>
+                <div class="fun-facts">
+                    <div>
+                        <i class="fas fa-helicopter"></i>
+                        <h3>Drones</h3>
+                        <p>Loves to fly recreational drones as a hobbyist.</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-ghost"></i>
+                        <h3>Horror</h3>
+                        <p>Loves anything horror-related, is always looking for the next scare!</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-gamepad"></i>
+                        <h3>Media</h3>
+                        <p>Loves playing strategy and role-playing games.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="footer-container"></div>
         <script>
-            fetch('partials/navbar.html')
+            fetch('partials/footer.html')
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById('navbar-container').innerHTML = data;
+                    document.getElementById('footer-container').innerHTML = data;
                 })
-                .catch(error => console.error('Error loading navbar:', error));
+                .catch(error => console.error('Error loading footer:', error));
         </script>
-    </header>
-
-    <section id="about">
-        <h2><i class="fas fa-user"></i> About Me</h2>
-        <div>
-            <h3>Hello! I'm Nick Wohlfeil</h3>
-            <p>I'm an engineer based in Ann Arbor, MI. I have a passion for intricately complex tech projects with an equally as compelling life of hobbies. With a background in Computer Science and Administrative work from the University of Michigan, I have developed a niche but well complimented interest of human-centered software design.</p>
-            <p>When I'm not at a computer, you'll either find me hanging out with one of my bunnies or going out with friends.</p>
-        </div>
-    </section>
-
-    <section id="education" style="padding: 2em;">
-        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-        <div style="border: 2px solid #FFCB05; padding: 1em; border-radius: 8px; margin-top: 1em; background-color: #00274D; display: flex; justify-content: space-between; align-items: center;">
-            <div style="text-align: left;">
-                <h3 style="color: #FFCB05;">Bachelor of Science in Computer Science Engineering</h3>
-                <p style="color: #FFCB05;">University of Michigan, Ann Arbor — Class of 2024</p>
-                <p style="font-style: italic; color: #FFCB05;">Go Blue!</p>
-            </div>
-            <img src="assets/images/M.png" alt="University of Michigan Logo" style="max-width: 150px;">
-        </div>
-        <div style="border: 2px solid #ED1B26; padding: 1em; border-radius: 8px; margin-top: 1em; background-color: #FFFFFF; display: flex; justify-content: space-between; align-items: center;">
-            <div style="text-align: left;">
-                <h3 style="color: #ED1B26;">High School Diploma</h3>
-                <p style="color: #ED1B26;">Monroe High School, Monroe — Class of 2020</p>
-                <p style="font-style: italic; color: #ED1B26;">Go Trojans!</p>
-            </div>
-            <img src="assets/images/trojan_crop.png" alt="University of Michigan Logo" style="max-width: 150px;">
-        </div>
-    </section>
-
-    <section id="hobbies">
-        <h2><i class="fas fa-heart"></i> Hobbies</h2>
-        <div class="hobbies">
-            <div>
-                <i class="fas fa-hiking"></i>
-                <h3>Hiking</h3>
-                <p>Exploring the great outdoors and conquering new trails.</p>
-            </div>
-            <div>
-                <i class="fas fa-gamepad"></i>
-                <h3>Gaming</h3>
-                <p>Diving into story-driven experiences or honing online matchmaking skills.</p>
-            </div>
-            <div>
-                <i class="fas fa-robot"></i>
-                <h3>Robotics</h3>
-                <p>Making things move with varying levels of success through mostly trial and error.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="fun-facts">
-        <h2><i class="fas fa-lightbulb"></i> Fun Facts</h2>
-        <div class="fun-facts">
-            <div>
-                <i class="fas fa-helicopter"></i>
-                <h3>Drones</h3>
-                <p>Loves to fly recreational drones as a hobbyist. </p>
-            </div>
-            <div>
-                <i class="fas fa-ghost"></i>
-                <h3>Horror</h3>
-                <p>Loves anything horror-related, is always looking for the next scare!</p>
-            </div>
-            <div>
-                <i class="fas fa-gamepad"></i>
-                <h3>Media</h3>
-                <p>Loves playing strategy and role-playing games.</p>
-            </div>
-        </div>
-    </section>
-
-    <div id="footer-container"></div>
-    <script>
-        fetch('partials/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading footer:', error));
-    </script>
+    </div>
     <script src="js/script.js" defer></script>
 </body>
 </html>
