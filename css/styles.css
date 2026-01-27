@@ -361,8 +361,23 @@ button,
   margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
+  flex: 1;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
 }
 
 .filter-button {
@@ -376,6 +391,99 @@ button,
 
 .filter-button.is-active {
   box-shadow: 0 0 0 2px var(--text-color) inset;
+}
+
+.view-button {
+  background: transparent;
+  color: var(--text-color);
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95em;
+}
+
+.view-button.is-active {
+  background: var(--skin-color);
+  color: var(--button-text-color);
+  border-color: var(--skin-color);
+}
+
+.projects-list {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 20px;
+}
+
+.projects-list.is-active {
+  display: flex;
+}
+
+.projects-grid.is-hidden {
+  display: none;
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 2fr) minmax(180px, 2fr) minmax(120px, 1fr);
+  gap: 20px;
+  align-items: center;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--panel-bg);
+}
+
+.project-row-title {
+  color: var(--skin-color);
+  text-decoration: none;
+  font-weight: 600;
+  text-align: left;
+}
+
+.project-row-title:hover {
+  text-decoration: underline;
+}
+
+.project-row-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-row-label {
+  justify-self: end;
+  color: var(--skin-color);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.85em;
+}
+
+.project-row-header {
+  background: transparent;
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.8em;
+  color: var(--muted-text);
+}
+
+.project-row-header .project-row-title,
+.project-row-header .project-row-tags,
+.project-row-header .project-row-label {
+  color: var(--muted-text);
+}
+
+.project-row-header .project-row-title {
+  text-align: left;
+}
+
+.project-row-header .project-row-label {
+  border: none;
+  padding: 0;
+  justify-self: end;
 }
 
 .project-detail {
@@ -941,6 +1049,18 @@ footer p {
   .hobbies div,
   .fun-facts div {
     width: 100%;
+  }
+
+  .filter-container {
+    flex-direction: column;
+  }
+
+  .project-row {
+    grid-template-columns: 1fr;
+  }
+
+  .project-row-label {
+    justify-self: start;
   }
 
   .hobbies {

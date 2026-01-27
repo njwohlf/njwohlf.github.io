@@ -80,10 +80,16 @@
             <section id="projects">
                 <h1>Projects</h1>
                 <div class="filter-container">
-                    <button class="filter-button" data-filter="Research">Research</button>
-                    <button class="filter-button" data-filter="Personal">Personal</button>
-                    <button class="filter-button" data-filter="Academic">Academic</button>
-                    <button class="filter-button" data-filter="All">Show All</button>
+                    <div class="filter-group">
+                        <button class="filter-button" data-filter="Research">Research</button>
+                        <button class="filter-button" data-filter="Personal">Personal</button>
+                        <button class="filter-button" data-filter="Academic">Academic</button>
+                        <button class="filter-button" data-filter="All">Show All</button>
+                    </div>
+                    <div class="view-toggle">
+                        <button class="view-button" data-view="grid">Grid</button>
+                        <button class="view-button" data-view="list">List</button>
+                    </div>
                 </div>
 
                 <template id="project-card-template">
@@ -98,7 +104,22 @@
                     </div>
                 </template>
 
+                <template id="project-row-template">
+                    <div class="project-row">
+                        <a class="project-row-title" href="#"></a>
+                        <div class="project-row-tags"></div>
+                        <div class="project-row-label"></div>
+                    </div>
+                </template>
+
                 <div class="projects-grid" id="projects-grid"></div>
+                <div class="projects-list" id="projects-list">
+                    <div class="project-row project-row-header">
+                        <div class="project-row-title">Project Name</div>
+                        <div class="project-row-tags">Project Tags</div>
+                        <div class="project-row-label">Project Label</div>
+                    </div>
+                </div>
             </section>
         </div>
 
