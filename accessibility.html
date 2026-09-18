@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Contact Nicholas Wohlfeil about software engineering, projects, or professional opportunities." />
+    <meta name="description" content="Accessibility features, design targets, and known limitations of Nicholas Wohlfeil’s portfolio." />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f7f2" />
-    <title>Contact | Nicholas Wohlfeil</title>
-    <link rel="canonical" href="https://www.nickwohlfeil.com/contact.html" />
+    <title>Accessibility | Nicholas Wohlfeil</title>
+    <link rel="canonical" href="https://www.nickwohlfeil.com/accessibility.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nicholas Wohlfeil" />
-    <meta property="og:title" content="Contact | Nicholas Wohlfeil" />
-    <meta property="og:description" content="Contact Nicholas Wohlfeil about software engineering, projects, or professional opportunities." />
-    <meta property="og:url" content="https://www.nickwohlfeil.com/contact.html" />
+    <meta property="og:title" content="Accessibility | Nicholas Wohlfeil" />
+    <meta property="og:description" content="Accessibility features, design targets, and known limitations of Nicholas Wohlfeil’s portfolio." />
+    <meta property="og:url" content="https://www.nickwohlfeil.com/accessibility.html" />
     <meta
       property="og:image"
       content="https://www.nickwohlfeil.com/assets/images/wohlfeil_pic.jpeg"
@@ -47,7 +47,7 @@
     </button>
     <nav id="primary-navigation" aria-label="Main navigation">
       <ul class="nav-links">
-        <li><a href="projects.html">Projects</a></li><li><a href="about.html">About</a></li><li><a href="experiences.html">Experience</a></li><li><a href="resume.html">Resume</a></li><li><a href="contact.html" aria-current="page">Contact</a></li>
+        <li><a href="projects.html">Projects</a></li><li><a href="about.html">About</a></li><li><a href="experiences.html">Experience</a></li><li><a href="resume.html">Resume</a></li><li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <details class="appearance" hidden>
@@ -151,75 +151,57 @@
 </header>
 
     <main id="main-content" tabindex="-1"><section class="page-intro container">
-  <h1>Contact</h1>
+  <h1>Accessibility</h1>
+  <p class="lead">
+    I want this portfolio to be useful across devices, input methods, and
+    accessibility needs.
+  </p>
 </section>
-<section
-  class="section container contact-layout"
-  aria-labelledby="message-title"
->
-  <div class="contact-details">
-    <h2 id="message-title">Get in touch</h2>
-    <p>Send me a message, or find me on LinkedIn and GitHub.</p>
-    <div class="social-links contact-links"><a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#github" /></svg><span>GitHub</span></a></div>
-    <p class="small muted">Based in Ann Arbor, Michigan.</p>
-  </div>
-  <form
-    id="contact-form"
-    action="https://formspree.io/f/xvgkoplg"
-    method="post"
-    aria-label="Contact Nick"
-    aria-describedby="form-note"
-  >
-    <p class="small muted">All fields are required.</p>
-    <div class="form-field">
-      <label for="name">Name</label
-      ><input
-        type="text"
-        id="name"
-        name="name"
-        autocomplete="name"
-        maxlength="150"
-        required
-      />
-    </div>
-    <div class="form-field">
-      <label for="email">Email address</label
-      ><input
-        type="email"
-        id="email"
-        name="email"
-        autocomplete="email"
-        maxlength="254"
-        required
-      />
-    </div>
-    <div class="form-field">
-      <label for="message">Message</label
-      ><textarea
-        id="message"
-        name="message"
-        rows="6"
-        maxlength="10000"
-        required
-      ></textarea>
-    </div>
-    <p class="small muted" id="form-note">
-      Your message is sent through Formspree so I can reply by email. Please
-      don’t include sensitive information.
-      <a href="privacy.html">Privacy details</a>.
-    </p>
-    <button class="button" type="submit">
-      Send message <span aria-hidden="true">↗</span>
-    </button>
-    <p
-      id="form-status"
-      role="status"
-      aria-live="polite"
-      aria-atomic="true"
-      tabindex="-1"
-    ></p>
-  </form>
-</section>
+<div class="container section prose legal-copy">
+  <h2>The design target</h2>
+  <p>
+    This site is developed with
+    <a href="https://www.w3.org/WAI/standards-guidelines/wcag/"
+      >WCAG 2.2 Level AA</a
+    >
+    in mind. Automated checks support that work, but they are not a
+    certification of full conformance.
+  </p>
+  <h2>Using the site</h2>
+  <ul>
+    <li>
+      Use the skip link at the start of each page to move directly to the main
+      content.
+    </li>
+    <li>
+      Navigation, project filters, and appearance controls work with a keyboard.
+    </li>
+    <li>Text and layouts adjust to smaller screens and browser zoom.</li>
+    <li>
+      Light and dark appearances use contrast-tested colors, and motion is
+      reduced when requested by your device settings.
+    </li>
+    <li>
+      Page content, navigation, project links, and the contact form remain
+      available without JavaScript.
+    </li>
+  </ul>
+  <h2>Known limitations</h2>
+  <p>
+    The resume is an existing PDF and may not provide the same accessibility as
+    the HTML pages. An
+    <a href="experiences.html">HTML experience overview</a> is available. The
+    PDF viewer and Formspree’s submission pages are separate browser or
+    third-party experiences.
+  </p>
+  <h2>Report a barrier</h2>
+  <p>
+    If something is difficult to use, please use the
+    <a href="contact.html">contact form</a>. Include the page, what you were
+    trying to do, and any relevant browser or assistive technology details so I
+    can investigate.
+  </p>
+</div>
 </main>
     <footer class="site-footer">
   <div class="container footer-content">

@@ -1,0 +1,20 @@
+{
+  "name": "nicholas-wohlfeil-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A static engineering portfolio with progressive enhancement and browser accessibility checks.",
+  "scripts": {
+    "build": "python3 scripts/build.py",
+    "check": "python3 scripts/build.py --check && python3 scripts/check-site.py",
+    "test": "node scripts/check-site.cjs && node scripts/check-contrast.cjs",
+    "preview": "python3 -m http.server 8766 --bind 127.0.0.1",
+    "test:webkit": "node scripts/check-webkit.cjs"
+  },
+  "devDependencies": {
+    "axe-core": "4.13.0",
+    "playwright": "1.61.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

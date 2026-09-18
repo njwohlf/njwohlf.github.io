@@ -1,126 +1,51 @@
-(function () {
+// Filter existing HTML rather than rebuilding content or duplicating card markup.
+(() => {
   const grid = document.getElementById("projects-grid");
-  const list = document.getElementById("projects-list");
-  const cardTemplate = document.getElementById("project-card-template");
-  const rowTemplate = document.getElementById("project-row-template");
-  const buttons = document.querySelectorAll(".filter-button");
-  const viewButtons = document.querySelectorAll(".view-button");
+  const controls = document.querySelector(".project-controls");
+  if (!grid || !controls) return;
+  const projects = Array.from(grid.querySelectorAll(".project-card")).map(
+    (element) => ({
+      element,
+      category: element.dataset.category,
+    }),
+  );
+  const count = document.getElementById("project-count");
+  const filters = controls.querySelectorAll("[data-filter]");
+  const views = controls.querySelectorAll("[data-view]");
+  const savedView = window.SitePreferences?.get("projectsView");
+  let view = savedView === "list" ? "list" : "grid";
+  let category = "All";
 
-  if (!grid || !list || !cardTemplate || !rowTemplate || !Array.isArray(window.PROJECTS)) return;
-
-  function renderGrid(projects) {
-    grid.innerHTML = "";
+  function render() {
+    let visible = 0;
     projects.forEach((project) => {
-      const node = cardTemplate.content.cloneNode(true);
-      const card = node.querySelector(".project-card");
-      const label = node.querySelector(".project-label");
-      const title = node.querySelector(".project-title");
-      const description = node.querySelector(".project-description");
-      const tags = node.querySelector(".project-tags");
-      const link = node.querySelector(".project-link");
-
-      card.dataset.category = project.category;
-      if (project.status === "coming-soon") {
-        card.classList.add("is-coming-soon");
-      }
-
-      label.textContent = project.category;
-      title.textContent = project.title;
-      description.textContent = project.description;
-
-      tags.innerHTML = "";
-      project.tags.forEach((tag) => {
-        const tagEl = document.createElement("span");
-        tagEl.className = "project-tag";
-        tagEl.textContent = tag;
-        tags.appendChild(tagEl);
-      });
-
-      link.href = project.href;
-      link.textContent = project.status === "coming-soon" ? "Coming Soon" : "View Project";
-
-      grid.appendChild(node);
+      const matches = category === "All" || project.category === category;
+      project.element.hidden = !matches;
+      if (matches) visible++;
     });
+    grid.dataset.view = view;
+    filters.forEach((button) =>
+      button.setAttribute(
+        "aria-pressed",
+        String(button.dataset.filter === category),
+      ),
+    );
+    views.forEach((button) =>
+      button.setAttribute("aria-pressed", String(button.dataset.view === view)),
+    );
+    count.textContent = `${visible} ${visible === 1 ? "project" : "projects"}${category === "All" ? "" : ` · ${category}`}`;
   }
 
-  function renderList(projects) {
-    const header = list.querySelector(".project-row-header");
-    list.innerHTML = "";
-    if (header) {
-      list.appendChild(header);
+  controls.hidden = false;
+  controls.addEventListener("click", (event) => {
+    const filter = event.target.closest("[data-filter]");
+    const layout = event.target.closest("[data-view]");
+    if (filter) category = filter.dataset.filter;
+    if (layout) {
+      view = layout.dataset.view;
+      window.SitePreferences?.set("projectsView", view);
     }
-    projects.forEach((project) => {
-      const node = rowTemplate.content.cloneNode(true);
-      const title = node.querySelector(".project-row-title");
-      const tags = node.querySelector(".project-row-tags");
-      const label = node.querySelector(".project-row-label");
-
-      title.href = project.href;
-      title.textContent = project.title;
-
-      tags.innerHTML = "";
-      project.tags.forEach((tag) => {
-        const tagEl = document.createElement("span");
-        tagEl.className = "project-tag";
-        tagEl.textContent = tag;
-        tags.appendChild(tagEl);
-      });
-
-      label.textContent = project.category;
-      list.appendChild(node);
-    });
-  }
-
-  function renderProjects(filter, view) {
-    const projects = window.PROJECTS.filter((project) => {
-      return filter === "All" || project.category === filter;
-    });
-
-    if (view === "list") {
-      grid.classList.add("is-hidden");
-      list.classList.add("is-active");
-      renderList(projects);
-    } else {
-      list.classList.remove("is-active");
-      grid.classList.remove("is-hidden");
-      renderGrid(projects);
-    }
-  }
-
-  function setActiveFilter(filter) {
-    buttons.forEach((button) => {
-      button.classList.toggle("is-active", button.dataset.filter === filter);
-    });
-  }
-
-  function setActiveView(view) {
-    viewButtons.forEach((button) => {
-      button.classList.toggle("is-active", button.dataset.view === view);
-    });
-  }
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const filter = button.dataset.filter || "All";
-      const view = localStorage.getItem("projectsView") || "grid";
-      renderProjects(filter, view);
-      setActiveFilter(filter);
-    });
+    if (filter || layout) render();
   });
-
-  viewButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const view = button.dataset.view || "grid";
-      const filter = document.querySelector(".filter-button.is-active")?.dataset.filter || "All";
-      localStorage.setItem("projectsView", view);
-      renderProjects(filter, view);
-      setActiveView(view);
-    });
-  });
-
-  const initialFilter = "All";
-  const initialView = localStorage.getItem("projectsView") || "grid";
-  renderProjects(initialFilter, initialView);
-  setActiveFilter(initialFilter);
-  setActiveView(initialView);
+  render();
 })();

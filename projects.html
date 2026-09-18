@@ -1,141 +1,258 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Explore Nicholas Wohlfeil’s software, robotics, and systems projects, including cache simulation, machine learning, and autonomous robots." />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f7f2" />
     <title>Projects | Nicholas Wohlfeil</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/light.css" title="light" class="alternate-theme" disabled>
-    <link rel="stylesheet" href="css/dark.css" title="dark" class="alternate-theme">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
-    <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-    <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-    <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-    <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
-    <link rel="stylesheet" href="css/skins/color-6.css" class="alternate-style" title="color-6" disabled>
-    <link rel="stylesheet" href="css/skins/color-7.css" class="alternate-style" title="color-7" disabled>
-    <link rel="stylesheet" href="css/skins/color-8.css" class="alternate-style" title="color-8" disabled>
-
-    <script>
-        (function () {
-            const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
-            const savedColorRaw = localStorage.getItem('selectedColor');
-            let appliedColor = savedColorRaw;
-            if (savedTheme === 'light') {
-                if (appliedColor === 'color-3') appliedColor = 'color-7';
-                if (appliedColor === 'color-6') appliedColor = 'color-8';
-            } else {
-                if (appliedColor === 'color-7') appliedColor = 'color-3';
-                if (appliedColor === 'color-8') appliedColor = 'color-6';
-            }
-            document.documentElement.dataset.theme = savedTheme;
-            document.querySelectorAll('.alternate-theme').forEach(link => {
-                if (link.getAttribute('title') === savedTheme) {
-                    link.removeAttribute('disabled');
-                } else {
-                    link.setAttribute('disabled', 'true');
-                }
-            });
-            const colorMap = {
-                'color-1': '#ec1839',
-                'color-2': '#fa5b0f',
-                'color-3': '#FFC107',
-                'color-4': '#1854b4',
-                'color-5': '#f021b2',
-                'color-6': '#00ff33',
-                'color-7': '#c902c9ff',
-                'color-8': '#008080'
-            };
-            if (appliedColor && colorMap[appliedColor]) {
-                document.documentElement.style.setProperty('--skin-color', colorMap[appliedColor]);
-            }
-            if (appliedColor) {
-                document.querySelectorAll('.alternate-style').forEach(link => {
-                    if (link.getAttribute('title') === appliedColor) {
-                        link.removeAttribute('disabled');
-                    } else {
-                        link.setAttribute('disabled', 'true');
-                    }
-                });
-            }
-        })();
-    </script>
-</head>
-<body>
-    <div id="page-container">
-        <div id="content-wrap">
-            <header>
-                <div id="navbar-container"></div>
-                <script>
-                    fetch('partials/navbar.html')
-                        .then(response => response.text())
-                        .then(data => {
-                            document.getElementById('navbar-container').innerHTML = data;
-                        })
-                        .catch(error => console.error('Error loading navbar:', error));
-                </script>
-            </header>
-
-            <section id="projects">
-                <h1>Projects</h1>
-                <div class="filter-container">
-                    <div class="filter-group">
-                        <button class="filter-button" data-filter="Research">Research</button>
-                        <button class="filter-button" data-filter="Personal">Personal</button>
-                        <button class="filter-button" data-filter="Academic">Academic</button>
-                        <button class="filter-button" data-filter="All">Show All</button>
-                    </div>
-                    <div class="view-toggle">
-                        <button class="view-button" data-view="grid">Grid</button>
-                        <button class="view-button" data-view="list">List</button>
-                    </div>
-                </div>
-
-                <template id="project-card-template">
-                    <div class="project-card" data-category="">
-                        <div class="project-label"></div>
-                        <div class="project-card-content">
-                            <h2 class="project-title"></h2>
-                            <p class="project-description"></p>
-                            <div class="project-tags"></div>
-                            <a class="project-link" href="#"></a>
-                        </div>
-                    </div>
-                </template>
-
-                <template id="project-row-template">
-                    <div class="project-row">
-                        <a class="project-row-title" href="#"></a>
-                        <div class="project-row-tags"></div>
-                        <div class="project-row-label"></div>
-                    </div>
-                </template>
-
-                <div class="projects-grid" id="projects-grid"></div>
-                <div class="projects-list" id="projects-list">
-                    <div class="project-row project-row-header">
-                        <div class="project-row-title">Project Name</div>
-                        <div class="project-row-tags">Project Tags</div>
-                        <div class="project-row-label">Project Label</div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div id="footer-container"></div>
-        <script>
-            fetch('partials/footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-container').innerHTML = data;
-                })
-                .catch(error => console.error('Error loading footer:', error));
-        </script>
-    </div>
-
-    <script src="js/projects-data.js" defer></script>
-    <script src="js/projects-page.js" defer></script>
+    <link rel="canonical" href="https://www.nickwohlfeil.com/projects.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nicholas Wohlfeil" />
+    <meta property="og:title" content="Projects | Nicholas Wohlfeil" />
+    <meta property="og:description" content="Explore Nicholas Wohlfeil’s software, robotics, and systems projects, including cache simulation, machine learning, and autonomous robots." />
+    <meta property="og:url" content="https://www.nickwohlfeil.com/projects.html" />
+    <meta
+      property="og:image"
+      content="https://www.nickwohlfeil.com/assets/images/wohlfeil_pic.jpeg"
+    />
+    <meta property="og:image:alt" content="Nicholas Wohlfeil" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/theme-init.js"></script>
     <script src="js/script.js" defer></script>
-</body>
+    <script src="js/projects-page.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+  <div class="nav-shell container">
+    <a
+      class="wordmark"
+      href="index.html"
+      aria-label="Nicholas Wohlfeil, home"
+      ><span>Nicholas Wohlfeil</span></a
+    >
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      hidden
+    >
+      Menu <span aria-hidden="true">+</span>
+    </button>
+    <nav id="primary-navigation" aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="projects.html" aria-current="page">Projects</a></li><li><a href="about.html">About</a></li><li><a href="experiences.html">Experience</a></li><li><a href="resume.html">Resume</a></li><li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <details class="appearance" hidden>
+      <summary aria-label="Appearance settings">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="8" />
+          <path
+            d="M12 4v16a8 8 0 0 0 0-16Z"
+            fill="currentColor"
+            stroke="none"
+          /></svg
+        ><span class="sr-only">Appearance</span>
+      </summary>
+      <div class="appearance-panel">
+        <fieldset>
+          <legend>Appearance</legend>
+          <div class="theme-options">
+            <button
+              type="button"
+              data-theme-choice="light"
+              aria-pressed="false"
+            >
+              Light
+            </button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">
+              Dark
+            </button>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Accent color</legend>
+          <div class="color-options">
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-1"
+              aria-label="Rose accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-2"
+              aria-label="Copper accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-3"
+              aria-label="Amber accent"
+              aria-pressed="true"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-4"
+              aria-label="Blue accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-5"
+              aria-label="Plum accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-6"
+              aria-label="Teal accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+        </fieldset>
+        <p class="small muted">Preferences stay in this browser.</p>
+      </div>
+    </details>
+  </div>
+</header>
+
+    <main id="main-content" tabindex="-1"><section class="page-intro container">
+  <h1>Projects</h1>
+</section>
+<section
+  class="container section projects-section"
+  aria-labelledby="collection-title"
+>
+  <h2 id="collection-title" class="sr-only">Project collection</h2>
+  <div class="project-controls" hidden>
+    <div
+      class="filter-group"
+      role="group"
+      aria-label="Filter projects by category"
+    >
+      <button
+        type="button"
+        class="filter-button"
+        data-filter="All"
+        aria-pressed="true"
+      >
+        All work</button
+      ><button
+        type="button"
+        class="filter-button"
+        data-filter="Personal"
+        aria-pressed="false"
+      >
+        Personal</button
+      ><button
+        type="button"
+        class="filter-button"
+        data-filter="Research"
+        aria-pressed="false"
+      >
+        Research</button
+      ><button
+        type="button"
+        class="filter-button"
+        data-filter="Academic"
+        aria-pressed="false"
+      >
+        Academic
+      </button>
+    </div>
+    <div class="view-toggle" role="group" aria-label="Project layout">
+      <button type="button" data-view="grid" aria-pressed="true">Grid</button
+      ><button type="button" data-view="list" aria-pressed="false">List</button>
+    </div>
+  </div>
+  <p
+    id="project-count"
+    class="small muted"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  >
+    9 projects
+  </p>
+  <div class="project-grid" id="projects-grid"><article class="project-card" data-category="Academic">
+      <div class="project-card-content"><div class="project-meta"><span>Academic</span></div>
+      <h3><a href="projects/cache.html">LC2K Cache Simulator<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
+      <p>A cache simulator I built in C to follow what happens on each memory access.</p><ul class="project-tags" aria-label="Technologies and topics"><li>C</li><li>Computer architecture</li></ul></div>
+    </article><article class="project-card" data-category="Research">
+      <div class="project-card-content"><div class="project-meta"><span>Research</span></div>
+      <h3><a href="projects/autonomous-mbots.html">Autonomous MBots<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
+      <p>Research work on how mobile robots move, and how to make that behavior safer.</p><ul class="project-tags" aria-label="Technologies and topics"><li>Robotics</li><li>Safety</li><li>Control</li></ul></div>
+    </article><article class="project-card" data-category="Personal">
+      <div class="project-card-content"><div class="project-meta"><span>Personal</span></div>
+      <h3><a href="projects/personal-website.html">This website<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
+      <p>A home for my projects, and a project of its own.</p><ul class="project-tags" aria-label="Technologies and topics"><li>JavaScript</li><li>HTML &amp; CSS</li><li>Accessibility</li></ul></div>
+    </article><article class="project-card" data-category="Academic">
+      <div class="project-card-content"><div class="project-meta"><span>Academic</span></div>
+      <h3><a href="projects/character-recognition.html">Handwritten Character Recognition<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
+      <p>Comparing two kinds of neural networks on handwritten English characters.</p><ul class="project-tags" aria-label="Technologies and topics"><li>Machine learning</li><li>Julia</li></ul></div>
+    </article><article class="project-card" data-category="Academic">
+      <div class="project-card-content"><div class="project-meta"><span>Academic</span></div>
+      <h3><a href="projects/lidar-map.html">3D Mapping from LiDAR Data<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
+      <p>Using Julia to bring separate LiDAR scans together into a 3D map.</p><ul class="project-tags" aria-label="Technologies and topics"><li>Julia</li><li>LiDAR</li><li>Point clouds</li></ul></div>
+    </article><article class="project-card" data-category="Research">
+      <div class="project-card-content"><div class="project-meta"><span>Research</span></div>
+      <h3><a href="projects/orbital-satellite.html">Orbital Satellite Simulation<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
+      <p>Using a ground robot to study aspects of satellite motion.</p><ul class="project-tags" aria-label="Technologies and topics"><li>Simulation</li><li>Dynamics</li><li>Robotics</li></ul></div>
+    </article><article class="project-card" data-category="Personal">
+      <div class="project-card-content"><div class="project-meta"><span>Personal</span></div>
+      <h3><a href="projects/auction-notification.html">Auction Notification System<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
+      <p>A Python tool that watches auction listings and sends alerts for matching items.</p><ul class="project-tags" aria-label="Technologies and topics"><li>Python</li><li>Web scraping</li><li>APIs</li></ul></div>
+    </article><article class="project-card" data-category="Personal">
+      <div class="project-card-content"><div class="project-meta"><span>Personal</span></div>
+      <h3><a href="projects/indie-game.html">Indie Game Development<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
+      <p>A Unity project where I’ve worked on gameplay, levels, and game assets.</p><ul class="project-tags" aria-label="Technologies and topics"><li>Unity</li><li>C#</li><li>Blender</li></ul></div>
+    </article><article class="project-card" data-category="Research">
+      <div class="project-card-content"><div class="project-meta"><span>Research</span></div>
+      <h3><a href="projects/quadplane.html">Quadplane Development<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
+      <p>Working on an aircraft that combines vertical takeoff with fixed-wing flight.</p><ul class="project-tags" aria-label="Technologies and topics"><li>UAVs</li><li>Controls</li><li>Embedded systems</li></ul></div>
+    </article></div>
+</section>
+</main>
+    <footer class="site-footer">
+  <div class="container footer-content">
+    <p>© 2026 Nicholas Wohlfeil</p>
+    <nav class="social-links" aria-label="Social links"><a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#github" /></svg><span>GitHub</span></a></nav>
+  </div>
+</footer>
+
+  </body>
 </html>

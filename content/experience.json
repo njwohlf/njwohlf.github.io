@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Administrative Assistant",
+    "organization": "U-M Robotics Department",
+    "dates": "December 2024 - Current",
+    "description": "Redesigned front-end interfaces with JavaScript, Vue.js, and PHP while supporting daily administrative operations in the Robotics Department."
+  },
+  {
+    "title": "Course Assistant",
+    "organization": "U-M Comprehensive Studies Program",
+    "dates": "June 2024 - August 2024",
+    "description": "Supported students in preparatory calculus through classroom assistance, workshops, and individual tutoring. Collaborated with faculty and course staff to refine course content."
+  },
+  {
+    "title": "Research Assistant",
+    "organization": "VODCA Lab",
+    "dates": "August 2023 - May 2024",
+    "description": "Contributed to the design and implementation of a simulated satellite orbit system on an omnidirectional rover, supporting real-time data collection and analysis."
+  },
+  {
+    "title": "Research Assistant",
+    "organization": "MARVL Lab",
+    "dates": "August 2022 - May 2024",
+    "description": "Supported real-time robotic safety protocols by analyzing wheel encoder data for velocity and acceleration, and visualizing motion through dynamic graphs."
+  },
+  {
+    "title": "Instructional Aide",
+    "organization": "U-M Aerospace Engineering Department",
+    "dates": "August 2022 - December 2022",
+    "description": "Helped aerospace engineering students translate theory into practical project ideas and strengthen their understanding of core engineering concepts."
+  },
+  {
+    "title": "Program Assistant",
+    "organization": "Michigan Research & Discovery Scholars",
+    "dates": "August 2022 - January 2023",
+    "description": "Coordinated administrative and logistical work for Michigan Research & Discovery Scholars, organizing events and supporting collaboration among students, faculty, and staff."
+  },
+  {
+    "title": "Peer Advisor",
+    "organization": "U-M Comprehensive Studies Program",
+    "dates": "May 2022 - August 2022",
+    "description": "Mentored first-year Summer Bridge Scholars through individual advising, community programming, and collaboration with campus departments."
+  },
+  {
+    "title": "Research Assistant",
+    "organization": "A2Sys Lab",
+    "dates": "May 2022 - August 2022",
+    "description": "Explored autonomous drone behavior through simulated flight trials and used motion capture data to support estimation and analysis."
+  },
+  {
+    "title": "Tutor",
+    "organization": "U-M Comprehensive Studies Program",
+    "dates": "October 2021 - August 2024",
+    "description": "Tutored undergraduate computer science students in intermediate and advanced programming, with an emphasis on algorithm development."
+  }
+]

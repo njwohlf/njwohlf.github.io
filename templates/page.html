@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="$description" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f7f2" />
+    <title>$title</title>
+    <link rel="canonical" href="$canonical" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nicholas Wohlfeil" />
+    <meta property="og:title" content="$title" />
+    <meta property="og:description" content="$description" />
+    <meta property="og:url" content="$canonical" />
+    <meta
+      property="og:image"
+      content="https://www.nickwohlfeil.com/assets/images/wohlfeil_pic.jpeg"
+    />
+    <meta property="og:image:alt" content="Nicholas Wohlfeil" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="${prefix}assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="${prefix}css/styles.css" />
+    <script src="${prefix}js/theme-init.js"></script>
+    <script src="${prefix}js/script.js" defer></script>
+    $extra_head
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    $navbar
+    <main id="main-content" tabindex="-1">$content</main>
+    $footer
+  </body>
+</html>

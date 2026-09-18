@@ -1,102 +1,162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coming Soon | Nicholas Wohlfeil</title>
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/light.css" title="light" class="alternate-theme" disabled>
-  <link rel="stylesheet" href="../css/dark.css" title="dark" class="alternate-theme">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
-  <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-  <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-  <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-  <link rel="stylesheet" href="../css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
-  <link rel="stylesheet" href="../css/skins/color-6.css" class="alternate-style" title="color-6" disabled>
-  <link rel="stylesheet" href="../css/skins/color-7.css" class="alternate-style" title="color-7" disabled>
-  <link rel="stylesheet" href="../css/skins/color-8.css" class="alternate-style" title="color-8" disabled>
-
-  <script>
-    (function () {
-      const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
-      const savedColorRaw = localStorage.getItem('selectedColor');
-      let appliedColor = savedColorRaw;
-      if (savedTheme === 'light') {
-        if (appliedColor === 'color-3') appliedColor = 'color-7';
-        if (appliedColor === 'color-6') appliedColor = 'color-8';
-      } else {
-        if (appliedColor === 'color-7') appliedColor = 'color-3';
-        if (appliedColor === 'color-8') appliedColor = 'color-6';
-      }
-      document.documentElement.dataset.theme = savedTheme;
-      document.querySelectorAll('.alternate-theme').forEach(link => {
-        if (link.getAttribute('title') === savedTheme) {
-          link.removeAttribute('disabled');
-        } else {
-          link.setAttribute('disabled', 'true');
-        }
-      });
-      const colorMap = {
-        'color-1': '#ec1839',
-        'color-2': '#fa5b0f',
-        'color-3': '#FFC107',
-        'color-4': '#1854b4',
-        'color-5': '#f021b2',
-        'color-6': '#00ff33',
-        'color-7': '#c902c9ff',
-        'color-8': '#008080'
-      };
-      if (appliedColor && colorMap[appliedColor]) {
-        document.documentElement.style.setProperty('--skin-color', colorMap[appliedColor]);
-      }
-      if (appliedColor) {
-        document.querySelectorAll('.alternate-style').forEach(link => {
-          if (link.getAttribute('title') === appliedColor) {
-            link.removeAttribute('disabled');
-          } else {
-            link.setAttribute('disabled', 'true');
-          }
-        });
-      }
-    })();
-  </script>
-</head>
-<body>
-  <div id="page-container">
-    <div id="content-wrap">
-      <header>
-        <div id="navbar-container"></div>
-        <script>
-          fetch('../partials/navbar.html')
-            .then(response => response.text())
-            .then(data => {
-              document.getElementById('navbar-container').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading navbar:', error));
-        </script>
-      </header>
-
-      <section>
-        <div class="coming-soon">
-          <h1>Coming Soon</h1>
-          <p>This project is under construction. Check back soon for updates.</p>
-          <a class="project-link" href="../projects.html">← Back to Projects</a>
-        </div>
-      </section>
-    </div>
-
-    <div id="footer-container"></div>
-    <script>
-      fetch('../partials/footer.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('footer-container').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading footer:', error));
-    </script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Explore the projects currently available in Nicholas Wohlfeil’s portfolio." />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f7f2" />
+    <title>More work to come | Nicholas Wohlfeil</title>
+    <link rel="canonical" href="https://www.nickwohlfeil.com/projects/coming-soon.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nicholas Wohlfeil" />
+    <meta property="og:title" content="More work to come | Nicholas Wohlfeil" />
+    <meta property="og:description" content="Explore the projects currently available in Nicholas Wohlfeil’s portfolio." />
+    <meta property="og:url" content="https://www.nickwohlfeil.com/projects/coming-soon.html" />
+    <meta
+      property="og:image"
+      content="https://www.nickwohlfeil.com/assets/images/wohlfeil_pic.jpeg"
+    />
+    <meta property="og:image:alt" content="Nicholas Wohlfeil" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="../js/theme-init.js"></script>
+    <script src="../js/script.js" defer></script>
+    <meta name="robots" content="noindex">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+  <div class="nav-shell container">
+    <a
+      class="wordmark"
+      href="../index.html"
+      aria-label="Nicholas Wohlfeil, home"
+      ><span>Nicholas Wohlfeil</span></a
+    >
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      hidden
+    >
+      Menu <span aria-hidden="true">+</span>
+    </button>
+    <nav id="primary-navigation" aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="../projects.html" aria-current="page">Projects</a></li><li><a href="../about.html">About</a></li><li><a href="../experiences.html">Experience</a></li><li><a href="../resume.html">Resume</a></li><li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <details class="appearance" hidden>
+      <summary aria-label="Appearance settings">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="8" />
+          <path
+            d="M12 4v16a8 8 0 0 0 0-16Z"
+            fill="currentColor"
+            stroke="none"
+          /></svg
+        ><span class="sr-only">Appearance</span>
+      </summary>
+      <div class="appearance-panel">
+        <fieldset>
+          <legend>Appearance</legend>
+          <div class="theme-options">
+            <button
+              type="button"
+              data-theme-choice="light"
+              aria-pressed="false"
+            >
+              Light
+            </button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">
+              Dark
+            </button>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Accent color</legend>
+          <div class="color-options">
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-1"
+              aria-label="Rose accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-2"
+              aria-label="Copper accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-3"
+              aria-label="Amber accent"
+              aria-pressed="true"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-4"
+              aria-label="Blue accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-5"
+              aria-label="Plum accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-6"
+              aria-label="Teal accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+        </fieldset>
+        <p class="small muted">Preferences stay in this browser.</p>
+      </div>
+    </details>
   </div>
+</header>
 
-  <script src="../js/script.js" defer></script>
-</body>
+    <main id="main-content" tabindex="-1"><section class="page-intro container"><h1>Project not available</h1><p class="lead">This project page isn’t available yet.</p><a class="button" href="../projects.html">Explore projects ↗</a></section></main>
+    <footer class="site-footer">
+  <div class="container footer-content">
+    <p>© 2026 Nicholas Wohlfeil</p>
+    <nav class="social-links" aria-label="Social links"><a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#github" /></svg><span>GitHub</span></a></nav>
+  </div>
+</footer>
+
+  </body>
 </html>

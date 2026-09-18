@@ -1,0 +1,70 @@
+<section class="page-intro container">
+  <h1>Contact</h1>
+</section>
+<section
+  class="section container contact-layout"
+  aria-labelledby="message-title"
+>
+  <div class="contact-details">
+    <h2 id="message-title">Get in touch</h2>
+    <p>Send me a message, or find me on LinkedIn and GitHub.</p>
+    <div class="social-links contact-links">$social_links</div>
+    <p class="small muted">Based in Ann Arbor, Michigan.</p>
+  </div>
+  <form
+    id="contact-form"
+    action="https://formspree.io/f/xvgkoplg"
+    method="post"
+    aria-label="Contact Nick"
+    aria-describedby="form-note"
+  >
+    <p class="small muted">All fields are required.</p>
+    <div class="form-field">
+      <label for="name">Name</label
+      ><input
+        type="text"
+        id="name"
+        name="name"
+        autocomplete="name"
+        maxlength="150"
+        required
+      />
+    </div>
+    <div class="form-field">
+      <label for="email">Email address</label
+      ><input
+        type="email"
+        id="email"
+        name="email"
+        autocomplete="email"
+        maxlength="254"
+        required
+      />
+    </div>
+    <div class="form-field">
+      <label for="message">Message</label
+      ><textarea
+        id="message"
+        name="message"
+        rows="6"
+        maxlength="10000"
+        required
+      ></textarea>
+    </div>
+    <p class="small muted" id="form-note">
+      Your message is sent through Formspree so I can reply by email. Please
+      don’t include sensitive information.
+      <a href="privacy.html">Privacy details</a>.
+    </p>
+    <button class="button" type="submit">
+      Send message <span aria-hidden="true">↗</span>
+    </button>
+    <p
+      id="form-status"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      tabindex="-1"
+    ></p>
+  </form>
+</section>

@@ -4,3 +4,7 @@ updates/
 README.md
 .DS_Store
 .gitignore
+node_modules/
+test-results/
+playwright-report/
+__pycache__/

@@ -1,159 +1,162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiences | Nicholas Wohlfeil</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/light.css" title="light" class="alternate-theme" disabled>
-    <link rel="stylesheet" href="css/dark.css" title="dark" class="alternate-theme">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
-    <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-    <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-    <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-    <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
-    <link rel="stylesheet" href="css/skins/color-6.css" class="alternate-style" title="color-6" disabled>
-    <link rel="stylesheet" href="css/skins/color-7.css" class="alternate-style" title="color-7" disabled>
-    <link rel="stylesheet" href="css/skins/color-8.css" class="alternate-style" title="color-8" disabled>
-
-    <script>
-        (function () {
-            const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
-            const savedColorRaw = localStorage.getItem('selectedColor');
-            let appliedColor = savedColorRaw;
-            if (savedTheme === 'light') {
-                if (appliedColor === 'color-3') appliedColor = 'color-7';
-                if (appliedColor === 'color-6') appliedColor = 'color-8';
-            } else {
-                if (appliedColor === 'color-7') appliedColor = 'color-3';
-                if (appliedColor === 'color-8') appliedColor = 'color-6';
-            }
-            document.documentElement.dataset.theme = savedTheme;
-            document.querySelectorAll('.alternate-theme').forEach(link => {
-                if (link.getAttribute('title') === savedTheme) {
-                    link.removeAttribute('disabled');
-                } else {
-                    link.setAttribute('disabled', 'true');
-                }
-            });
-            const colorMap = {
-                'color-1': '#ec1839',
-                'color-2': '#fa5b0f',
-                'color-3': '#FFC107',
-                'color-4': '#1854b4',
-                'color-5': '#f021b2',
-                'color-6': '#00ff33',
-                'color-7': '#c902c9ff',
-                'color-8': '#008080'
-            };
-            if (appliedColor && colorMap[appliedColor]) {
-                document.documentElement.style.setProperty('--skin-color', colorMap[appliedColor]);
-            }
-            if (appliedColor) {
-                document.querySelectorAll('.alternate-style').forEach(link => {
-                    if (link.getAttribute('title') === appliedColor) {
-                        link.removeAttribute('disabled');
-                    } else {
-                        link.setAttribute('disabled', 'true');
-                    }
-                });
-            }
-        })();
-    </script>
-</head>
-<body>
-    <div id="page-container">
-        <div id="content-wrap">
-            <header>
-                <div id="navbar-container"></div>
-                <script>
-                    fetch('partials/navbar.html')
-                        .then(response => response.text())
-                        .then(data => {
-                            document.getElementById('navbar-container').innerHTML = data;
-                        })
-                        .catch(error => console.error('Error loading navbar:', error));
-                </script>
-            </header>
-
-            <a href="resume.html" class="resume-button">
-                <i class="fa-solid fa-file resume-icon"></i>
-                <span>Want to see my resume?</span>
-                <i class="fa-solid fa-arrow-right arrow-icon"></i>
-            </a>
-
-            <section id="resume">
-                <h1>Professional Experience</h1>
-                <div class="timeline">
-                    <div class="timeline-item current">
-                        <h2><i class="fas fa-user-tie" style="margin-right: 10px;"></i> Administrative Assistant</h2>
-                        <h4>U-M Robotics Department</h4>
-                        <p class="experience-date"><i class="far fa-calendar-alt"></i> December 2024 - Current</p>
-                        <p>Redesigned and optimized front-end interfaces using JavaScript/Vue.js and PHP while also managing daily administrative operations</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h2><i class="fas fa-chalkboard-teacher" style="margin-right: 10px;"></i> Course Assistant</h2>
-                        <h4>U-M Comprehensive Studies Program</h4>
-                        <p class="experience-date"><i class="far fa-calendar-alt"></i> June 2024 - August 2024</p>
-                        <p>Provided in-class support, workshops, and one-on-one tutoring for new students in preparatory calculus. Collaborated with faculty and other course staff to improve course content</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h2><i class="fas fa-satellite" style="margin-right: 10px;"></i> Research Assistant</h2>
-                        <h4>VODCA Lab</h4>
-                        <p class="experience-date"><i class="far fa-calendar-alt"></i> August 2023 - May 2024</p>
-                        <p>Assisted in the implementation and design of a simulated satellite orbit system on an omnidirectional ground rover, enabling real-time collection and analysis of expected orbital data</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h2><i class="fas fa-microchip" style="margin-right: 10px;"></i> Research Assistant</h2>
-                        <h4>MARVL Lab</h4>
-                        <p class="experience-date"><i class="far fa-calendar-alt"></i> August 2022 - May 2024</p>
-                        <p>Supported the implementation of real-time robotic safety protocols by analyzing wheel encoder data to measure velocity and acceleration, with results visualized through dynamic graphs</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h2><i class="fas fa-rocket" style="margin-right: 10px;"></i> Instructional Aide</h2>
-                        <h4>U-M Aerospace Engineering Department</h4>
-                        <p class="experience-date"><i class="far fa-calendar-alt"></i> August 2022 - December 2022</p>
-                        <p>Assisted emerging aerospace engineers in translating theoretical concepts into practical project ideas with a focus on reinforcing core aerospace fundamentals and developing a better understanding of the field</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h2><i class="fas fa-users" style="margin-right: 10px;"></i> Program Assistant</h2>
-                        <h4>Michigan Research &amp; Discovery Scholars</h4>
-                        <p class="experience-date"><i class="far fa-calendar-alt"></i> August 2022 - January 2023</p>
-                        <p>Managed administrative and logistical tasks for MRADS supporting first-year students. Organized events and facilitated collaboration between students, faculty, and staff</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h2><i class="fas fa-pencil" style="margin-right: 10px;"></i> Peer Advisor</h2>
-                        <h4>U-M Comprehensive Studies Program</h4>
-                        <p class="experience-date"><i class="far fa-calendar-alt"></i> May 2022 - August 2022</p>
-                        <p>Supported first-year Summer Bridge Scholars in their transition to university life through individualized mentorship, community programming, and collaboration with multiple departments around campus.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h2><i class="fas fa-laptop-code" style="margin-right: 10px;"></i> Research Assistant</h2>
-                        <h4>A2Sys Lab</h4>
-                        <p class="experience-date"><i class="far fa-calendar-alt"></i> May 2022 - August 2022</p>
-                        <p>Worked to refine autonomous behavior in various drones by conducting simulated flight trials and utilizing motion capture systems for data estimation</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h2><i class="fas fa-book" style="margin-right: 10px;"></i> Tutor</h2>
-                        <h4>U-M Comprehensive Studies Program</h4>
-                        <p class="experience-date"><i class="far fa-calendar-alt"></i> October 2021 - August 2024</p>
-                        <p>Tutored intermediate and advanced programming courses for undergraduate Computer Science students, with a focus on algorithm development</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div id="footer-container"></div>
-        <script>
-            fetch('partials/footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-container').innerHTML = data;
-                })
-                .catch(error => console.error('Error loading footer:', error));
-        </script>
-    </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Nicholas Wohlfeil’s experience in software, robotics research, teaching, and administration at the University of Michigan." />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f7f2" />
+    <title>Experience | Nicholas Wohlfeil</title>
+    <link rel="canonical" href="https://www.nickwohlfeil.com/experiences.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nicholas Wohlfeil" />
+    <meta property="og:title" content="Experience | Nicholas Wohlfeil" />
+    <meta property="og:description" content="Nicholas Wohlfeil’s experience in software, robotics research, teaching, and administration at the University of Michigan." />
+    <meta property="og:url" content="https://www.nickwohlfeil.com/experiences.html" />
+    <meta
+      property="og:image"
+      content="https://www.nickwohlfeil.com/assets/images/wohlfeil_pic.jpeg"
+    />
+    <meta property="og:image:alt" content="Nicholas Wohlfeil" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/theme-init.js"></script>
     <script src="js/script.js" defer></script>
-</body>
+
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+  <div class="nav-shell container">
+    <a
+      class="wordmark"
+      href="index.html"
+      aria-label="Nicholas Wohlfeil, home"
+      ><span>Nicholas Wohlfeil</span></a
+    >
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      hidden
+    >
+      Menu <span aria-hidden="true">+</span>
+    </button>
+    <nav id="primary-navigation" aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="projects.html">Projects</a></li><li><a href="about.html">About</a></li><li><a href="experiences.html" aria-current="page">Experience</a></li><li><a href="resume.html">Resume</a></li><li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <details class="appearance" hidden>
+      <summary aria-label="Appearance settings">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="8" />
+          <path
+            d="M12 4v16a8 8 0 0 0 0-16Z"
+            fill="currentColor"
+            stroke="none"
+          /></svg
+        ><span class="sr-only">Appearance</span>
+      </summary>
+      <div class="appearance-panel">
+        <fieldset>
+          <legend>Appearance</legend>
+          <div class="theme-options">
+            <button
+              type="button"
+              data-theme-choice="light"
+              aria-pressed="false"
+            >
+              Light
+            </button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">
+              Dark
+            </button>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Accent color</legend>
+          <div class="color-options">
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-1"
+              aria-label="Rose accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-2"
+              aria-label="Copper accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-3"
+              aria-label="Amber accent"
+              aria-pressed="true"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-4"
+              aria-label="Blue accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-5"
+              aria-label="Plum accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+            <button
+              type="button"
+              class="swatch"
+              data-color="color-6"
+              aria-label="Teal accent"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+        </fieldset>
+        <p class="small muted">Preferences stay in this browser.</p>
+      </div>
+    </details>
+  </div>
+</header>
+
+    <main id="main-content" tabindex="-1"><section class="page-intro container"><h1>Experience</h1><a class="text-link" href="resume.html">View resume <span aria-hidden="true">↗</span></a></section><section class="container section experience-section" aria-label="Professional experience"><ol class="experience-list"><li class="experience-item"><div class="experience-date"><span>December 2024 – Present</span></div><div><p class="experience-org">U-M Robotics Department</p><h2>Administrative Assistant</h2><p>Redesigned front-end interfaces with JavaScript, Vue.js, and PHP while supporting daily administrative operations in the Robotics Department.</p></div></li><li class="experience-item"><div class="experience-date"><span>June 2024 – August 2024</span></div><div><p class="experience-org">U-M Comprehensive Studies Program</p><h2>Course Assistant</h2><p>Supported students in preparatory calculus through classroom assistance, workshops, and individual tutoring. Collaborated with faculty and course staff to refine course content.</p></div></li><li class="experience-item"><div class="experience-date"><span>August 2023 – May 2024</span></div><div><p class="experience-org">VODCA Lab</p><h2>Research Assistant</h2><p>Contributed to the design and implementation of a simulated satellite orbit system on an omnidirectional rover, supporting real-time data collection and analysis.</p></div></li><li class="experience-item"><div class="experience-date"><span>August 2022 – May 2024</span></div><div><p class="experience-org">MARVL Lab</p><h2>Research Assistant</h2><p>Supported real-time robotic safety protocols by analyzing wheel encoder data for velocity and acceleration, and visualizing motion through dynamic graphs.</p></div></li><li class="experience-item"><div class="experience-date"><span>August 2022 – December 2022</span></div><div><p class="experience-org">U-M Aerospace Engineering Department</p><h2>Instructional Aide</h2><p>Helped aerospace engineering students translate theory into practical project ideas and strengthen their understanding of core engineering concepts.</p></div></li><li class="experience-item"><div class="experience-date"><span>August 2022 – January 2023</span></div><div><p class="experience-org">Michigan Research &amp; Discovery Scholars</p><h2>Program Assistant</h2><p>Coordinated administrative and logistical work for Michigan Research &amp; Discovery Scholars, organizing events and supporting collaboration among students, faculty, and staff.</p></div></li><li class="experience-item"><div class="experience-date"><span>May 2022 – August 2022</span></div><div><p class="experience-org">U-M Comprehensive Studies Program</p><h2>Peer Advisor</h2><p>Mentored first-year Summer Bridge Scholars through individual advising, community programming, and collaboration with campus departments.</p></div></li><li class="experience-item"><div class="experience-date"><span>May 2022 – August 2022</span></div><div><p class="experience-org">A2Sys Lab</p><h2>Research Assistant</h2><p>Explored autonomous drone behavior through simulated flight trials and used motion capture data to support estimation and analysis.</p></div></li><li class="experience-item"><div class="experience-date"><span>October 2021 – August 2024</span></div><div><p class="experience-org">U-M Comprehensive Studies Program</p><h2>Tutor</h2><p>Tutored undergraduate computer science students in intermediate and advanced programming, with an emphasis on algorithm development.</p></div></li></ol></section></main>
+    <footer class="site-footer">
+  <div class="container footer-content">
+    <p>© 2026 Nicholas Wohlfeil</p>
+    <nav class="social-links" aria-label="Social links"><a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#github" /></svg><span>GitHub</span></a></nav>
+  </div>
+</footer>
+
+  </body>
 </html>
