@@ -340,7 +340,11 @@ p {
   color: var(--accent);
 }
 .menu-toggle {
-  min-width: 68px;
+  display: inline-flex;
+  align-items: center;
+  width: 44px;
+  justify-content: center;
+  min-width: 44px;
   min-height: 44px;
   color: var(--text-color);
   border: 1px solid var(--control-border);

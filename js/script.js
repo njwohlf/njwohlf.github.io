@@ -7,6 +7,7 @@
 
   function setMenu(open, restoreFocus = false) {
     menu?.setAttribute("aria-expanded", String(open));
+    menu?.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
     if (navigation) navigation.hidden = mobile.matches && !open;
     if (restoreFocus) menu?.focus();
   }

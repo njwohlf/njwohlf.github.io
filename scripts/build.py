@@ -111,11 +111,6 @@ def outputs():
         path = f'projects/{project["slug"]}.html'
         result[output_path(path)] = render(path, project['title'], project['summary'], project_page(project))
     paths = [path for path in result if path != '404.html']
-    legacy = [path for path in PAGES if path not in ('index.html', '404.html')] + [f'projects/{p["slug"]}.html' for p in PROJECTS]
-    for path in legacy:
-        target = route(path)
-        redirect = render(path, 'Page moved', 'This page has a new address.', f'<section class="page-intro container"><h1>Page moved</h1><p><a href="{target}">Continue to this page</a></p></section>')
-        result[path] = redirect.replace('</head>', f'<meta http-equiv="refresh" content="0; url={target}"><meta name="robots" content="noindex"><script src="/js/redirect.js" defer></script></head>')
     result['sitemap.xml'] = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'  <url><loc>{SITE}{"/" + path.removesuffix("index.html")}</loc></url>\n' for path in paths) + '</urlset>\n'
     result['robots.txt'] = f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n'
     return result
@@ -127,7 +122,7 @@ def main():
     args = parser.parse_args()
     stale = []
     generated = outputs()
-    for target in (ROOT / 'projects').rglob('*.html'):
+    for target in list(ROOT.glob('*.html')) + list((ROOT / 'projects').rglob('*.html')):
         if target.relative_to(ROOT).as_posix() not in generated:
             if args.check:
                 stale.append(str(target.relative_to(ROOT)))
