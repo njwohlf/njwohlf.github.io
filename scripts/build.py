@@ -18,7 +18,19 @@ def read(path):
     return (ROOT / path).read_text()
 
 
-def social_links(prefix=''):
+def route(path):
+    if path == 'index.html':
+        return '/'
+    if path == '404.html':
+        return '/404.html'
+    return '/' + path.removesuffix('.html') + '/'
+
+
+def output_path(path):
+    return path if path in ('index.html', '404.html') else path.removesuffix('.html') + '/index.html'
+
+
+def social_links(prefix='/'):
     profiles = [('linkedin', 'LinkedIn', 'https://www.linkedin.com/in/nicholas-wohlfeil'), ('github', 'GitHub', 'https://github.com/njwohlf')]
     return ''.join(f'<a href="{url}"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="{prefix}assets/icons.svg#{icon}" /></svg><span>{label}</span></a>' for icon, label, url in profiles)
 
@@ -32,7 +44,7 @@ def project_card(project):
     title, slug = ESC(project['title']), project['slug']
     return f'''<article class="project-card" data-category="{project['category']}">
       <div class="project-card-content"><div class="project-meta"><span>{project['category']}</span></div>
-      <h3><a href="projects/{slug}.html">{title}<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
+      <h3><a href="/projects/{slug}/">{title}<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
       <p>{ESC(project['summary'])}</p>{tags(project)}</div>
     </article>'''
 
@@ -43,16 +55,16 @@ def project_page(project):
     media = ''
     if photo:
         caption = f'<figcaption>{ESC(photo["caption"])}</figcaption>' if photo.get('caption') else ''
-        media = f'<figure class="project-photo"><img src="../{ESC(photo["src"])}" alt="{ESC(photo["alt"])}" width="{photo["width"]}" height="{photo["height"]}" loading="lazy">{caption}</figure>'
+        media = f'<figure class="project-photo"><img src="/{ESC(photo["src"])}" alt="{ESC(photo["alt"])}" width="{photo["width"]}" height="{photo["height"]}" loading="lazy">{caption}</figure>'
     layout = ' has-photo' if photo else ''
-    return f'''<div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a><span aria-hidden="true">/</span><span aria-current="page">{ESC(project['title'])}</span></nav></div>
+    return f'''<div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/projects/">Projects</a><span aria-hidden="true">/</span><span aria-current="page">{ESC(project['title'])}</span></nav></div>
     <section class="page-intro container project-intro"><p class="eyebrow">{project['category']}</p><h1>{ESC(project['title'])}</h1>{tags(project)}</section>
     <div class="container project-overview{layout}"><div class="prose">{paragraphs}</div>{media}</div>'''
 
 
 def experience_page():
     rows = ''.join(f'''<li class="experience-item"><div class="experience-date"><span>{ESC(role['dates'].replace(' - ', ' – ').replace('Current', 'Present'))}</span></div><h2>{ESC(role['title'])}</h2><p class="experience-org">{ESC(role['organization'])}</p><p class="experience-description">{ESC(role['description'])}</p></li>''' for role in EXPERIENCE)
-    return f'''<section class="page-intro container"><h1>Experience</h1><a class="text-link" href="resume.html">View resume <span aria-hidden="true">↗</span></a></section><section class="container section experience-section" aria-label="Professional experience"><ol class="experience-list">{rows}</ol></section>'''
+    return f'''<section class="page-intro container"><h1>Experience</h1><a class="text-link" href="/resume/">View resume <span aria-hidden="true">↗</span></a></section><section class="container section experience-section" aria-label="Professional experience"><ol class="experience-list">{rows}</ol></section>'''
 
 
 PAGES = {
@@ -67,18 +79,16 @@ PAGES = {
 
 
 def render(path, title, description, content):
-    prefix = '../' if '/' in path else ''
-    if path == '404.html':
-        prefix = '/'  # The host can serve this document at arbitrary missing paths.
+    prefix = '/'
     active = 'projects.html' if path.startswith('projects/') else path
     links = []
     for href, label in [('about.html', 'About'), ('projects.html', 'Projects'), ('experiences.html', 'Experience'), ('resume.html', 'Resume'), ('contact.html', 'Contact')]:
         current = ' aria-current="page"' if active == href else ''
-        links.append(f'<li><a href="{prefix}{href}"{current}>{label}</a></li>')
+        links.append(f'<li><a href="{route(href)}"{current}>{label}</a></li>')
     navbar = Template(read('partials/navbar.html')).substitute(prefix=prefix, nav_links=''.join(links))
     footer = Template(read('partials/footer.html')).substitute(prefix=prefix, year=YEAR, social_links=social_links(prefix))
-    canonical = SITE + ('/' if path == 'index.html' else '/' + path)
-    extra = '<script src="js/projects-page.js" defer></script>' if path == 'projects.html' else ''
+    canonical = SITE + route(path)
+    extra = '<script src="/js/projects-page.js" defer></script>' if path == 'projects.html' else ''
     if path == '404.html':
         extra += '<meta name="robots" content="noindex">'
     rendered = Template(read('templates/page.html')).substitute(prefix=prefix, title=ESC(f'{title} | Nicholas Wohlfeil'), description=ESC(description), canonical=canonical, extra_head=extra, navbar=navbar, footer=footer, content=content)
@@ -96,12 +106,17 @@ def outputs():
                 content = Template(content).substitute(social_links=social_links())
             if path == 'projects.html':
                 content = Template(content).substitute(all_projects=''.join(project_card(p) for p in PROJECTS), project_count=len(PROJECTS))
-        result[path] = render(path, title, description, content)
+        result[output_path(path)] = render(path, title, description, content)
     for project in PROJECTS:
         path = f'projects/{project["slug"]}.html'
-        result[path] = render(path, project['title'], project['summary'], project_page(project))
+        result[output_path(path)] = render(path, project['title'], project['summary'], project_page(project))
     paths = [path for path in result if path != '404.html']
-    result['sitemap.xml'] = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'  <url><loc>{SITE}{"/" if path == "index.html" else "/" + path}</loc></url>\n' for path in paths) + '</urlset>\n'
+    legacy = [path for path in PAGES if path not in ('index.html', '404.html')] + [f'projects/{p["slug"]}.html' for p in PROJECTS]
+    for path in legacy:
+        target = route(path)
+        redirect = render(path, 'Page moved', 'This page has a new address.', f'<section class="page-intro container"><h1>Page moved</h1><p><a href="{target}">Continue to this page</a></p></section>')
+        result[path] = redirect.replace('</head>', f'<meta http-equiv="refresh" content="0; url={target}"><meta name="robots" content="noindex"><script src="/js/redirect.js" defer></script></head>')
+    result['sitemap.xml'] = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'  <url><loc>{SITE}{"/" + path.removesuffix("index.html")}</loc></url>\n' for path in paths) + '</urlset>\n'
     result['robots.txt'] = f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n'
     return result
 
@@ -112,7 +127,7 @@ def main():
     args = parser.parse_args()
     stale = []
     generated = outputs()
-    for target in (ROOT / 'projects').glob('*.html'):
+    for target in (ROOT / 'projects').rglob('*.html'):
         if target.relative_to(ROOT).as_posix() not in generated:
             if args.check:
                 stale.append(str(target.relative_to(ROOT)))

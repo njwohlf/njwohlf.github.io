@@ -7,15 +7,7 @@ const path = require("node:path");
 const root = path.resolve(__dirname, "..");
 const projects = require("../content/projects.json");
 const base = process.env.SITE_URL || "http://127.0.0.1:8766";
-const pages = fs
-  .readdirSync(root)
-  .filter((name) => name.endsWith(".html"))
-  .concat(
-    fs
-      .readdirSync(path.join(root, "projects"))
-      .filter((name) => name.endsWith(".html"))
-      .map((name) => `projects/${name}`),
-  );
+const pages = ["", "about/", "projects/", "experiences/", "resume/", "contact/", "404.html", ...projects.map(p => `projects/${p.slug}/`)];
 const results = [];
 const output = path.join(root, "test-results");
 fs.mkdirSync(output, { recursive: true });
@@ -93,7 +85,7 @@ async function reflow(page, label) {
 
     // Keyboard: skip link, mobile navigation, disclosure, Escape, and focus restoration.
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto(`${base}/index.html`);
+    await page.goto(`${base}/`);
     await page.keyboard.press("Tab");
     assert.equal(
       await page.locator(":focus").getAttribute("class"),
@@ -129,7 +121,7 @@ async function reflow(page, label) {
     console.log("PASS keyboard navigation and appearance disclosure");
 
     // Check every accent against the complete contact page and the visible controls.
-    await page.goto(`${base}/contact.html`);
+    await page.goto(`${base}/contact/`);
     for (const theme of ["light", "dark"]) {
       for (let color = 1; color <= 6; color++) {
         await page.evaluate(
@@ -163,7 +155,7 @@ async function reflow(page, label) {
     for (const scheme of ["light", "dark"]) {
       const fresh = await browser.newContext({ colorScheme: scheme });
       const firstVisit = await fresh.newPage();
-      await firstVisit.goto(`${base}/index.html`);
+      await firstVisit.goto(`${base}/`);
       assert.equal(
         await firstVisit.locator("html").getAttribute("data-theme"),
         scheme,
@@ -206,7 +198,7 @@ async function reflow(page, label) {
     );
 
     // A single static collection supports category filtering and view changes.
-    await page.goto(`${base}/projects.html`);
+    await page.goto(`${base}/projects/`);
     const visibleCards = () => page.locator(".project-card:visible").count();
     assert.equal(await visibleCards(), projects.length);
     for (const category of ["Academic", "Personal", "Research", "All"]) {
@@ -225,7 +217,7 @@ async function reflow(page, label) {
     console.log("PASS project categories and compact list");
 
     // Native constraint validation, failure recovery, and confirmation using mocked HTTP only.
-    await page.goto(`${base}/contact.html`);
+    await page.goto(`${base}/contact/`);
     let submissions = 0;
     let responseStatus = 422;
     await page.route("https://formspree.io/f/xvgkoplg", async (route) => {
@@ -278,16 +270,16 @@ async function reflow(page, label) {
     });
     const plain = await noJS.newPage();
     for (const file of [
-      "index.html",
-      "projects.html",
-      "projects/character-recognition.html",
-      "contact.html",
+      "",
+      "projects/",
+      "projects/character-recognition/",
+      "contact/",
     ]) {
       await plain.goto(`${base}/${file}`);
       assert(await plain.locator("#primary-navigation").isVisible());
       await reflow(plain, `no JS ${file}`);
     }
-    await plain.goto(`${base}/projects.html`);
+    await plain.goto(`${base}/projects/`);
     assert.equal(await plain.locator(".project-card:visible").count(), projects.length);
     assert(!(await plain.locator(".project-controls").isVisible()));
     await noJS.close();
@@ -305,7 +297,7 @@ async function reflow(page, label) {
     const privatePage = await restricted.newPage();
     const privateErrors = [];
     privatePage.on("pageerror", (error) => privateErrors.push(error.message));
-    await privatePage.goto(`${base}/projects.html`);
+    await privatePage.goto(`${base}/projects/`);
     await privatePage.evaluate(() => {
       SitePreferences.setTheme("dark");
       SitePreferences.setColor("color-6");
@@ -326,12 +318,12 @@ async function reflow(page, label) {
     // Zoom-like reflow and WCAG text-spacing overrides must not hide content.
     await page.setViewportSize({ width: 320, height: 800 });
     for (const file of [
-      "index.html",
-      "projects.html",
-      "contact.html",
-      "experiences.html",
-      "projects/character-recognition.html",
-      "about.html",
+      "",
+      "projects/",
+      "contact/",
+      "experiences/",
+      "projects/character-recognition/",
+      "about/",
     ]) {
       await page.goto(`${base}/${file}`);
       await page.addStyleTag({
@@ -340,7 +332,7 @@ async function reflow(page, label) {
       });
       await reflow(page, `text spacing ${file}`);
     }
-    await page.goto(`${base}/index.html`);
+    await page.goto(`${base}/`);
     assert.equal(
       await page
         .locator(".button")
@@ -366,15 +358,15 @@ async function reflow(page, label) {
     );
     assert.deepEqual(errors, [], "Unexpected JavaScript errors");
     for (const [width, theme, file] of [
-      [1440, "light", "index.html"],
-      [390, "light", "index.html"],
-      [1440, "dark", "index.html"],
-      [390, "dark", "projects.html"],
-      [1440, "light", "projects/character-recognition.html"],
-      [390, "light", "contact.html"],
-      [1440, "light", "about.html"],
-      [390, "dark", "about.html"],
-      [1440, "light", "experiences.html"],
+      [1440, "light", ""],
+      [390, "light", ""],
+      [1440, "dark", ""],
+      [390, "dark", "projects/"],
+      [1440, "light", "projects/character-recognition/"],
+      [390, "light", "contact/"],
+      [1440, "light", "about/"],
+      [390, "dark", "about/"],
+      [1440, "light", "experiences/"],
     ]) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(`${base}/${file}`);

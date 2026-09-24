@@ -7,7 +7,7 @@ import json
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = list(ROOT.glob('*.html')) + list((ROOT / 'projects').glob('*.html'))
+PAGES = list(ROOT.glob('*.html')) + [p for folder in ['about', 'projects', 'experiences', 'resume', 'contact'] for p in (ROOT / folder).rglob('*.html')]
 
 
 class Page(HTMLParser):
@@ -74,5 +74,5 @@ for project in projects:
         photo = project['photo']
         assert photo['alt'].strip() and photo['width'] > 0 and photo['height'] > 0, 'Photo needs alt text and dimensions'
         assert photo['src'].startswith('assets/') and (ROOT / photo['src']).is_file(), 'Photo must be a local asset'
-    assert (ROOT / 'projects'  / (project['slug'] + '.html')).exists()
+    assert (ROOT / 'projects'  / project['slug'] / 'index.html').exists()
 print(f'PASS: {len(pages)} pages, local links, anchors, semantics, metadata, and {len(projects)} project records.')

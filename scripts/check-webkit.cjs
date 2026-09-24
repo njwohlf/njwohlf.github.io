@@ -6,15 +6,7 @@ const path = require("node:path");
 const root = path.resolve(__dirname, "..");
 const projects = require("../content/projects.json");
 const base = process.env.SITE_URL || "http://127.0.0.1:8766";
-const pages = fs
-  .readdirSync(root)
-  .filter((name) => name.endsWith(".html"))
-  .concat(
-    fs
-      .readdirSync(path.join(root, "projects"))
-      .filter((name) => name.endsWith(".html"))
-      .map((name) => `projects/${name}`),
-  );
+const pages = ["", "about/", "projects/", "experiences/", "resume/", "contact/", "404.html", ...projects.map(p => `projects/${p.slug}/`)];
 (async () => {
   const browser = await webkit.launch();
   try {
@@ -36,7 +28,7 @@ const pages = fs
       console.log(`PASS WebKit: ${pages.length} pages at ${width}px`);
     }
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto(`${base}/projects.html`);
+    await page.goto(`${base}/projects/`);
     await page.locator(".menu-toggle").click();
     assert(await page.locator("#primary-navigation").isVisible());
     await page.keyboard.press("Escape");

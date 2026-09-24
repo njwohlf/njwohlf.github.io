@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.nickwohlfeil.com/</loc></url>
-  <url><loc>https://www.nickwohlfeil.com/about.html</loc></url>
-  <url><loc>https://www.nickwohlfeil.com/projects.html</loc></url>
-  <url><loc>https://www.nickwohlfeil.com/experiences.html</loc></url>
-  <url><loc>https://www.nickwohlfeil.com/resume.html</loc></url>
-  <url><loc>https://www.nickwohlfeil.com/contact.html</loc></url>
-  <url><loc>https://www.nickwohlfeil.com/projects/autonomous-mbots.html</loc></url>
-  <url><loc>https://www.nickwohlfeil.com/projects/personal-website.html</loc></url>
-  <url><loc>https://www.nickwohlfeil.com/projects/character-recognition.html</loc></url>
-  <url><loc>https://www.nickwohlfeil.com/projects/lidar-map.html</loc></url>
-  <url><loc>https://www.nickwohlfeil.com/projects/orbital-satellite.html</loc></url>
-  <url><loc>https://www.nickwohlfeil.com/projects/auction-notification.html</loc></url>
-  <url><loc>https://www.nickwohlfeil.com/projects/indie-game.html</loc></url>
-  <url><loc>https://www.nickwohlfeil.com/projects/quadplane.html</loc></url>
+  <url><loc>https://www.nickwohlfeil.com/about/</loc></url>
+  <url><loc>https://www.nickwohlfeil.com/projects/</loc></url>
+  <url><loc>https://www.nickwohlfeil.com/experiences/</loc></url>
+  <url><loc>https://www.nickwohlfeil.com/resume/</loc></url>
+  <url><loc>https://www.nickwohlfeil.com/contact/</loc></url>
+  <url><loc>https://www.nickwohlfeil.com/projects/autonomous-mbots/</loc></url>
+  <url><loc>https://www.nickwohlfeil.com/projects/personal-website/</loc></url>
+  <url><loc>https://www.nickwohlfeil.com/projects/character-recognition/</loc></url>
+  <url><loc>https://www.nickwohlfeil.com/projects/lidar-map/</loc></url>
+  <url><loc>https://www.nickwohlfeil.com/projects/orbital-satellite/</loc></url>
+  <url><loc>https://www.nickwohlfeil.com/projects/auction-notification/</loc></url>
+  <url><loc>https://www.nickwohlfeil.com/projects/indie-game/</loc></url>
+  <url><loc>https://www.nickwohlfeil.com/projects/quadplane/</loc></url>
 </urlset>
