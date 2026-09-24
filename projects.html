@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Explore Nicholas Wohlfeil’s software, robotics, and systems projects, including cache simulation, machine learning, and autonomous robots." />
+    <meta name="description" content="Explore Nicholas Wohlfeil’s software, robotics, and systems projects, including machine learning, mapping, and autonomous robots." />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f7f2" />
@@ -12,7 +12,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nicholas Wohlfeil" />
     <meta property="og:title" content="Projects | Nicholas Wohlfeil" />
-    <meta property="og:description" content="Explore Nicholas Wohlfeil’s software, robotics, and systems projects, including cache simulation, machine learning, and autonomous robots." />
+    <meta property="og:description" content="Explore Nicholas Wohlfeil’s software, robotics, and systems projects, including machine learning, mapping, and autonomous robots." />
     <meta property="og:url" content="https://www.nickwohlfeil.com/projects.html" />
     <meta
       property="og:image"
@@ -34,7 +34,8 @@
       class="wordmark"
       href="index.html"
       aria-label="Nicholas Wohlfeil, home"
-      ><span>Nicholas Wohlfeil</span></a
+      ><span class="name-first">Nicholas</span
+      ><span class="name-last">Wohlfeil</span></a
     >
     <button
       class="menu-toggle"
@@ -47,7 +48,7 @@
     </button>
     <nav id="primary-navigation" aria-label="Main navigation">
       <ul class="nav-links">
-        <li><a href="projects.html" aria-current="page">Projects</a></li><li><a href="about.html">About</a></li><li><a href="experiences.html">Experience</a></li><li><a href="resume.html">Resume</a></li><li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li><li><a href="projects.html" aria-current="page">Projects</a></li><li><a href="experiences.html">Experience</a></li><li><a href="resume.html">Resume</a></li><li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <details class="appearance" hidden>
@@ -194,10 +195,6 @@
         Academic
       </button>
     </div>
-    <div class="view-toggle" role="group" aria-label="Project layout">
-      <button type="button" data-view="grid" aria-pressed="true">Grid</button
-      ><button type="button" data-view="list" aria-pressed="false">List</button>
-    </div>
   </div>
   <p
     id="project-count"
@@ -206,20 +203,17 @@
     aria-live="polite"
     aria-atomic="true"
   >
-    9 projects
+    8 projects
   </p>
-  <div class="project-grid" id="projects-grid"><article class="project-card" data-category="Academic">
-      <div class="project-card-content"><div class="project-meta"><span>Academic</span></div>
-      <h3><a href="projects/cache.html">LC2K Cache Simulator<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
-      <p>A cache simulator I built in C to follow what happens on each memory access.</p><ul class="project-tags" aria-label="Technologies and topics"><li>C</li><li>Computer architecture</li></ul></div>
-    </article><article class="project-card" data-category="Research">
+  <div class="project-grid" id="projects-grid" data-view="list">
+    <article class="project-card" data-category="Research">
       <div class="project-card-content"><div class="project-meta"><span>Research</span></div>
       <h3><a href="projects/autonomous-mbots.html">Autonomous MBots<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
       <p>Research work on how mobile robots move, and how to make that behavior safer.</p><ul class="project-tags" aria-label="Technologies and topics"><li>Robotics</li><li>Safety</li><li>Control</li></ul></div>
     </article><article class="project-card" data-category="Personal">
       <div class="project-card-content"><div class="project-meta"><span>Personal</span></div>
-      <h3><a href="projects/personal-website.html">This website<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
-      <p>A home for my projects, and a project of its own.</p><ul class="project-tags" aria-label="Technologies and topics"><li>JavaScript</li><li>HTML &amp; CSS</li><li>Accessibility</li></ul></div>
+      <h3><a href="projects/personal-website.html">Personal Portfolio<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
+      <p>A home for my projects, interests, and ideas.</p><ul class="project-tags" aria-label="Technologies and topics"><li>JavaScript</li><li>HTML &amp; CSS</li><li>Accessibility</li></ul></div>
     </article><article class="project-card" data-category="Academic">
       <div class="project-card-content"><div class="project-meta"><span>Academic</span></div>
       <h3><a href="projects/character-recognition.html">Handwritten Character Recognition<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
@@ -239,18 +233,32 @@
     </article><article class="project-card" data-category="Personal">
       <div class="project-card-content"><div class="project-meta"><span>Personal</span></div>
       <h3><a href="projects/indie-game.html">Indie Game Development<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
-      <p>A Unity project where I’ve worked on gameplay, levels, and game assets.</p><ul class="project-tags" aria-label="Technologies and topics"><li>Unity</li><li>C#</li><li>Blender</li></ul></div>
+      <p>Solo Unity projects where I’ve worked on gameplay, level design, and game assets.</p><ul class="project-tags" aria-label="Technologies and topics"><li>Unity</li><li>C#</li><li>Blender</li></ul></div>
     </article><article class="project-card" data-category="Research">
       <div class="project-card-content"><div class="project-meta"><span>Research</span></div>
       <h3><a href="projects/quadplane.html">Quadplane Development<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
       <p>Working on an aircraft that combines vertical takeoff with fixed-wing flight.</p><ul class="project-tags" aria-label="Technologies and topics"><li>UAVs</li><li>Controls</li><li>Embedded systems</li></ul></div>
-    </article></div>
+    </article>
+  </div>
 </section>
 </main>
     <footer class="site-footer">
   <div class="container footer-content">
     <p>© 2026 Nicholas Wohlfeil</p>
-    <nav class="social-links" aria-label="Social links"><a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#github" /></svg><span>GitHub</span></a></nav>
+    <nav class="social-links" aria-label="Social links">
+      <a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#github" /></svg><span>GitHub</span></a>
+      <a href="https://nickwohlfeil.com/"
+        ><svg
+          class="social-icon"
+          width="20"
+          height="20"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="assets/icons.svg#globe" /></svg
+        ><span>Website</span></a
+      >
+    </nav>
   </div>
 </footer>
 

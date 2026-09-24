@@ -34,7 +34,8 @@
       class="wordmark"
       href="index.html"
       aria-label="Nicholas Wohlfeil, home"
-      ><span>Nicholas Wohlfeil</span></a
+      ><span class="name-first">Nicholas</span
+      ><span class="name-last">Wohlfeil</span></a
     >
     <button
       class="menu-toggle"
@@ -47,7 +48,7 @@
     </button>
     <nav id="primary-navigation" aria-label="Main navigation">
       <ul class="nav-links">
-        <li><a href="projects.html">Projects</a></li><li><a href="about.html" aria-current="page">About</a></li><li><a href="experiences.html">Experience</a></li><li><a href="resume.html">Resume</a></li><li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li><li><a href="projects.html">Projects</a></li><li><a href="experiences.html">Experience</a></li><li><a href="resume.html">Resume</a></li><li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <details class="appearance" hidden>
@@ -150,33 +151,30 @@
   </div>
 </header>
 
-    <main id="main-content" tabindex="-1"><section class="page-intro container">
-  <h1>About me</h1>
-</section>
-<div class="container about-content">
+    <main id="main-content" tabindex="-1"><div class="container about-content">
   <div class="about-introduction">
     <div class="prose">
+      <h1>About me</h1>
       <p class="lead">
-        I’m Nick, a software engineer in Ann Arbor. I like writing code, working
-        with robots, and having a new problem to figure out.
+        I’m Nick, a software engineer in Ann Arbor. I work with code and various
+        robots. I am always looking for the next problem to solve.
       </p>
       <p>
         I graduated from the University of Michigan in 2024 with a degree in
         Computer Science Engineering. While I was there, I joined research labs
-        studying robotics, simulation, and control systems.
+        working in aerospace and robotics.
       </p>
       <p>
-        I also spent a lot of time tutoring programming and helping with
-        courses. Explaining something to someone else is a good way to find out
-        how well you understand it yourself.
+        I also spent a lot of time in undergrad tutoring for multiple disciplines
+        and yielding aid as a course assistant.
       </p>
       <p>
-        These days, I work in U-M’s Robotics Department, where I help improve
-        web interfaces alongside the department’s administrative work. Outside
-        that role, I keep exploring software and personal projects.
+        These days, when I am not buried in work, I like to tinker with gadgets
+        and make programs and structures that make life easier. Feel free to check
+        out some of my projects below!
       </p>
-      <a class="text-link" href="experiences.html"
-        >Work history <span aria-hidden="true">↗</span></a
+      <a class="text-link" href="projects.html"
+        >Project history <span aria-hidden="true">↗</span></a
       >
     </div>
     <img
@@ -191,23 +189,23 @@
     <h2 id="outside-title">Outside of work</h2>
     <div class="prose">
       <p>
-        I like getting outside for a hike, finding a new trail, and taking a
-        drone out for a flight. At home, I’m into strategy games, RPGs, and
-        horror—anything with a story I can get lost in.
+        I like getting outside whenever I can, usually just exploring or finding
+        new areas to fly my drones around in. At home, I am a Horror-enthusiast at heart,
+        and am a sucker for any game or movie that can give me a good thrill.
       </p>
       <p>
-        There’s usually a side project going on, too. I like tinkering with
-        robots and trying out ideas, even when it takes a bit of trial and
-        error.
+        Apart from that, I normally always have a cycle of projects rotating in and out of
+        workshopping, most all of them revolve around my previously mentioned interests or
+        serve as just general convenience tools.
       </p>
     </div>
   </section>
-  <section class="about-section" aria-labelledby="education-title">
+  <section class="about-section education-section" aria-labelledby="education-title">
     <h2 id="education-title">Education</h2>
     <div class="education-list">
       <div>
         <h3>University of Michigan <span class="education-year">2024</span></h3>
-        <p>B.S. Computer Science Engineering</p>
+        <p>B.S.E. Computer Science Engineering</p>
         <p class="small muted">Ann Arbor, Michigan</p>
       </div>
       <div>
@@ -222,7 +220,20 @@
     <footer class="site-footer">
   <div class="container footer-content">
     <p>© 2026 Nicholas Wohlfeil</p>
-    <nav class="social-links" aria-label="Social links"><a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#github" /></svg><span>GitHub</span></a></nav>
+    <nav class="social-links" aria-label="Social links">
+      <a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/icons.svg#github" /></svg><span>GitHub</span></a>
+      <a href="https://nickwohlfeil.com/"
+        ><svg
+          class="social-icon"
+          width="20"
+          height="20"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="assets/icons.svg#globe" /></svg
+        ><span>Website</span></a
+      >
+    </nav>
   </div>
 </footer>
 

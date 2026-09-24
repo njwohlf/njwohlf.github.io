@@ -34,7 +34,8 @@
       class="wordmark"
       href="../index.html"
       aria-label="Nicholas Wohlfeil, home"
-      ><span>Nicholas Wohlfeil</span></a
+      ><span class="name-first">Nicholas</span
+      ><span class="name-last">Wohlfeil</span></a
     >
     <button
       class="menu-toggle"
@@ -47,7 +48,7 @@
     </button>
     <nav id="primary-navigation" aria-label="Main navigation">
       <ul class="nav-links">
-        <li><a href="../projects.html" aria-current="page">Projects</a></li><li><a href="../about.html">About</a></li><li><a href="../experiences.html">Experience</a></li><li><a href="../resume.html">Resume</a></li><li><a href="../contact.html">Contact</a></li>
+        <li><a href="../about.html">About</a></li><li><a href="../projects.html" aria-current="page">Projects</a></li><li><a href="../experiences.html">Experience</a></li><li><a href="../resume.html">Resume</a></li><li><a href="../contact.html">Contact</a></li>
       </ul>
     </nav>
     <details class="appearance" hidden>
@@ -152,11 +153,24 @@
 
     <main id="main-content" tabindex="-1"><div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a><span aria-hidden="true">/</span><span aria-current="page">Orbital Satellite Simulation</span></nav></div>
     <section class="page-intro container project-intro"><p class="eyebrow">Research</p><h1>Orbital Satellite Simulation</h1><ul class="project-tags" aria-label="Technologies and topics"><li>Simulation</li><li>Dynamics</li><li>Robotics</li></ul></section>
-    <div class="container project-overview prose"><p>In the VODCA Lab, I helped develop a satellite orbit simulation using an omnidirectional ground rover as a physical testbed. My work connected orbital models to robot commands and supported real-time data collection and analysis.</p><p>The rover provided a way to study aspects of orbital motion in a lab, within the limits of what a ground robot can represent.</p></div></main>
+    <div class="container project-overview has-photo"><div class="prose"><p>In the VODCA Lab, I helped develop a satellite orbit simulation using an omnidirectional ground rover as a physical testing metric. My work was specifically in the lower-level control between the simulated models and physical robots that supported real-time data collection and analysis.</p><p>The goal was to simulate the theoretical orbital motion of a satellite in a controlled lab space, within the limits of what a the MBots can represent.</p></div><figure class="project-photo"><img src="../assets/images/omni-directional-mbot.png" alt="An omnidirectional rover with three roller wheels and onboard electronics." width="384" height="512" loading="lazy"></figure></div></main>
     <footer class="site-footer">
   <div class="container footer-content">
     <p>© 2026 Nicholas Wohlfeil</p>
-    <nav class="social-links" aria-label="Social links"><a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#github" /></svg><span>GitHub</span></a></nav>
+    <nav class="social-links" aria-label="Social links">
+      <a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#github" /></svg><span>GitHub</span></a>
+      <a href="https://nickwohlfeil.com/"
+        ><svg
+          class="social-icon"
+          width="20"
+          height="20"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="../assets/icons.svg#globe" /></svg
+        ><span>Website</span></a
+      >
+    </nav>
   </div>
 </footer>
 

@@ -9,7 +9,22 @@
     <h2 id="message-title">Get in touch</h2>
     <p>Send me a message, or find me on LinkedIn and GitHub.</p>
     <div class="social-links contact-links">$social_links</div>
-    <p class="small muted">Based in Ann Arbor, Michigan.</p>
+    <figure class="contact-map">
+      <iframe
+        title="Map of Ann Arbor, Michigan"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-83.79%2C42.25%2C-83.70%2C42.31&amp;layer=mapnik"
+        width="480"
+        height="280"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+      ></iframe>
+      <figcaption>
+        Ann Arbor, Michigan ·
+        <a href="https://www.openstreetmap.org/#map=13/42.28/-83.745"
+          >View larger map</a
+        >
+      </figcaption>
+    </figure>
   </div>
   <form
     id="contact-form"
@@ -54,7 +69,6 @@
     <p class="small muted" id="form-note">
       Your message is sent through Formspree so I can reply by email. Please
       don’t include sensitive information.
-      <a href="privacy.html">Privacy details</a>.
     </p>
     <button class="button" type="submit">
       Send message <span aria-hidden="true">↗</span>

@@ -4,6 +4,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const root = path.resolve(__dirname, "..");
+const projects = require("../content/projects.json");
 const base = process.env.SITE_URL || "http://127.0.0.1:8766";
 const pages = fs
   .readdirSync(root)
@@ -45,9 +46,9 @@ const pages = fs
     await page.locator('button[data-color="color-6"]').click();
     await page.keyboard.press("Escape");
     await page.locator('[data-filter="Research"]').click();
-    assert.equal(await page.locator(".project-card:visible").count(), 3);
+    assert.equal(await page.locator(".project-card:visible").count(), projects.filter(p => p.category === "Research").length);
     assert.equal(await page.locator("#project-search").count(), 0);
-    await page.locator('button[data-view="list"]').click();
+
     await page.reload();
     assert.equal(await page.locator("html").getAttribute("data-theme"), "dark");
     assert.equal(

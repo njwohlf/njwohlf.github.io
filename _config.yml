@@ -1,0 +1,16 @@
+# Publish generated pages and assets; keep authoring and development files private to the repo.
+exclude:
+  - content
+  - templates
+  - partials
+  - scripts
+  - docs
+  - node_modules
+  - test-results
+  - playwright-report
+  - package.json
+  - package-lock.json
+  - README.md
+  - archive
+  - updates
+  - dev

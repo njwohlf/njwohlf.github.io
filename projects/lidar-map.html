@@ -34,7 +34,8 @@
       class="wordmark"
       href="../index.html"
       aria-label="Nicholas Wohlfeil, home"
-      ><span>Nicholas Wohlfeil</span></a
+      ><span class="name-first">Nicholas</span
+      ><span class="name-last">Wohlfeil</span></a
     >
     <button
       class="menu-toggle"
@@ -47,7 +48,7 @@
     </button>
     <nav id="primary-navigation" aria-label="Main navigation">
       <ul class="nav-links">
-        <li><a href="../projects.html" aria-current="page">Projects</a></li><li><a href="../about.html">About</a></li><li><a href="../experiences.html">Experience</a></li><li><a href="../resume.html">Resume</a></li><li><a href="../contact.html">Contact</a></li>
+        <li><a href="../about.html">About</a></li><li><a href="../projects.html" aria-current="page">Projects</a></li><li><a href="../experiences.html">Experience</a></li><li><a href="../resume.html">Resume</a></li><li><a href="../contact.html">Contact</a></li>
       </ul>
     </nav>
     <details class="appearance" hidden>
@@ -152,11 +153,24 @@
 
     <main id="main-content" tabindex="-1"><div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a><span aria-hidden="true">/</span><span aria-current="page">3D Mapping from LiDAR Data</span></nav></div>
     <section class="page-intro container project-intro"><p class="eyebrow">Academic</p><h1>3D Mapping from LiDAR Data</h1><ul class="project-tags" aria-label="Technologies and topics"><li>Julia</li><li>LiDAR</li><li>Point clouds</li></ul></section>
-    <div class="container project-overview prose"><p>I used Julia to combine separate LiDAR scans into a 3D map. Each scan captured the scene from a different position, so the project involved processing the point clouds and aligning them in a shared coordinate frame.</p><p>The resulting visualization let me inspect how the scans fit together and spot problems in the alignment.</p></div></main>
+    <div class="container project-overview"><div class="prose"><p>I used Julia to combine separate LiDAR scans into a 3D map. Each scan captured the scene from a different angle, so the project involved processing the point clouds and aligning them in a shared coordinate frame.</p><p>The resulting visualization let me inspect how the scans fit together and spot problems in the alignment.</p></div></div></main>
     <footer class="site-footer">
   <div class="container footer-content">
     <p>© 2026 Nicholas Wohlfeil</p>
-    <nav class="social-links" aria-label="Social links"><a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#github" /></svg><span>GitHub</span></a></nav>
+    <nav class="social-links" aria-label="Social links">
+      <a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#github" /></svg><span>GitHub</span></a>
+      <a href="https://nickwohlfeil.com/"
+        ><svg
+          class="social-icon"
+          width="20"
+          height="20"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="../assets/icons.svg#globe" /></svg
+        ><span>Website</span></a
+      >
+    </nav>
   </div>
 </footer>
 

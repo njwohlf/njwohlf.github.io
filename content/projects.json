@@ -1,20 +1,5 @@
 [
   {
-    "slug": "cache",
-    "title": "LC2K Cache Simulator",
-    "category": "Academic",
-    "tags": [
-      "C",
-      "Computer architecture"
-    ],
-    "summary": "A cache simulator I built in C to follow what happens on each memory access.",
-    "featured": true,
-    "overview": [
-      "I built this simulator in C to explore how a cache handles memory reads and writes. It connects to an LC-2K processor simulator and supports different cache sizes and organizations, so I could compare how those choices affect memory access.",
-      "The project covers cache hits, misses, replacement, and writing modified data back to memory. I tested those behaviors with small programs that made each kind of memory access easy to follow."
-    ]
-  },
-  {
     "slug": "autonomous-mbots",
     "title": "Autonomous MBots",
     "category": "Research",
@@ -24,26 +9,30 @@
       "Control"
     ],
     "summary": "Research work on how mobile robots move, and how to make that behavior safer.",
-    "featured": true,
     "overview": [
-      "My work with MBots focused on motion analysis and real-time safety. I used wheel encoder data to examine velocity and acceleration, and plotted the results to understand how the robots behaved over time.",
-      "This was part of my research work in the MARVL Lab. I helped with safety protocols and the tools used to inspect and discuss robot motion."
-    ]
+      "My work with MBots focused on motion analysis and real-time safety. I used wheel encoder data to examine velocity and acceleration accuracy, and analyzed the results to better understand how the robots behaved over time in a practical setting.",
+      "This was part of my research work in the MARVL Lab. I helped with computer vision and the lower level state estimation used to inspect and discuss robot motion relative to their environment."
+    ],
+    "photo": {
+      "src": "assets/images/mbot.jpeg",
+      "alt": "A wheeled MBot with a LiDAR scanner and other onboard electronics on an outdoor table.",
+      "width": 4032,
+      "height": 3024
+    }
   },
   {
     "slug": "personal-website",
-    "title": "This website",
+    "title": "Personal Portfolio",
     "category": "Personal",
     "tags": [
       "JavaScript",
       "HTML & CSS",
       "Accessibility"
     ],
-    "summary": "A home for my projects, and a project of its own.",
-    "featured": true,
+    "summary": "A home for my projects, interests, and ideas.",
     "overview": [
       "I built this site as a place for my projects and work history. It uses HTML, CSS, and JavaScript, with a small Python build script that combines shared templates and project content into static pages.",
-      "I’ve focused on making it comfortable to use on phones and desktops, with keyboard navigation, light and dark themes, and readable pages even without JavaScript. Browser checks cover the layouts, preferences, contact form, and common accessibility issues."
+      "I am open to suggestions or changes for the site, so please feel free to leave a suggestion via the contact page if you have any!"
     ]
   },
   {
@@ -58,7 +47,13 @@
     "overview": [
       "For this project, I compared feedforward and convolutional neural networks on handwritten English characters using Julia. I trained the models with the handwritten character dataset by Cohen, Afshar, Tapson, and van Schaik.",
       "I looked at accuracy, confusion matrices, and learning curves to understand which characters each model recognized well and where it struggled."
-    ]
+    ],
+    "photo": {
+      "src": "assets/images/ml.png",
+      "alt": "A handwritten R alongside neural-network outputs; the predicted label is R.",
+      "width": 1257,
+      "height": 656
+    }
   },
   {
     "slug": "lidar-map",
@@ -71,7 +66,7 @@
     ],
     "summary": "Using Julia to bring separate LiDAR scans together into a 3D map.",
     "overview": [
-      "I used Julia to combine separate LiDAR scans into a 3D map. Each scan captured the scene from a different position, so the project involved processing the point clouds and aligning them in a shared coordinate frame.",
+      "I used Julia to combine separate LiDAR scans into a 3D map. Each scan captured the scene from a different angle, so the project involved processing the point clouds and aligning them in a shared coordinate frame.",
       "The resulting visualization let me inspect how the scans fit together and spot problems in the alignment."
     ]
   },
@@ -86,9 +81,15 @@
     ],
     "summary": "Using a ground robot to study aspects of satellite motion.",
     "overview": [
-      "In the VODCA Lab, I helped develop a satellite orbit simulation using an omnidirectional ground rover as a physical testbed. My work connected orbital models to robot commands and supported real-time data collection and analysis.",
-      "The rover provided a way to study aspects of orbital motion in a lab, within the limits of what a ground robot can represent."
-    ]
+      "In the VODCA Lab, I helped develop a satellite orbit simulation using an omnidirectional ground rover as a physical testing metric. My work was specifically in the lower-level control between the simulated models and physical robots that supported real-time data collection and analysis.",
+      "The goal was to simulate the theoretical orbital motion of a satellite in a controlled lab space, within the limits of what a the MBots can represent."
+    ],
+    "photo": {
+      "src": "assets/images/omni-directional-mbot.png",
+      "alt": "An omnidirectional rover with three roller wheels and onboard electronics.",
+      "width": 384,
+      "height": 512
+    }
   },
   {
     "slug": "auction-notification",
@@ -114,10 +115,9 @@
       "C#",
       "Blender"
     ],
-    "summary": "A Unity project where I’ve worked on gameplay, levels, and game assets.",
+    "summary": "Solo Unity projects where I’ve worked on gameplay, level design, and game assets.",
     "overview": [
-      "This is a solo game project in Unity. I’ve worked on movement, combat, and interaction in C#, along with levels, Blender assets, and player feedback through UI and audio.",
-      "It gives me a place to try gameplay ideas and work on the different pieces that make a game feel playable. Reusable scenes and components help keep those experiments manageable."
+      "This project is a work in progress. Check back in later for results!"
     ]
   },
   {
@@ -131,8 +131,14 @@
     ],
     "summary": "Working on an aircraft that combines vertical takeoff with fixed-wing flight.",
     "overview": [
-      "I worked on a hybrid aircraft that combines a quadcopter’s vertical takeoff with fixed-wing flight. The project involved flight-control logic, hardware integration, and testing how the aircraft behaved in different operating modes.",
-      "I was especially interested in the transition between hovering and forward flight, where the controls have to account for two very different ways of flying."
-    ]
+      "I contributed to work on a hybrid aircraft that combines a quadcopter’s vertical takeoff with fixed-wing flight capabilities. The project involved flight-control logic, hardware integration, and most primarily testing how the aircraft behaved in different operating modes.",
+      "The project featured different modalities where the quadplane would function between a simulated circular motion and controlled flight"
+    ],
+    "photo": {
+      "src": "assets/images/quadplane.jpeg",
+      "alt": "A hybrid quadplane with fixed wings and vertical-lift propellers on a table at a flying field.",
+      "width": 1024,
+      "height": 768
+    }
   }
 ]

@@ -1,10 +1,24 @@
-archive/
-dev/
-updates/
-README.md
-.DS_Store
-.gitignore
+# Local notes and retired experiments
+/docs/
+/README.md
+/archive/
+/updates/
+/dev/
+
+# Installed dependencies and generated test output
 node_modules/
 test-results/
 playwright-report/
 __pycache__/
+*.py[cod]
+.pytest_cache/
+coverage/
+
+# Local configuration, logs, and OS/editor files
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+.vscode/
+.idea/

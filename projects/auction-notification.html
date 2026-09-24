@@ -34,7 +34,8 @@
       class="wordmark"
       href="../index.html"
       aria-label="Nicholas Wohlfeil, home"
-      ><span>Nicholas Wohlfeil</span></a
+      ><span class="name-first">Nicholas</span
+      ><span class="name-last">Wohlfeil</span></a
     >
     <button
       class="menu-toggle"
@@ -47,7 +48,7 @@
     </button>
     <nav id="primary-navigation" aria-label="Main navigation">
       <ul class="nav-links">
-        <li><a href="../projects.html" aria-current="page">Projects</a></li><li><a href="../about.html">About</a></li><li><a href="../experiences.html">Experience</a></li><li><a href="../resume.html">Resume</a></li><li><a href="../contact.html">Contact</a></li>
+        <li><a href="../about.html">About</a></li><li><a href="../projects.html" aria-current="page">Projects</a></li><li><a href="../experiences.html">Experience</a></li><li><a href="../resume.html">Resume</a></li><li><a href="../contact.html">Contact</a></li>
       </ul>
     </nav>
     <details class="appearance" hidden>
@@ -152,11 +153,24 @@
 
     <main id="main-content" tabindex="-1"><div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a><span aria-hidden="true">/</span><span aria-current="page">Auction Notification System</span></nav></div>
     <section class="page-intro container project-intro"><p class="eyebrow">Personal</p><h1>Auction Notification System</h1><ul class="project-tags" aria-label="Technologies and topics"><li>Python</li><li>Web scraping</li><li>APIs</li></ul></section>
-    <div class="container project-overview prose"><p>I built this Python tool to keep track of online auctions without repeatedly checking listings by hand. It collects listings, filters them by details such as keywords and price, and sends a notification when an item matches.</p><p>The project brought together web scraping, APIs, and an alert workflow, with retries and rate limiting to handle changes in the listing sources.</p></div></main>
+    <div class="container project-overview"><div class="prose"><p>I built this Python tool to keep track of online auctions without repeatedly checking listings by hand. It collects listings, filters them by details such as keywords and price, and sends a notification when an item matches.</p><p>The project brought together web scraping, APIs, and an alert workflow, with retries and rate limiting to handle changes in the listing sources.</p></div></div></main>
     <footer class="site-footer">
   <div class="container footer-content">
     <p>© 2026 Nicholas Wohlfeil</p>
-    <nav class="social-links" aria-label="Social links"><a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#github" /></svg><span>GitHub</span></a></nav>
+    <nav class="social-links" aria-label="Social links">
+      <a href="https://www.linkedin.com/in/nicholas-wohlfeil"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#linkedin" /></svg><span>LinkedIn</span></a><a href="https://github.com/njwohlf"><svg class="social-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#github" /></svg><span>GitHub</span></a>
+      <a href="https://nickwohlfeil.com/"
+        ><svg
+          class="social-icon"
+          width="20"
+          height="20"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <use href="../assets/icons.svg#globe" /></svg
+        ><span>Website</span></a
+      >
+    </nav>
   </div>
 </footer>
 

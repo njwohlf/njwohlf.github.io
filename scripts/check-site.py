@@ -70,5 +70,9 @@ for project in projects:
     assert re.fullmatch('[a-z0-9-]+', project['slug']), 'Invalid project slug'
     assert project['category'] in ['Academic', 'Research', 'Personal'], 'Invalid project category'
     assert project['tags'] and project['overview'] and all(project['overview']), 'Project content incomplete'
-    assert (ROOT / 'projects' / (project['slug'] + '.html')).exists()
+    if project.get('photo'):
+        photo = project['photo']
+        assert photo['alt'].strip() and photo['width'] > 0 and photo['height'] > 0, 'Photo needs alt text and dimensions'
+        assert photo['src'].startswith('assets/') and (ROOT / photo['src']).is_file(), 'Photo must be a local asset'
+    assert (ROOT / 'projects'  / (project['slug'] + '.html')).exists()
 print(f'PASS: {len(pages)} pages, local links, anchors, semantics, metadata, and {len(projects)} project records.')

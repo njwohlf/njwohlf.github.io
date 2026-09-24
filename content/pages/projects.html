@@ -42,10 +42,6 @@
         Academic
       </button>
     </div>
-    <div class="view-toggle" role="group" aria-label="Project layout">
-      <button type="button" data-view="grid" aria-pressed="true">Grid</button
-      ><button type="button" data-view="list" aria-pressed="false">List</button>
-    </div>
   </div>
   <p
     id="project-count"
@@ -54,7 +50,9 @@
     aria-live="polite"
     aria-atomic="true"
   >
-    9 projects
+    $project_count projects
   </p>
-  <div class="project-grid" id="projects-grid">$all_projects</div>
+  <div class="project-grid" id="projects-grid" data-view="list">
+    $all_projects
+  </div>
 </section>

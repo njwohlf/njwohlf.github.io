@@ -1,8 +1,8 @@
 [
   {
-    "title": "Administrative Assistant",
+    "title": "Applications Developer",
     "organization": "U-M Robotics Department",
-    "dates": "December 2024 - Current",
+    "dates": "December 2024 - December 2025",
     "description": "Redesigned front-end interfaces with JavaScript, Vue.js, and PHP while supporting daily administrative operations in the Robotics Department."
   },
   {
@@ -13,27 +13,27 @@
   },
   {
     "title": "Research Assistant",
-    "organization": "VODCA Lab",
+    "organization": "Vehicle Optimization, Dynamics, Control and Autonomy Laboratory (VODCA)",
     "dates": "August 2023 - May 2024",
     "description": "Contributed to the design and implementation of a simulated satellite orbit system on an omnidirectional rover, supporting real-time data collection and analysis."
   },
   {
     "title": "Research Assistant",
-    "organization": "MARVL Lab",
+    "organization": "Michigan Aerospace and Robotics Verification Laboratory (MARVL)",
     "dates": "August 2022 - May 2024",
     "description": "Supported real-time robotic safety protocols by analyzing wheel encoder data for velocity and acceleration, and visualizing motion through dynamic graphs."
+  },
+  {
+    "title": "Program Assistant",
+    "organization": "Michigan Research & Discovery Scholars",
+    "dates": "August 2022 - January 2024",
+    "description": "Coordinated administrative and logistical work for Michigan Research & Discovery Scholars, organizing events and supporting collaboration among students, faculty, and staff."
   },
   {
     "title": "Instructional Aide",
     "organization": "U-M Aerospace Engineering Department",
     "dates": "August 2022 - December 2022",
     "description": "Helped aerospace engineering students translate theory into practical project ideas and strengthen their understanding of core engineering concepts."
-  },
-  {
-    "title": "Program Assistant",
-    "organization": "Michigan Research & Discovery Scholars",
-    "dates": "August 2022 - January 2023",
-    "description": "Coordinated administrative and logistical work for Michigan Research & Discovery Scholars, organizing events and supporting collaboration among students, faculty, and staff."
   },
   {
     "title": "Peer Advisor",
@@ -43,7 +43,7 @@
   },
   {
     "title": "Research Assistant",
-    "organization": "A2Sys Lab",
+    "organization": "Autonomous Aerospace Systems Laboratory (A2Sys)",
     "dates": "May 2022 - August 2022",
     "description": "Explored autonomous drone behavior through simulated flight trials and used motion capture data to support estimation and analysis."
   },

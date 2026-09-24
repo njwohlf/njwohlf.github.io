@@ -5,6 +5,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const root = path.resolve(__dirname, "..");
+const projects = require("../content/projects.json");
 const base = process.env.SITE_URL || "http://127.0.0.1:8766";
 const pages = fs
   .readdirSync(root)
@@ -207,28 +208,21 @@ async function reflow(page, label) {
     // A single static collection supports category filtering and view changes.
     await page.goto(`${base}/projects.html`);
     const visibleCards = () => page.locator(".project-card:visible").count();
-    assert.equal(await visibleCards(), 9);
+    assert.equal(await visibleCards(), projects.length);
     for (const category of ["Academic", "Personal", "Research", "All"]) {
       await page.locator(`[data-filter="${category}"]`).click();
-      assert.equal(await visibleCards(), category === "All" ? 9 : 3);
-      for (const view of ["list", "grid"]) {
-        await page.locator(`button[data-view="${view}"]`).click();
-        assert.equal(
-          await page.locator("#projects-grid").getAttribute("data-view"),
-          view,
-        );
-        await reflow(page, `${category} ${view}`);
-      }
+      assert.equal(await visibleCards(), projects.filter(p => category === "All" || p.category === category).length);
+      await reflow(page, `${category} list`);
     }
     assert.equal(await page.locator("#project-search").count(), 0);
-    await page.locator('button[data-view="list"]').click();
+
     await page.reload();
     assert.equal(
       await page.locator("#projects-grid").getAttribute("data-view"),
       "list",
     );
     await audit(page, "project list view");
-    console.log("PASS project categories and saved layout");
+    console.log("PASS project categories and compact list");
 
     // Native constraint validation, failure recovery, and confirmation using mocked HTTP only.
     await page.goto(`${base}/contact.html`);
@@ -286,7 +280,7 @@ async function reflow(page, label) {
     for (const file of [
       "index.html",
       "projects.html",
-      "projects/cache.html",
+      "projects/character-recognition.html",
       "contact.html",
     ]) {
       await plain.goto(`${base}/${file}`);
@@ -294,7 +288,7 @@ async function reflow(page, label) {
       await reflow(plain, `no JS ${file}`);
     }
     await plain.goto(`${base}/projects.html`);
-    assert.equal(await plain.locator(".project-card:visible").count(), 9);
+    assert.equal(await plain.locator(".project-card:visible").count(), projects.length);
     assert(!(await plain.locator(".project-controls").isVisible()));
     await noJS.close();
 
@@ -316,7 +310,7 @@ async function reflow(page, label) {
       SitePreferences.setTheme("dark");
       SitePreferences.setColor("color-6");
     });
-    await privatePage.locator('button[data-view="list"]').click();
+
     assert.equal(
       await privatePage.locator("html").getAttribute("data-theme"),
       "dark",
@@ -336,7 +330,7 @@ async function reflow(page, label) {
       "projects.html",
       "contact.html",
       "experiences.html",
-      "projects/cache.html",
+      "projects/character-recognition.html",
       "about.html",
     ]) {
       await page.goto(`${base}/${file}`);
@@ -376,7 +370,7 @@ async function reflow(page, label) {
       [390, "light", "index.html"],
       [1440, "dark", "index.html"],
       [390, "dark", "projects.html"],
-      [1440, "light", "projects/cache.html"],
+      [1440, "light", "projects/character-recognition.html"],
       [390, "light", "contact.html"],
       [1440, "light", "about.html"],
       [390, "dark", "about.html"],
