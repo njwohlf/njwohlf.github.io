@@ -1213,16 +1213,30 @@ textarea {
     min-height: 0;
   }
   .experience-item {
-    --timeline-line-height: 26px;
-    grid-template-columns: 105px minmax(0, 1fr);
-    gap: 10px 16px;
+    --timeline-line-height: 24px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
     padding-block: 8px 36px;
   }
-  .experience-item h2 { font-size: 1.15rem; }
+  .experience-date,
+  .experience-item h2,
   .experience-org,
-  .experience-description { grid-column: 1 / -1; }
+  .experience-description {
+    grid-column: 1;
+    grid-row: auto;
+  }
   .experience-date {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+  }
+  .experience-item h2 {
+    font-size: 1.3rem;
+    line-height: 1.25;
+  }
+  .experience-org {
+    line-height: 1.5;
+  }
+  .experience-description {
+    margin-top: 8px;
   }
   form {
     padding: 24px;
