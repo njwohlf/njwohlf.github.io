@@ -1,6 +1,12 @@
 [
   {
     "title": "Applications Developer",
+    "organization": "TouchStone Digital",
+    "dates": "September 2026 - Current",
+    "description": "Maintain internal tools and manage client websites, handling ongoing site updates and development across WP Engine, Next.js, PHP, and related web technologies."
+  },
+  {
+    "title": "Applications Developer",
     "organization": "U-M Robotics Department",
     "dates": "December 2024 - December 2025",
     "description": "Redesigned front-end interfaces with JavaScript, Vue.js, and PHP while supporting daily administrative operations in the Robotics Department."
