@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build deployable HTML with Python's standard library. Run from any directory."""
 import argparse
+from datetime import date
 import html
 import json
 from pathlib import Path
@@ -8,10 +9,11 @@ from string import Template
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = 'https://www.nickwohlfeil.com'
-YEAR = '2026'
+YEAR = str(date.today().year)
 PROJECTS = json.loads((ROOT / 'content/projects.json').read_text())
 EXPERIENCE = json.loads((ROOT / 'content/experience.json').read_text())
 ESC = html.escape
+FEATURED_PROJECTS = ('personal-website', 'auction-notification', 'autonomous-mbots')
 
 
 def read(path):
@@ -49,6 +51,41 @@ def project_card(project):
     </article>'''
 
 
+def structured_data(path):
+    if path == 'index.html':
+        data = {
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            'name': 'Nicholas Wohlfeil',
+            'url': SITE + '/',
+        }
+    elif path == 'about.html':
+        current_role = next((role for role in EXPERIENCE if role['dates'].endswith('Current')), None)
+        person = {
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            '@id': SITE + '/#nicholas-wohlfeil',
+            'name': 'Nicholas Wohlfeil',
+            'alternateName': 'Nick Wohlfeil',
+            'url': SITE + '/about/',
+            'image': SITE + '/assets/images/wohlfeil_pic.jpeg',
+            'description': PAGES['about.html'][1],
+            'alumniOf': {'@type': 'CollegeOrUniversity', 'name': 'University of Michigan'},
+            'sameAs': [
+                'https://www.linkedin.com/in/nicholas-wohlfeil',
+                'https://github.com/njwohlf',
+            ],
+        }
+        if current_role:
+            person['jobTitle'] = current_role['title']
+            person['worksFor'] = {'@type': 'Organization', 'name': current_role['organization']}
+        data = person
+    else:
+        return ''
+    encoded = json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
+    return f'<script type="application/ld+json">{encoded}</script>'
+
+
 def project_page(project):
     paragraphs = ''.join(f'<p>{ESC(paragraph)}</p>' for paragraph in project['overview'])
     photo = project.get('photo')
@@ -68,11 +105,11 @@ def experience_page():
 
 
 PAGES = {
-    'index.html': ('Software Engineer', 'Nick Wohlfeil is a software engineer in Ann Arbor, Michigan. Explore work in software, robotics, and systems, and the thinking behind it.'),
-    'about.html': ('About', 'Meet Nick Wohlfeil, a Michigan Engineering graduate with a background in software, robotics research, teaching, and university operations.'),
-    'projects.html': ('Projects', 'Explore Nicholas Wohlfeil’s software, robotics, and systems projects, including machine learning, mapping, and autonomous robots.'),
-    'experiences.html': ('Experience', 'Nicholas Wohlfeil’s experience in software, robotics research, teaching, and administration at the University of Michigan.'),
-    'resume.html': ('Resume', 'Read or download Nicholas Wohlfeil’s resume, with experience in software engineering, research, and teaching.'),
+    'index.html': ('Applications Developer', 'Applications developer in Ann Arbor, Michigan, maintaining internal tools and managing client websites with WP Engine, Next.js, and PHP. See selected projects and experience.'),
+    'about.html': ('About', 'Nicholas Wohlfeil is an Applications Developer in Ann Arbor with experience in client websites, internal tools, web applications, and university robotics research.'),
+    'projects.html': ('Projects', 'Selected web, automation, and robotics projects by Nicholas Wohlfeil, including a Python auction notification system and university research.'),
+    'experiences.html': ('Experience', 'Nicholas Wohlfeil’s work history, including his current Applications Developer role at TouchStone Digital and earlier software, research, and teaching roles.'),
+    'resume.html': ('Resume', 'View or download Nicholas Wohlfeil’s résumé, with current applications development experience and a background in web software and robotics research.'),
     'contact.html': ('Contact', 'Contact Nicholas Wohlfeil about software engineering, projects, or professional opportunities.'),
     '404.html': ('Page not found', 'Find your way back to Nicholas Wohlfeil’s portfolio and engineering projects.'),
 }
@@ -91,7 +128,9 @@ def render(path, title, description, content):
     extra = '<script src="/js/projects-page.js" defer></script>' if path == 'projects.html' else ''
     if path == '404.html':
         extra += '<meta name="robots" content="noindex">'
-    rendered = Template(read('templates/page.html')).substitute(prefix=prefix, title=ESC(f'{title} | Nicholas Wohlfeil'), description=ESC(description), canonical=canonical, extra_head=extra, navbar=navbar, footer=footer, content=content)
+    title_tag = 'Nicholas Wohlfeil | Applications Developer' if path == 'index.html' else f'{title} | Nicholas Wohlfeil'
+    extra += structured_data(path)
+    rendered = Template(read('templates/page.html')).substitute(prefix=prefix, title=ESC(title_tag), description=ESC(description), canonical=canonical, extra_head=extra, navbar=navbar, footer=footer, content=content)
     return '\n'.join(line.rstrip() for line in rendered.splitlines()) + '\n'
 
 
@@ -106,6 +145,9 @@ def outputs():
                 content = Template(content).substitute(social_links=social_links())
             if path == 'projects.html':
                 content = Template(content).substitute(all_projects=''.join(project_card(p) for p in PROJECTS), project_count=len(PROJECTS))
+            if path == 'index.html':
+                featured = {project['slug']: project for project in PROJECTS}
+                content = Template(content).substitute(featured_projects=''.join(project_card(featured[slug]) for slug in FEATURED_PROJECTS))
         result[output_path(path)] = render(path, title, description, content)
     for project in PROJECTS:
         path = f'projects/{project["slug"]}.html'

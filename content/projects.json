@@ -8,10 +8,10 @@
       "Safety",
       "Control"
     ],
-    "summary": "Research work on how mobile robots move, and how to make that behavior safer.",
+    "summary": "Motion analysis and real-time safety research for mobile robots, using wheel encoder data and computer vision.",
     "overview": [
-      "My work with MBots focused on motion analysis and real-time safety. I used wheel encoder data to examine velocity and acceleration accuracy, and analyzed the results to better understand how the robots behaved over time in a practical setting.",
-      "This was part of my research work in the MARVL Lab. I helped with computer vision and the lower level state estimation used to inspect and discuss robot motion relative to their environment."
+      "My work with MBots focused on motion analysis and real-time safety. I used wheel encoder data to assess velocity and acceleration accuracy and analyze how the robots moved over time.",
+      "In the MARVL Lab, I also contributed to computer vision and low-level state estimation used to assess robot motion relative to the surrounding environment."
     ],
     "photo": {
       "src": "assets/images/mbot.jpeg",
@@ -29,10 +29,10 @@
       "HTML & CSS",
       "Accessibility"
     ],
-    "summary": "A home for my projects, interests, and ideas.",
+    "summary": "An accessible static portfolio generated from shared templates, with interactive project filters and saved appearance preferences.",
     "overview": [
-      "I built this site as a place for my projects and work history. It uses HTML, CSS, and JavaScript, with a small Python build script that combines shared templates and project content into static pages.",
-      "I am open to suggestions or changes for the site, so please feel free to leave a suggestion via the contact page if you have any!"
+      "I built this portfolio with HTML, CSS, and JavaScript. A small Python build script combines shared templates and structured content into static pages.",
+      "The site uses progressive enhancement for project filters, mobile navigation, and saved appearance preferences, while keeping the page content available in the generated HTML."
     ]
   },
   {
@@ -43,7 +43,7 @@
       "Machine learning",
       "Julia"
     ],
-    "summary": "Comparing two kinds of neural networks on handwritten English characters.",
+    "summary": "A Julia comparison of feedforward and convolutional neural networks on handwritten English characters.",
     "overview": [
       "For this project, I compared feedforward and convolutional neural networks on handwritten English characters using Julia. I trained the models with the handwritten character dataset by Cohen, Afshar, Tapson, and van Schaik.",
       "I looked at accuracy, confusion matrices, and learning curves to understand which characters each model recognized well and where it struggled."
@@ -64,7 +64,7 @@
       "LiDAR",
       "Point clouds"
     ],
-    "summary": "Using Julia to bring separate LiDAR scans together into a 3D map.",
+    "summary": "Aligning point clouds from multiple LiDAR scans to build a shared 3D map with Julia.",
     "overview": [
       "I used Julia to combine separate LiDAR scans into a 3D map. Each scan captured the scene from a different angle, so the project involved processing the point clouds and aligning them in a shared coordinate frame.",
       "The resulting visualization let me inspect how the scans fit together and spot problems in the alignment."
@@ -81,8 +81,8 @@
     ],
     "summary": "Using a ground robot to study aspects of satellite motion.",
     "overview": [
-      "In the VODCA Lab, I helped develop a satellite orbit simulation using an omnidirectional ground rover as a physical testing metric. My work was specifically in the lower-level control between the simulated models and physical robots that supported real-time data collection and analysis.",
-      "The goal was to simulate the theoretical orbital motion of a satellite in a controlled lab space, within the limits of what a the MBots can represent."
+      "In the VODCA Lab, I helped connect a satellite orbit simulation to an omnidirectional ground rover used as a physical test platform. I worked on lower-level control between the simulated models and physical robots to support real-time data collection and analysis.",
+      "The goal was to represent aspects of satellite motion in a controlled lab space, within the physical limits of the MBots."
     ],
     "photo": {
       "src": "assets/images/omni-directional-mbot.png",
@@ -100,7 +100,7 @@
       "Web scraping",
       "APIs"
     ],
-    "summary": "A Python tool that watches auction listings and sends alerts for matching items.",
+    "summary": "A Python tool that filters online auction listings and sends alerts when items match configured criteria.",
     "overview": [
       "I built this Python tool to keep track of online auctions without repeatedly checking listings by hand. It collects listings, filters them by details such as keywords and price, and sends a notification when an item matches.",
       "The project brought together web scraping, APIs, and an alert workflow, with retries and rate limiting to handle changes in the listing sources."
@@ -108,16 +108,17 @@
   },
   {
     "slug": "indie-game",
-    "title": "Indie Game Development",
+    "title": "Game Development Experiments",
     "category": "Personal",
     "tags": [
       "Unity",
       "C#",
       "Blender"
     ],
-    "summary": "Solo Unity projects where I’ve worked on gameplay, level design, and game assets.",
+    "summary": "Solo game projects with Unity and C#, covering gameplay, level design, and assets made in Blender.",
     "overview": [
-      "This project is a work in progress. Check back in later for results!"
+      "I work on solo game projects in Unity, using C# for gameplay and Blender to create game assets.",
+      "The projects bring together gameplay programming, level design, and asset creation across the Unity and Blender toolchain."
     ]
   },
   {
@@ -129,10 +130,10 @@
       "Controls",
       "Embedded systems"
     ],
-    "summary": "Working on an aircraft that combines vertical takeoff with fixed-wing flight.",
+    "summary": "Flight-control, hardware integration, and testing for an aircraft with vertical takeoff and fixed-wing flight.",
     "overview": [
-      "I contributed to work on a hybrid aircraft that combines a quadcopter’s vertical takeoff with fixed-wing flight capabilities. The project involved flight-control logic, hardware integration, and most primarily testing how the aircraft behaved in different operating modes.",
-      "The project featured different modalities where the quadplane would function between a simulated circular motion and controlled flight"
+      "I contributed to developing a hybrid aircraft that combines vertical takeoff with fixed-wing flight. My work focused on flight-control logic, hardware integration, and testing how the aircraft behaved across operating modes.",
+      "The project included modes for simulated circular motion and controlled flight."
     ],
     "photo": {
       "src": "assets/images/quadplane.jpeg",

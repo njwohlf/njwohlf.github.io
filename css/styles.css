@@ -724,22 +724,6 @@ legend {
 .resume-document > p {
   margin-top: 20px;
 }
-.contact-map {
-  margin-top: 32px;
-}
-.contact-map iframe {
-  display: block;
-  width: 100%;
-  height: 280px;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  background: var(--subtle-bg);
-}
-.contact-map figcaption {
-  margin-top: 12px;
-  font-size: 0.8rem;
-  color: var(--muted-text);
-}
 .resume-preview {
   width: 100%;
   height: 850px;
